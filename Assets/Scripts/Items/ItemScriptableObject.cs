@@ -8,7 +8,7 @@ namespace InventoryShop.Items
     public class ItemScriptableObject : ScriptableObject
     {
         public ItemType itemType;
-        public Image itemIcon;
+        public Sprite itemIcon;
         public string itemDescription;
         public int itemBuyPrice;
         public int itemSellPrice;
