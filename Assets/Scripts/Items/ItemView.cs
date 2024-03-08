@@ -43,7 +43,7 @@ namespace InventoryShop.Items
 
         public void SendItemData()
         {
-            throw new NotImplementedException();
+            itemController.SendItemData();
         }
 
         #endregion ------------------
