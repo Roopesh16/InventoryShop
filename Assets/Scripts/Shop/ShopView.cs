@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using InventoryShop.Events;
 using InventoryShop.Shop;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -23,6 +25,15 @@ public class ShopView : MonoBehaviour
     #endregion ------------------
 
     #region --------- Monobehavior Methods ---------
+    private void OnEnable()
+    {
+        EventManager.Instance.OnItemClick.AddListener(DisplayItemInfo);
+    }
+
+    private void OnDisable()
+    {
+        EventManager.Instance.OnItemClick.RemoveListener(DisplayItemInfo);
+    }
     #endregion ------------------
 
     #region --------- Private Methods ---------
