@@ -35,10 +35,7 @@ namespace InventoryShop.Managers
 
         private void Start()
         {
-            foreach (ItemScriptableObject item in itemsList)
-            {
-                ItemController itemController = new(item, itemPrefab, shopGridTransform);
-            }
+
         }
         #endregion ------------------
 
@@ -46,6 +43,16 @@ namespace InventoryShop.Managers
         #endregion ------------------
 
         #region --------- Public Methods ---------
+        public void SpawnItems(Transform parentTransform, ItemType? itemType)
+        {
+            if (itemType == null)
+            {
+                foreach (ItemScriptableObject item in itemsList)
+                {
+                    ItemController itemController = new(item, itemPrefab, shopGridTransform);
+                }
+            }
+        }
         #endregion ------------------
     }
 
