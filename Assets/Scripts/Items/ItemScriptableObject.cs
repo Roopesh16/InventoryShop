@@ -16,10 +16,4 @@ namespace InventoryShop.Items
         public ItemRarity itemRarity;
         public int itemQuantity;
     }
-
-    [CreateAssetMenu(fileName="ItemSOList", menuName="Items/ItemSOList")]
-    public class ItemSOList:ScriptableObject
-    {
-        public List<ItemScriptableObject> itemList = new();
-    }
 }
