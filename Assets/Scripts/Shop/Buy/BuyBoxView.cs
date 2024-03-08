@@ -21,6 +21,11 @@ namespace InventoryShop.Shop.BuyBox
         #endregion ------------------
 
         #region --------- Monobehavior Methods ---------
+        private void Awake()
+        {
+            negativeBtn.onClick.AddListener(OnNegativeBtnClick);
+            positiveBtn.onClick.AddListener(OnPositiveBtnClick);
+        }
         #endregion ------------------
 
         #region --------- Private Methods ---------
