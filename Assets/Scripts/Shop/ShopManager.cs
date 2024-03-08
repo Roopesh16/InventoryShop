@@ -61,6 +61,7 @@ namespace InventoryShop.Managers
         #endregion ------------------
 
         #region --------- Public Methods ---------
+        public void SetBuyItemData(int itemBuyCost, int itemQuantity) => buyBoxController.SetBuyItemData(itemBuyCost, itemQuantity);
         #endregion ------------------
     }
 }
