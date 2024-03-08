@@ -32,7 +32,7 @@ namespace InventoryShop.Items
         public void SendItemData()
         {
             EventManager.Instance.OnItemClick.InvokeEvent(itemModel.itemName, itemModel.itemIcon,
-                                                        itemModel.itemDescription, itemModel.itemBuyPrice);
+                                                        itemModel.itemDescription, itemModel.itemBuyPrice,itemModel.itemQuantity);
         }
         #endregion ------------------
     }
