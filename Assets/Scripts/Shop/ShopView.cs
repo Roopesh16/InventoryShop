@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using InventoryShop.Events;
+using InventoryShop.Managers;
 using InventoryShop.Shop;
 using TMPro;
 using Unity.VisualScripting;
@@ -15,6 +16,7 @@ public class ShopView : MonoBehaviour
     [SerializeField] private Image itemImage;
     [SerializeField] private TextMeshProUGUI itemDesctiptionText;
     [SerializeField] private TextMeshProUGUI itemBuyText;
+    [SerializeField] private Button buyButton;
     #endregion ------------------
 
     #region --------- Private Variables ---------
@@ -27,6 +29,11 @@ public class ShopView : MonoBehaviour
     #endregion ------------------
 
     #region --------- Monobehavior Methods ---------
+    private void Awake()
+    {
+        buyButton.onClick.AddListener(SetBuyItemData);
+    }
+
     private void OnEnable()
     {
         EventManager.Instance.OnItemClick.AddListener(DisplayItemInfo);
@@ -39,6 +46,7 @@ public class ShopView : MonoBehaviour
     #endregion ------------------
 
     #region --------- Private Methods ---------
+    private void SetBuyItemData() => ShopManager.Instance.SetBuyItemData(itemBuyCost, itemQuantity);
     #endregion ------------------
 
     #region --------- Public Methods ---------
