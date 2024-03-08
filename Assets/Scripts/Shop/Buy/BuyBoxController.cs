@@ -1,7 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
 namespace InventoryShop.Shop.BuyBox
 {
     public class BuyBoxController
@@ -34,7 +30,7 @@ namespace InventoryShop.Shop.BuyBox
         {
             buyBoxModel.itemCount++;
             buyBoxView.EnableNegativeBtn();
-            if (buyBoxModel.itemCount > buyBoxModel.itemQuantity)
+            if (buyBoxModel.itemCount >= buyBoxModel.itemQuantity)
             {
                 buyBoxModel.itemCount = buyBoxModel.itemQuantity;
                 buyBoxView.DisablePositiveBtn();
