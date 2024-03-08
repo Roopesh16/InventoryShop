@@ -1,3 +1,4 @@
+using InventoryShop.Shop;
 using UnityEngine;
 
 namespace InventoryShop.Managers
@@ -11,6 +12,9 @@ namespace InventoryShop.Managers
         [SerializeField] private Transform weaponGridTransform;
         [SerializeField] private Transform consumableGridTransform;
         [SerializeField] private Transform treasureGridTransform;
+
+        [Header("Reference")]
+        [SerializeField] private ShopView shopView;
         #endregion ------------------
 
         #region --------- Private Variables ---------
@@ -44,6 +48,8 @@ namespace InventoryShop.Managers
             consumableGridTransform.gameObject.SetActive(false);
             ItemManager.Instance.SpawnItems(treasureGridTransform, ItemType.TREASURE);
             treasureGridTransform.gameObject.SetActive(false);
+
+            ShopController shopController = new(shopView);
         }
         #endregion ------------------
 
