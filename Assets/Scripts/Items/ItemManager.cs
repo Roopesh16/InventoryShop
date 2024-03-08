@@ -1,3 +1,4 @@
+using InventoryShop.ScriptableObjects;
 using System.Collections.Generic;
 using InventoryShop.Items;
 using UnityEngine;
