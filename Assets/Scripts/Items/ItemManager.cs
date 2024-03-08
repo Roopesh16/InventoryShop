@@ -8,6 +8,7 @@ namespace InventoryShop.Managers
     {
         #region --------- Serialized Variables ---------
         [SerializeField] private List<ItemScriptableObject> itemsList = new();
+        [SerializeField] private ItemView itemPrefab;
         #endregion ------------------
 
         #region --------- Private Variables ---------
@@ -32,9 +33,9 @@ namespace InventoryShop.Managers
 
         private void Start()
         {
-            foreach(ItemScriptableObject item in itemsList)
+            foreach (ItemScriptableObject item in itemsList)
             {
-                ItemController itemController = new (item);
+                ItemController itemController = new(item, itemPrefab);
             }
         }
         #endregion ------------------
