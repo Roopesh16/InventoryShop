@@ -21,7 +21,10 @@ namespace InventoryShop.Items
         {
             itemModel = new(item.itemType, item.itemIcon, item.itemDescription, item.itemBuyPrice,
                             item.itemSellPrice, item.itemWeight, item.itemRarity, item.itemQuantity);
-            itemView = GameObject.Instantiate(itemView, parentTransform);
+            itemModel.SetItemController(this);
+
+            this.itemView = GameObject.Instantiate(itemView, parentTransform);
+            this.itemView.SetItemView(item.itemIcon, item.itemQuantity);
         }
         #endregion ------------------
     }
