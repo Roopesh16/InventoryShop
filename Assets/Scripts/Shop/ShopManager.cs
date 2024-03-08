@@ -5,6 +5,7 @@ namespace InventoryShop.Managers
     public class ShopManager : MonoBehaviour
     {
         #region --------- Serialized Variables ---------
+        [Header("Grid Transforms")]
         [SerializeField] private Transform shopGridTransform;
         [SerializeField] private Transform materialGridTransform;
         [SerializeField] private Transform weaponGridTransform;
