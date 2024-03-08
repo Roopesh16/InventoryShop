@@ -19,7 +19,7 @@ namespace InventoryShop.Items
         #region --------- Public Methods ---------
         public ItemController(ItemScriptableObject item, ItemView itemView, Transform parentTransform)
         {
-            itemModel = new(item.itemType, item.itemIcon, item.itemDescription, item.itemBuyPrice,
+            itemModel = new(item.itemName, item.itemType, item.itemIcon, item.itemDescription, item.itemBuyPrice,
                             item.itemSellPrice, item.itemWeight, item.itemRarity, item.itemQuantity);
             itemModel.SetItemController(this);
 

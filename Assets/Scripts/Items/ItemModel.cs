@@ -9,6 +9,7 @@ namespace InventoryShop.Items
         #endregion ------------------
 
         #region --------- Public Variables ---------
+        public string itemName;
         public ItemType itemType;
         public Sprite itemIcon;
         public string itemDescription;
@@ -23,15 +24,17 @@ namespace InventoryShop.Items
         #endregion ------------------
 
         #region --------- Public Methods ---------
-        public ItemModel(ItemType itemType, Sprite itemIcon, string itemDescription, int itemBuyPrice,
+        public ItemModel(string itemName,ItemType itemType, Sprite itemIcon, string itemDescription, int itemBuyPrice,
                         int itemSellPrice, float itemWeight, ItemRarity itemRarity, int itemQuantity)
         {
+            this.itemName = itemName;
             this.itemType = itemType;
             this.itemIcon = itemIcon;
             this.itemDescription = itemDescription;
             this.itemBuyPrice = itemBuyPrice;
             this.itemSellPrice = itemSellPrice;
             this.itemWeight = itemWeight;
+            this.itemRarity = itemRarity;
             this.itemQuantity = itemQuantity;
         }
 
