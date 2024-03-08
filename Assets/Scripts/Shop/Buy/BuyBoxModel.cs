@@ -15,10 +15,9 @@ namespace InventoryShop.Shop.BuyBox
         #endregion ------------------
 
         #region --------- Public Methods ---------
-        public BuyBoxModel(int itemCount, int itemBuyCost)
+        public BuyBoxModel(int itemCount)
         {
             this.itemCount = itemCount;
-            this.itemBuyCost = itemBuyCost;
         }
 
         public void SetBuyBoxController(BuyBoxController buyBoxController) => this.buyBoxController = buyBoxController;
