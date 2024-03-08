@@ -19,7 +19,7 @@ public class ShopView : MonoBehaviour
 
     #region --------- Private Variables ---------
     private ShopController shopController;
-    private int itemBuyPrice;
+    private int itemBuyCost;
     private int itemQuantity;
     #endregion ------------------
 
@@ -43,16 +43,16 @@ public class ShopView : MonoBehaviour
 
     #region --------- Public Methods ---------
     public void SetupShopView() => descriptionBox.SetActive(false);
-
-    public void DisplayItemInfo(string itemName, Sprite itemIcon, string itemDescription, int itemBuyPrice,int itemQuantity)
+    
+    public void DisplayItemInfo(string itemName, Sprite itemIcon, string itemDescription, int itemBuyCost, int itemQuantity)
     {
         descriptionBox.SetActive(true);
         itemNameText.text = itemName;
         itemImage.sprite = itemIcon;
         itemDesctiptionText.text = itemDescription;
-        itemBuyText.text = itemBuyPrice.ToString();
+        itemBuyText.text = itemBuyCost.ToString();
 
-        this.itemBuyPrice = itemBuyPrice;
+        this.itemBuyCost = itemBuyCost;
         this.itemQuantity = itemQuantity;
     }
 
