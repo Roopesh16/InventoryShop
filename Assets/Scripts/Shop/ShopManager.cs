@@ -1,3 +1,4 @@
+using InventoryShop.Shop.BuyBox;
 using InventoryShop.Shop;
 using UnityEngine;
 
@@ -15,6 +16,7 @@ namespace InventoryShop.Managers
 
         [Header("Reference")]
         [SerializeField] private ShopView shopView;
+        [SerializeField] private BuyBoxView buyBoxView;
         #endregion ------------------
 
         #region --------- Private Variables ---------
@@ -50,6 +52,7 @@ namespace InventoryShop.Managers
             treasureGridTransform.gameObject.SetActive(false);
 
             ShopController shopController = new(shopView);
+            
         }
         #endregion ------------------
 
