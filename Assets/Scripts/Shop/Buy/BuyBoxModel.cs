@@ -9,6 +9,7 @@ namespace InventoryShop.Shop.BuyBox
         #region --------- Public Variables ---------
         public int itemCount;
         public int itemBuyCost;
+        public int itemQuantity;
         #endregion ------------------
 
         #region --------- Private Methods ---------
@@ -21,6 +22,12 @@ namespace InventoryShop.Shop.BuyBox
         }
 
         public void SetBuyBoxController(BuyBoxController buyBoxController) => this.buyBoxController = buyBoxController;
+
+        public void SetItemData(int itemBuyCost, int itemQuantity)
+        {
+            this.itemBuyCost = itemBuyCost;
+            this.itemQuantity = itemQuantity;
+        }
         #endregion ------------------
     }
 }
