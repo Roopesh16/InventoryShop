@@ -4170,6 +4170,63 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: -1820, y: -664}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &987913004
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 987913005}
+  - component: {fileID: 987913006}
+  m_Layer: 0
+  m_Name: ItemManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &987913005
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 987913004}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &987913006
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 987913004}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe92ce2ce0989714fa605731671a095f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemsList:
+  - {fileID: 11400000, guid: 3e02805e065d37c488c95cafe6fef893, type: 2}
+  - {fileID: 11400000, guid: 8c3771da7638e3144a14c38982562cac, type: 2}
+  - {fileID: 11400000, guid: c906a85e143e1d44a9ababbaf36de6dc, type: 2}
+  - {fileID: 11400000, guid: fc2e22465b406a04fafb80610dee51d5, type: 2}
+  - {fileID: 11400000, guid: dbb63a44135ab8d4ca5e7b47ce9703c8, type: 2}
+  - {fileID: 11400000, guid: 54539c8eee45bd14e8dc0944f9f54e01, type: 2}
+  - {fileID: 11400000, guid: 73deaa8ec232911449edcd8f8b3d4d38, type: 2}
+  - {fileID: 11400000, guid: 8a90f55f7485a2b48b8df226826f3e75, type: 2}
+  - {fileID: 11400000, guid: 7ddd7ceb10afaf8418eef5faae237dc1, type: 2}
+  - {fileID: 11400000, guid: 5c4afb6ef0f665143a64eac685cb0f8d, type: 2}
+  itemPrefab: {fileID: -5718064315299832449, guid: da3f0bd8d8d87374ca0683e602fc0333, type: 3}
+  shopGridTransform: {fileID: 1002798270}
 --- !u!1 &1002798269
 GameObject:
   m_ObjectHideFlags: 0
@@ -4181,7 +4238,7 @@ GameObject:
   - component: {fileID: 1002798270}
   - component: {fileID: 1002798271}
   m_Layer: 5
-  m_Name: ShopItems
+  m_Name: ShopItemsGrid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9721,3 +9778,4 @@ SceneRoots:
   - {fileID: 519420032}
   - {fileID: 245816549}
   - {fileID: 64325084}
+  - {fileID: 987913005}
