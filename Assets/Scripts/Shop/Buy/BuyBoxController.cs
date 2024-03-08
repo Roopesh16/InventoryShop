@@ -26,8 +26,32 @@ namespace InventoryShop.Shop.BuyBox
             buyBoxModel.SetBuyBoxController(this);
 
             this.buyBoxView = buyBoxView;
-            this.buyBoxView.SetBuyBoxView();
+            this.buyBoxView.SetBuyBoxView(itemCount);
             this.buyBoxView.SetBuyBoxController(this);
+        }
+
+        public void IncrementItemCount()
+        {
+            buyBoxModel.itemCount++;
+            buyBoxView.EnableNegativeBtn();
+            if (buyBoxModel.itemCount > buyBoxModel.itemQuantity)
+            {
+                buyBoxModel.itemCount = buyBoxModel.itemQuantity;
+                buyBoxView.DisablePositiveBtn();
+            }
+            buyBoxView.UpdateBuyCounter(buyBoxModel.itemCount, buyBoxModel.itemBuyCost);
+        }
+
+        public void DecrementItemCount()
+        {
+            buyBoxModel.itemCount--;
+            buyBoxView.EnablePositiveBtn();
+            if (buyBoxModel.itemCount <= 0)
+            {
+                buyBoxModel.itemCount = 0;
+                buyBoxView.DisableNegativeBtn();
+            }
+            buyBoxView.UpdateBuyCounter(buyBoxModel.itemCount, buyBoxModel.itemBuyCost);
         }
         #endregion ------------------
     }
