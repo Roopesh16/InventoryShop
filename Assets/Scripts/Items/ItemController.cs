@@ -1,5 +1,5 @@
-using UnityEngine;
 using InventoryShop.ScriptableObjects;
+using UnityEngine;
 
 namespace InventoryShop.Items
 {
