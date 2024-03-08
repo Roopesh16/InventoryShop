@@ -25,6 +25,7 @@ namespace InventoryShop.Items
 
             this.itemView = GameObject.Instantiate(itemView, parentTransform);
             this.itemView.SetItemView(item.itemIcon, item.itemQuantity);
+            this.itemView.SetItemController(this);
         }
         #endregion ------------------
     }

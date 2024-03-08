@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
 using TMPro;
+using InventoryShop.Items;
 
 public class ItemView : MonoBehaviour
 {
@@ -13,6 +14,7 @@ public class ItemView : MonoBehaviour
     private Image itemImage;
     private Button itemButton;
     private TextMeshProUGUI quantityText;
+    private ItemController itemController;
     #endregion ------------------
 
     #region --------- Public Variables ---------
@@ -36,5 +38,8 @@ public class ItemView : MonoBehaviour
         itemImage.sprite = itemIcon;
         quantityText.text = "x" + itemQuantity;
     }
+
+    public void SetItemController(ItemController itemController) => this.itemController = itemController;
+
     #endregion ------------------
 }

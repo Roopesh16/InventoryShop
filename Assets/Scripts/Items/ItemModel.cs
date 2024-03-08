@@ -5,6 +5,7 @@ namespace InventoryShop.Items
     public class ItemModel
     {
         #region --------- Private Variables ---------
+        private ItemController itemController;
         #endregion ------------------
 
         #region --------- Public Variables ---------
@@ -33,6 +34,8 @@ namespace InventoryShop.Items
             this.itemWeight = itemWeight;
             this.itemQuantity = itemQuantity;
         }
+
+        public void SetItemController(ItemController itemController) => this.itemController = itemController;
         #endregion ------------------
     }
 
