@@ -10,7 +10,6 @@ namespace InventoryShop.Managers
         #region --------- Serialized Variables ---------
         [SerializeField] private List<ItemScriptableObject> itemsList = new();
         [SerializeField] private ItemView itemPrefab;
-        [SerializeField] private Transform shopGridTransform;
         #endregion ------------------
 
         #region --------- Private Variables ---------
@@ -31,11 +30,6 @@ namespace InventoryShop.Managers
                 instance = this;
             else if (instance != this)
                 Destroy(gameObject);
-        }
-
-        private void Start()
-        {
-            SpawnItems(shopGridTransform);
         }
         #endregion ------------------
 

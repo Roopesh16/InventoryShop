@@ -1,10 +1,11 @@
 using UnityEngine.UI;
 using UnityEngine;
 using TMPro;
+using System;
 
 namespace InventoryShop.Items
 {
-    public class ItemView : MonoBehaviour
+    public class ItemView : MonoBehaviour,IItemClick
     {
         #region --------- Serialized Variables ---------
         #endregion ------------------
@@ -39,6 +40,11 @@ namespace InventoryShop.Items
         }
 
         public void SetItemController(ItemController itemController) => this.itemController = itemController;
+
+        public void SendItemData()
+        {
+            throw new NotImplementedException();
+        }
 
         #endregion ------------------
     }

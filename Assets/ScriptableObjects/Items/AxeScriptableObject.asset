@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9129ada3a149c644d940240327054cfd, type: 3}
   m_Name: AxeScriptableObject
   m_EditorClassIdentifier: 
+  itemName: AXE
   itemType: 1
   itemIcon: {fileID: 21300000, guid: 8708d80070522a043a1ab6a2b2775382, type: 3}
   itemDescription: A powerful axe to throw at enemy
