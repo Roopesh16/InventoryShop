@@ -15,6 +15,8 @@ public class ShopView : MonoBehaviour
     [SerializeField] private Image itemImage;
     [SerializeField] private TextMeshProUGUI itemDesctiptionText;
     [SerializeField] private TextMeshProUGUI itemBuyText;
+
+    private int itemBuyPrice;
     #endregion ------------------
 
     #region --------- Private Variables ---------
@@ -49,6 +51,7 @@ public class ShopView : MonoBehaviour
         itemImage.sprite = itemIcon;
         itemDesctiptionText.text = itemDescription;
         itemBuyText.text = itemBuyPrice.ToString();
+        this.itemBuyPrice = itemBuyPrice;
     }
 
     public void SetShopController(ShopController shopController)
