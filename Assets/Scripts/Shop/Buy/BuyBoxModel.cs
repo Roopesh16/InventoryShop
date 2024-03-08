@@ -1,24 +1,27 @@
-public class BuyBoxModel
+namespace InventoryShop.Shop.BuyBox
 {
-    #region --------- Private Variables ---------
-    private BuyBoxController buyBoxController;
-    #endregion ------------------
-
-    #region --------- Public Variables ---------
-    public int itemCount;
-    public int itemBuyCost;
-    #endregion ------------------
-
-    #region --------- Private Methods ---------
-    #endregion ------------------
-
-    #region --------- Public Methods ---------
-    public BuyBoxModel(int itemCount,int itemBuyCost)
+    public class BuyBoxModel
     {
-        this.itemCount = itemCount;
-        this.itemBuyCost = itemBuyCost;
-    }
+        #region --------- Private Variables ---------
+        private BuyBoxController buyBoxController;
+        #endregion ------------------
 
-    public void SetBuyBoxController(BuyBoxController buyBoxController) => this.buyBoxController = buyBoxController;
-    #endregion ------------------
+        #region --------- Public Variables ---------
+        public int itemCount;
+        public int itemBuyCost;
+        #endregion ------------------
+
+        #region --------- Private Methods ---------
+        #endregion ------------------
+
+        #region --------- Public Methods ---------
+        public BuyBoxModel(int itemCount, int itemBuyCost)
+        {
+            this.itemCount = itemCount;
+            this.itemBuyCost = itemBuyCost;
+        }
+
+        public void SetBuyBoxController(BuyBoxController buyBoxController) => this.buyBoxController = buyBoxController;
+        #endregion ------------------
+    }
 }
