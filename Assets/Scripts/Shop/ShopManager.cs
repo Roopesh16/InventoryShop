@@ -35,10 +35,14 @@ namespace InventoryShop.Managers
         private void Start()
         {
             ItemManager.Instance.SpawnItems(shopGridTransform);
-            ItemManager.Instance.SpawnItems(materialGridTransform,ItemType.MATERIAL);
-            ItemManager.Instance.SpawnItems(weaponGridTransform,ItemType.WEAPON);
+            ItemManager.Instance.SpawnItems(materialGridTransform, ItemType.MATERIAL);
+            materialGridTransform.gameObject.SetActive(false);
+            ItemManager.Instance.SpawnItems(weaponGridTransform, ItemType.WEAPON);
+            weaponGridTransform.gameObject.SetActive(false);
             ItemManager.Instance.SpawnItems(consumableGridTransform, ItemType.CONSUMABLE);
+            consumableGridTransform.gameObject.SetActive(false);
             ItemManager.Instance.SpawnItems(treasureGridTransform, ItemType.TREASURE);
+            treasureGridTransform.gameObject.SetActive(false);
         }
         #endregion ------------------
 
