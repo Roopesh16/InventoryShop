@@ -1123,6 +1123,55 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 165093757}
   m_CullTransparentMesh: 1
+--- !u!1 &167368001
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 167368002}
+  - component: {fileID: 167368003}
+  m_Layer: 0
+  m_Name: ShopManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &167368002
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 167368001}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &167368003
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 167368001}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dcf038018bb5bd2499fbcee306d533e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shopGridTransform: {fileID: 1002798270}
+  materialGridTransform: {fileID: 1691614493}
+  weaponGridTransform: {fileID: 621700720}
+  consumableGridTransform: {fileID: 1790138489}
+  treasureGridTransform: {fileID: 1125866212}
 --- !u!1 &189745068
 GameObject:
   m_ObjectHideFlags: 0
@@ -2876,7 +2925,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &621700720
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4290,7 +4339,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 7ddd7ceb10afaf8418eef5faae237dc1, type: 2}
   - {fileID: 11400000, guid: 5c4afb6ef0f665143a64eac685cb0f8d, type: 2}
   itemPrefab: {fileID: -5718064315299832449, guid: da3f0bd8d8d87374ca0683e602fc0333, type: 3}
-  shopGridTransform: {fileID: 1002798270}
 --- !u!1 &1002798269
 GameObject:
   m_ObjectHideFlags: 0
@@ -4995,7 +5043,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1125866212
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8224,7 +8272,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1691614493
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8613,7 +8661,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1790138489
 RectTransform:
   m_ObjectHideFlags: 0
@@ -10023,3 +10071,4 @@ SceneRoots:
   - {fileID: 245816549}
   - {fileID: 64325084}
   - {fileID: 987913005}
+  - {fileID: 167368002}
