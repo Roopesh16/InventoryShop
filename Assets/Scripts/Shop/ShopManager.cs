@@ -21,6 +21,7 @@ namespace InventoryShop.Managers
 
         #region --------- Private Variables ---------
         private static ShopManager instance = null;
+        private BuyBoxController buyBoxController;
         #endregion ------------------
 
         #region --------- Public Variables ---------
@@ -52,7 +53,7 @@ namespace InventoryShop.Managers
             treasureGridTransform.gameObject.SetActive(false);
 
             ShopController shopController = new(shopView);
-            
+            buyBoxController = new(buyBoxView);
         }
         #endregion ------------------
 
