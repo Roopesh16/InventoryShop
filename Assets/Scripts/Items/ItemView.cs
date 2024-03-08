@@ -1,6 +1,7 @@
 using UnityEngine.UI;
 using UnityEngine;
 using TMPro;
+using System;
 
 namespace InventoryShop.Items
 {
@@ -42,7 +43,7 @@ namespace InventoryShop.Items
 
         public void SendItemData()
         {
-            itemController.SendItemData();
+            throw new NotImplementedException();
         }
 
         #endregion ------------------
