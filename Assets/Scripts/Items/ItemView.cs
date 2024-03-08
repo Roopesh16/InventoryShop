@@ -5,7 +5,7 @@ using System;
 
 namespace InventoryShop.Items
 {
-    public class ItemView : MonoBehaviour,IItemClick
+    public class ItemView : MonoBehaviour, IItemClick
     {
         #region --------- Serialized Variables ---------
         #endregion ------------------
@@ -26,6 +26,8 @@ namespace InventoryShop.Items
             itemImage = GetComponent<Image>();
             itemButton = GetComponent<Button>();
             quantityText = GetComponentInChildren<TextMeshProUGUI>();
+
+            itemButton.onClick.AddListener(SendItemData);
         }
         #endregion ------------------
 
@@ -43,7 +45,7 @@ namespace InventoryShop.Items
 
         public void SendItemData()
         {
-            throw new NotImplementedException();
+            itemController.SendItemData();
         }
 
         #endregion ------------------

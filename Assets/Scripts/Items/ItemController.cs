@@ -1,3 +1,4 @@
+using InventoryShop.Events;
 using InventoryShop.ScriptableObjects;
 using UnityEngine;
 
@@ -26,6 +27,12 @@ namespace InventoryShop.Items
             this.itemView = GameObject.Instantiate<ItemView>(itemView, parentTransform);
             this.itemView.SetItemView(item.itemIcon, item.itemQuantity);
             this.itemView.SetItemController(this);
+        }
+
+        public void SendItemData()
+        {
+            EventManager.Instance.OnItemClick.InvokeEvent(itemModel.itemName, itemModel.itemIcon,
+                                                        itemModel.itemDescription, itemModel.itemBuyPrice,itemModel.itemQuantity);
         }
         #endregion ------------------
     }

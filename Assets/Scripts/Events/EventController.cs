@@ -1,18 +1,18 @@
 using System;
+using System.Security.Cryptography.X509Certificates;
 
 namespace InventoryShop.Events
 {
-    public class EventController<T, U, V, W>
+    public class EventController<T, U, V, W,X>
     {
         #region --------- Public Variables ---------
-        public event Action<T, U, V, W> baseEvent;
+        public event Action<T, U, V, W, X> baseEvent;
         #endregion ------------------
 
         #region --------- Public Methods ---------
-        public void InvokeEvent(T param1, U param2, V param3, W param4) => baseEvent?.Invoke(param1, param2, param3, 
-                                                                                            param4);
-        public void AddListener(Action<T, U, V, W> listener) => baseEvent += listener;
-        public void RemoveListener(Action<T, U, V, W> listener) => baseEvent -= listener;
+        public void InvokeEvent(T var1, U var2, V var3, W var4, X var5) => baseEvent?.Invoke(var1, var2, var3, var4, var5);
+        public void AddListener(Action<T, U, V, W,X> listener) => baseEvent += listener;
+        public void RemoveListener(Action<T, U, V, W,X> listener) => baseEvent -= listener;
         #endregion ------------------
     }
 }

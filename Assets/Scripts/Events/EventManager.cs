@@ -20,13 +20,13 @@ namespace InventoryShop.Events
             }
         }
 
-        public EventController<string, Sprite, string, int> OnItemClick;
+        public EventController<string, Sprite, string, int, int> OnItemClick;
         #endregion ------------------
 
         #region --------- Public Methods ---------
         public EventManager()
         {
-            OnItemClick = new EventController<string, Sprite, string, int>();
+            OnItemClick = new EventController<string, Sprite, string, int, int>();
         }
         #endregion ------------------
 

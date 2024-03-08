@@ -1,7 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
+using InventoryShop.Events;
+using InventoryShop.Managers;
 using InventoryShop.Shop;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -13,31 +16,52 @@ public class ShopView : MonoBehaviour
     [SerializeField] private Image itemImage;
     [SerializeField] private TextMeshProUGUI itemDesctiptionText;
     [SerializeField] private TextMeshProUGUI itemBuyText;
+    [SerializeField] private Button buyButton;
     #endregion ------------------
 
     #region --------- Private Variables ---------
     private ShopController shopController;
+    private int itemBuyCost;
+    private int itemQuantity;
     #endregion ------------------
 
     #region --------- Public Variables ---------
     #endregion ------------------
 
     #region --------- Monobehavior Methods ---------
+    private void Awake()
+    {
+        buyButton.onClick.AddListener(SetBuyItemData);
+    }
+
+    private void OnEnable()
+    {
+        EventManager.Instance.OnItemClick.AddListener(DisplayItemInfo);
+    }
+
+    private void OnDisable()
+    {
+        EventManager.Instance.OnItemClick.RemoveListener(DisplayItemInfo);
+    }
     #endregion ------------------
 
     #region --------- Private Methods ---------
+    private void SetBuyItemData() => ShopManager.Instance.SetBuyItemData(itemBuyCost, itemQuantity);
     #endregion ------------------
 
     #region --------- Public Methods ---------
     public void SetupShopView() => descriptionBox.SetActive(false);
-
-    public void DisplayItemInfo(string itemName, Sprite itemIcon, string itemDescription, int itemBuyPrice)
+    
+    public void DisplayItemInfo(string itemName, Sprite itemIcon, string itemDescription, int itemBuyCost, int itemQuantity)
     {
         descriptionBox.SetActive(true);
         itemNameText.text = itemName;
         itemImage.sprite = itemIcon;
         itemDesctiptionText.text = itemDescription;
-        itemBuyText.text = itemBuyPrice.ToString();
+        itemBuyText.text = itemBuyCost.ToString();
+
+        this.itemBuyCost = itemBuyCost;
+        this.itemQuantity = itemQuantity;
     }
 
     public void SetShopController(ShopController shopController)
