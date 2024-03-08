@@ -37,12 +37,15 @@ namespace InventoryShop.Shop.BuyBox
         {
             gameObject.SetActive(false);
             countText.text = itemCount.ToString();
+            UpdateBuyCounter(itemCount, itemCount);
+            DisableNegativeBtn();
+
         }
         public void SetBuyBoxController(BuyBoxController buyBoxController) => this.buyBoxController = buyBoxController;
 
-        public void OnNegativeBtnClick() => buyBoxController.IncrementItemCount();
+        public void OnNegativeBtnClick() => buyBoxController.DecrementItemCount();
 
-        public void OnPositiveBtnClick() => buyBoxController.DecrementItemCount();
+        public void OnPositiveBtnClick() => buyBoxController.IncrementItemCount();
 
         public void UpdateBuyCounter(int itemCount, int itemBuyCost)
         {
