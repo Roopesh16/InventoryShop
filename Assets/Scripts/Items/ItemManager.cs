@@ -1,7 +1,8 @@
 using System.Collections.Generic;
+using InventoryShop.Items;
 using UnityEngine;
 
-namespace InventoryShop.Items
+namespace InventoryShop.Managers
 {
     public class ItemManager : MonoBehaviour
     {
