@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9129ada3a149c644d940240327054cfd, type: 3}
   m_Name: SwordScriptableObject
   m_EditorClassIdentifier: 
+  itemName: SWORD
   itemType: 1
   itemIcon: {fileID: 21300000, guid: b2f3327f47464544293b6b9018e1296e, type: 3}
   itemDescription: A mighty sword for regular use

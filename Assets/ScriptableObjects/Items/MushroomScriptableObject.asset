@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9129ada3a149c644d940240327054cfd, type: 3}
   m_Name: MushroomScriptableObject
   m_EditorClassIdentifier: 
+  itemName: MUSHROOM
   itemType: 2
   itemIcon: {fileID: 21300000, guid: 533bbe1c8660d2b4baac22db4296ade3, type: 3}
   itemDescription: Helpful to gain instant health gain

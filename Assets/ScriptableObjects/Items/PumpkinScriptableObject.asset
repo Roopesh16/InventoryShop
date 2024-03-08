@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9129ada3a149c644d940240327054cfd, type: 3}
   m_Name: PumpkinScriptableObject
   m_EditorClassIdentifier: 
+  itemName: PUMPKIN
   itemType: 2
   itemIcon: {fileID: 21300000, guid: b398f31984f975d439ad74fd48570d89, type: 3}
   itemDescription: Pumpkin give you average health, also helpful to lure other animal

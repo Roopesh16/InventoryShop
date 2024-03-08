@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9129ada3a149c644d940240327054cfd, type: 3}
   m_Name: NoodlesScriptableObject
   m_EditorClassIdentifier: 
+  itemName: NOODLES
   itemType: 2
   itemIcon: {fileID: 21300000, guid: 67d91650448db8d4f8c2761c114467a6, type: 3}
   itemDescription: Helpful to gain extra health and walk long distance

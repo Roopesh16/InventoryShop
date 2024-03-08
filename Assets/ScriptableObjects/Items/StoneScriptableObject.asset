@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9129ada3a149c644d940240327054cfd, type: 3}
   m_Name: StoneScriptableObject
   m_EditorClassIdentifier: 
+  itemName: STONE
   itemType: 0
   itemIcon: {fileID: 21300000, guid: 9e5e200069c8ec14b857e10db776c146, type: 3}
   itemDescription: Helpful to craft arrow for your bow
