@@ -19,6 +19,6 @@ public class BuyBoxModel
         this.itemBuyCost = itemBuyCost;
     }
 
-    public SetBuyBoxController(BuyBoxController buyBoxController) => this.buyBoxController = buyBoxController;
+    public void SetBuyBoxController(BuyBoxController buyBoxController) => this.buyBoxController = buyBoxController;
     #endregion ------------------
 }
