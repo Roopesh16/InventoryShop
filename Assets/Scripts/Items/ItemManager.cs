@@ -9,6 +9,7 @@ namespace InventoryShop.Managers
         #region --------- Serialized Variables ---------
         [SerializeField] private List<ItemScriptableObject> itemsList = new();
         [SerializeField] private ItemView itemPrefab;
+        [SerializeField] private Transform shopGridTransform;
         #endregion ------------------
 
         #region --------- Private Variables ---------
@@ -35,7 +36,7 @@ namespace InventoryShop.Managers
         {
             foreach (ItemScriptableObject item in itemsList)
             {
-                ItemController itemController = new(item, itemPrefab);
+                ItemController itemController = new(item, itemPrefab, shopGridTransform);
             }
         }
         #endregion ------------------
