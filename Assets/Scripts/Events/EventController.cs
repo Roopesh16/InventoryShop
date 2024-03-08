@@ -9,8 +9,7 @@ namespace InventoryShop.Events
         #endregion ------------------
 
         #region --------- Public Methods ---------
-        public void InvokeEvent(T param1, U param2, V param3, W param4) => baseEvent?.Invoke(param1, param2, param3, 
-                                                                                            param4);
+        public void InvokeEvent(T var1, U var2, V var3, W var4) => baseEvent?.Invoke(var1, var2, var3, var4);
         public void AddListener(Action<T, U, V, W> listener) => baseEvent += listener;
         public void RemoveListener(Action<T, U, V, W> listener) => baseEvent -= listener;
         #endregion ------------------
