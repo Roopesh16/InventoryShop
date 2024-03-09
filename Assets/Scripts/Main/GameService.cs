@@ -2,9 +2,9 @@ using InventoryShop.ScriptableObjects;
 using System.Collections.Generic;
 using InventoryShop.Shop.BuyBox;
 using InventoryShop.Managers;
+using InventoryShop.Events;
 using InventoryShop.Items;
 using UnityEngine;
-using InventoryShop.Events;
 
 namespace InventoryShop.Services
 {
@@ -13,6 +13,7 @@ namespace InventoryShop.Services
         #region --------- Serialized Variables ---------
         [Header("Item Service References")]
         [SerializeField] private List<ItemScriptableObject> itemsList = new();
+        [SerializeField] private List<ItemTypeBtn> itemTypeBtns = new();
         [SerializeField] private ItemView itemPrefab;
 
         [Header("Player Service References")]
@@ -47,7 +48,7 @@ namespace InventoryShop.Services
         {
             eventService = new();
             playerService = new(currentMoney);
-            itemService = new(itemsList, itemPrefab);
+            itemService = new(itemsList, itemPrefab, itemTypeBtns);
             shopService = new(shopGridTransform, shopView, buyBoxView);
         }
 
