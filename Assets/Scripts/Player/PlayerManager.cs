@@ -5,7 +5,7 @@ namespace InventoryShop.Managers
     public class PlayerManager : MonoBehaviour
     {
         #region --------- Serialized Variables ---------
-        private int currentCost = 0;
+        private int currentMoney = 10000;
         #endregion ------------------
 
         #region --------- Private Variables ---------
@@ -33,7 +33,8 @@ namespace InventoryShop.Managers
         #endregion ------------------
 
         #region --------- Public Methods ---------
-        public int GetCurrentCost() => currentCost;
+        public int GetCurrentMoney() => currentMoney;
+        public int DeductMoney(int buyCost) => currentMoney -= buyCost;
         #endregion ------------------
     }
 }
