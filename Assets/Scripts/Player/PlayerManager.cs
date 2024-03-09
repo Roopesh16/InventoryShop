@@ -5,7 +5,7 @@ namespace InventoryShop.Managers
     public class PlayerManager : MonoBehaviour
     {
         #region --------- Serialized Variables ---------
-        private int currentMoney = 10000;
+        [SerializeField] private int currentMoney = 0;
         #endregion ------------------
 
         #region --------- Private Variables ---------
