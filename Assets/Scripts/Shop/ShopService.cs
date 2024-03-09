@@ -5,7 +5,7 @@ using InventoryShop.Events;
 
 namespace InventoryShop.Managers
 {
-    public class ShopService : MonoBehaviour
+    public class ShopService
     {
         #region --------- Private Variables ---------
         private ItemService itemService;
@@ -13,35 +13,16 @@ namespace InventoryShop.Managers
         private Transform shopGridTransform;
         private ShopView shopView;
         private BuyBoxView buyBoxView;
-        private static ShopService instance = null;
         private BuyBoxController buyBoxController;
         private ShopController shopController;
-        #endregion ------------------
-
-        #region --------- Public Variables ---------
-        public static ShopService Instance
-        {
-            get { return instance; }
-        }
-        #endregion ------------------
-
-        #region --------- Monobehavior Methods ---------
-        private void Awake()
-        {
-            if (instance == null)
-                instance = this;
-            else if (instance != this)
-                Destroy(gameObject);
-        }
-
         #endregion ------------------
 
         #region --------- Private Methods ---------
         private void InitializeVariables(EventService eventService)
         {
             itemService.SpawnItems(eventService, shopGridTransform);
-            shopController = new(eventService, shopView);
-            buyBoxController = new(buyBoxView);
+            shopController = new(eventService, this, shopView);
+            buyBoxController = new(buyBoxView,this);
         }
         #endregion ------------------
 

@@ -1,13 +1,12 @@
-using System;
-using System.Diagnostics;
 using InventoryShop.Managers;
-using UnityEngine;
 
 namespace InventoryShop.Shop.BuyBox
 {
     public class BuyBoxController
     {
         #region --------- Private Variables ---------
+        private ShopService shopService;
+
         private BuyBoxModel buyBoxModel;
         private BuyBoxView buyBoxView;
 
@@ -21,8 +20,10 @@ namespace InventoryShop.Shop.BuyBox
         #endregion ------------------
 
         #region --------- Public Methods ---------
-        public BuyBoxController(BuyBoxView buyBoxView)
+        public BuyBoxController(BuyBoxView buyBoxView,ShopService shopService)
         {
+            this.shopService = shopService;
+
             buyBoxModel = new(itemCount);
             buyBoxModel.SetBuyBoxController(this);
 
@@ -69,7 +70,7 @@ namespace InventoryShop.Shop.BuyBox
                 if (buyBoxModel.itemQuantity <= 0)
                 {
                     buyBoxModel.itemQuantity = 0;
-                    ShopService.Instance.DisableDescription();
+                    shopService.DisableDescription();
                     buyBoxView.DisablePositiveBtn();
                     buyBoxView.DisableNegativeBtn();
                 }

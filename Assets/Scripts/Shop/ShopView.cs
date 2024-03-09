@@ -18,6 +18,7 @@ public class ShopView : MonoBehaviour
 
     #region --------- Private Variables ---------
     private EventService eventService;
+    private ShopService shopService;
     private ShopController shopController;
     private int itemBuyCost;
     private int itemQuantity;
@@ -31,7 +32,7 @@ public class ShopView : MonoBehaviour
     {
         buyButton.onClick.AddListener(EnableBuyBox);
     }
-    
+
     private void OnDisable()
     {
         eventService.OnItemClick.RemoveListener(DisplayItemInfo);
@@ -39,14 +40,16 @@ public class ShopView : MonoBehaviour
     #endregion ------------------
 
     #region --------- Private Methods ---------
-    private void EnableBuyBox() => ShopService.Instance.SetBuyItemData(itemBuyCost, itemQuantity);
+    private void EnableBuyBox() => shopService.SetBuyItemData(itemBuyCost, itemQuantity);
     private void SubscribeToEvent() => eventService.OnItemClick.AddListener(DisplayItemInfo);
     #endregion ------------------
 
     #region --------- Public Methods ---------
-    public void SetupShopView(EventService eventService)
+    public void SetupShopView(EventService eventService,ShopService shopService)
     {
         this.eventService = eventService;
+        this.shopService = shopService;
+        
         SubscribeToEvent();
         descriptionBox.SetActive(false);
     }
