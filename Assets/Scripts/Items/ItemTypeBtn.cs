@@ -10,9 +10,7 @@ public class ItemTypeBtn : MonoBehaviour
 
     #region --------- Private Variables ---------
     private Button typeBtn;
-    #endregion ------------------
-
-    #region --------- Public Variables ---------
+    private ItemService itemService;
     #endregion ------------------
 
     #region --------- Monobehavior Methods ---------
@@ -25,9 +23,10 @@ public class ItemTypeBtn : MonoBehaviour
     #endregion ------------------
 
     #region --------- Private Methods ---------
-    private void DisplayTypeItems() => ItemService.Instance.DisplayType(itemType);
+    private void DisplayTypeItems() => itemService.DisplayType(itemType);
     #endregion ------------------
 
     #region --------- Public Methods ---------
+    public void Init(ItemService itemService) => this.itemService = itemService;
     #endregion ------------------
 }
