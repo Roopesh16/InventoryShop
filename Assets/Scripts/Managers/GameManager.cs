@@ -51,7 +51,9 @@ namespace InventoryShop.Managers
                 return;
             }
 
-
+            PlayerManager.Instance.DeductMoney(itemBuyCost);
+            UIManager.Instance.SetCurrentMoney(PlayerManager.Instance.GetCurrentMoney());
+            ItemManager.Instance.UpdateSelectedItem(itemCount);
         }
         #endregion ------------------
     }
