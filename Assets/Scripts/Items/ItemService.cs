@@ -3,37 +3,18 @@ using System.Collections.Generic;
 using InventoryShop.Events;
 using InventoryShop.Items;
 using UnityEngine;
-using UnityEngine.PlayerLoop;
 
 namespace InventoryShop.Managers
 {
-    public class ItemService : MonoBehaviour
+    public class ItemService
     {
-        #region --------- Serialized Variables ---------
-        #endregion ------------------
-
         #region --------- Private Variables ---------
         private List<ItemScriptableObject> itemsList = new();
         private ItemView itemPrefab;
-        private static ItemService instance = null;
         private List<ItemController> itemSpawned = new();
         #endregion ------------------
 
         #region --------- Public Variables ---------
-        public static ItemService Instance
-        {
-            get { return instance; }
-        }
-        #endregion ------------------
-
-        #region --------- Monobehavior Methods ---------
-        private void Awake()
-        {
-            if (instance == null)
-                instance = this;
-            else if (instance != this)
-                Destroy(gameObject);
-        }
         #endregion ------------------
 
         #region --------- Private Methods ---------
@@ -50,7 +31,7 @@ namespace InventoryShop.Managers
         {
             foreach (ItemScriptableObject item in itemsList)
             {
-                ItemController itemController = new(eventService, item, itemPrefab, parentTransform);
+                ItemController itemController = new(eventService, this, item, itemPrefab, parentTransform);
                 itemSpawned.Add(itemController);
             }
         }

@@ -9,6 +9,8 @@ namespace InventoryShop.Items
     {
         #region --------- Private Variables ---------
         private EventService eventService;
+        private ItemService itemService;
+
         private ItemModel itemModel;
         private ItemView itemView;
         private bool isSelected = false;
@@ -23,10 +25,11 @@ namespace InventoryShop.Items
         #endregion ------------------
 
         #region --------- Public Methods ---------
-        public ItemController(EventService eventService, ItemScriptableObject item, ItemView itemView, 
+        public ItemController(EventService eventService, ItemService itemService, ItemScriptableObject item, ItemView itemView,
                             Transform parentTransform)
         {
             this.eventService = eventService;
+            this.itemService = itemService;
 
             itemModel = new(item.itemName, item.itemType, item.itemIcon, item.itemDescription, item.itemBuyPrice,
                             item.itemSellPrice, item.itemWeight, item.itemRarity, item.itemQuantity);
@@ -46,7 +49,7 @@ namespace InventoryShop.Items
         public void SelectCurrentItem()
         {
             isSelected = true;
-            ItemService.Instance.UnselectRestItems(this);
+            itemService.UnselectRestItems(this);
         }
 
         public void UnselectCurrentItem() => isSelected = false;
