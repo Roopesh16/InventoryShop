@@ -46,7 +46,6 @@ namespace InventoryShop.Shop.BuyBox
             countText.text = itemCount.ToString();
             UpdateBuyCounter(itemCount, itemCount);
             DisableNegativeBtn();
-
         }
         public void SetBuyBoxController(BuyBoxController buyBoxController) => this.buyBoxController = buyBoxController;
 
@@ -65,44 +64,23 @@ namespace InventoryShop.Shop.BuyBox
         public void OnYesClick()
         {
             GameManager.Instance.ValidateBuyTransaction(itemCount, totalCost);
+            buyBoxController.ResetItemCounter(true);
         }
 
         public void OnNoClick()
         {
             gameObject.SetActive(false);
+            buyBoxController.ResetItemCounter(false);
         }
 
-        public void EnableNegativeBtn()
-        {
-            if (negativeBtn.interactable)
-                return;
+        public void EnableNegativeBtn() => negativeBtn.interactable = true;
 
-            negativeBtn.interactable = true;
-        }
+        public void EnablePositiveBtn() => positiveBtn.interactable = true;
 
-        public void EnablePositiveBtn()
-        {
-            if (positiveBtn.interactable)
-                return;
+        public void DisablePositiveBtn() => positiveBtn.interactable = false;
 
-            positiveBtn.interactable = true;
-        }
+        public void DisableNegativeBtn() => negativeBtn.interactable = false;
 
-        public void DisablePositiveBtn()
-        {
-            if (!positiveBtn.interactable)
-                return;
-
-            positiveBtn.interactable = false;
-        }
-
-        public void DisableNegativeBtn()
-        {
-            if (!negativeBtn.interactable)
-                return;
-
-            negativeBtn.interactable = false;
-        }
         #endregion ------------------
     }
 }
