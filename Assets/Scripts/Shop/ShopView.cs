@@ -68,5 +68,7 @@ public class ShopView : MonoBehaviour
     {
         this.shopController = shopController;
     }
+
+    public void DisableDescription() => descriptionBox.SetActive(false);
     #endregion ------------------
 }
