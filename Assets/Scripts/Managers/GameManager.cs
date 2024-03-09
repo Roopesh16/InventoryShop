@@ -40,10 +40,16 @@ namespace InventoryShop.Managers
         public void ValidateBuyTransaction(int itemCount, int itemBuyCost)
         {
             if (PlayerManager.Instance.GetCurrentCost() == 0)
+            {
+                UIManager.Instance.SetNotificationText("NO MONEY!");
                 return;
+            }
 
             if (itemBuyCost > PlayerManager.Instance.GetCurrentCost())
+            {
+                UIManager.Instance.SetNotificationText("EXCEED COST!");
                 return;
+            }
 
 
         }

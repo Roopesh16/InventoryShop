@@ -10,12 +10,15 @@ namespace InventoryShop.Managers
     {
         #region --------- Serialized Variables ---------
         [SerializeField] private TextMeshProUGUI moneyText;
+        [SerializeField] private TextMeshProUGUI notificationText;
         [SerializeField] private GameObject shopTitle;
         [SerializeField] private GameObject shopPanel;
         [SerializeField] private GameObject inventoryTitle;
         [SerializeField] private GameObject inventoryPanel;
         [SerializeField] private Button leftButton;
         [SerializeField] private Button rightButton;
+
+        [SerializeField] private float maxTime = 3f;
         #endregion ------------------
 
         #region --------- Private Variables ---------
@@ -57,13 +60,28 @@ namespace InventoryShop.Managers
             inventoryTitle.SetActive(isInventoryActive);
             inventoryPanel.SetActive(isInventoryActive);
         }
+
+        private IEnumerator WaitTimer()
+        {
+            yield return new WaitForSeconds(maxTime);
+            notificationText.gameObject.SetActive(false);
+        }
         #endregion ------------------
 
         #region --------- Public Methods ---------
         public void Init()
         {
             SetPanelActive();
+            notificationText.gameObject.SetActive(false);
         }
+
+        public void SetNotificationText(string notification)
+        {
+            notificationText.gameObject.SetActive(true);
+            notificationText.text = notification;
+            StartCoroutine(WaitTimer());
+        }
+
         #endregion ------------------
     }
 }
