@@ -18,15 +18,7 @@ namespace InventoryShop.Items
         #endregion ------------------
 
         #region --------- Private Methods ---------
-        private void DecrementItemQuantity(int quantity)
-        {
-            itemModel.itemQuantity -= quantity;
 
-            if (itemModel.itemQuantity <= 0)
-                itemView.DisableItemView();
-
-            itemView.UpdateItemQuantity(itemModel.itemQuantity);
-        }
         #endregion ------------------
 
         #region --------- Public Methods ---------
@@ -54,6 +46,19 @@ namespace InventoryShop.Items
         }
 
         public void UnselectCurrentItem() => isSelected = false;
+
+        public void DecrementItemQuantity(int quantity)
+        {
+            if (isSelected)
+            {
+                itemModel.itemQuantity -= quantity;
+
+                if (itemModel.itemQuantity <= 0)
+                    itemView.DisableItemView();
+
+                itemView.UpdateItemQuantity(itemModel.itemQuantity);
+            }
+        }
         #endregion ------------------
     }
 
