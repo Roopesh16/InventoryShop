@@ -1,20 +1,25 @@
+using InventoryShop.Managers;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace InventoryShop.Shop.BuyBox
 {
-    public class BuyBoxView : MonoBehaviour, ICountBtnClick
+    public class BuyBoxView : MonoBehaviour, ICountBtnClick, IItemTransfer
     {
         #region --------- Serialized Variables ---------
         [SerializeField] private Button negativeBtn;
         [SerializeField] private Button positiveBtn;
+        [SerializeField] private Button yesButton;
+        [SerializeField] private Button noButton;
         [SerializeField] private TextMeshProUGUI countText;
         [SerializeField] private TextMeshProUGUI itemBuyText;
         #endregion ------------------
 
         #region --------- Private Variables ---------
         private BuyBoxController buyBoxController;
+        private int itemCount;
+        private int totalCost;
         #endregion ------------------
 
         #region --------- Public Variables ---------
@@ -25,6 +30,8 @@ namespace InventoryShop.Shop.BuyBox
         {
             negativeBtn.onClick.AddListener(OnNegativeBtnClick);
             positiveBtn.onClick.AddListener(OnPositiveBtnClick);
+            yesButton.onClick.AddListener(OnYesClick);
+            noButton.onClick.AddListener(OnNoClick);
         }
         #endregion ------------------
 
@@ -49,8 +56,20 @@ namespace InventoryShop.Shop.BuyBox
 
         public void UpdateBuyCounter(int itemCount, int itemBuyCost)
         {
+            this.itemCount = itemCount;
+            totalCost = itemCount * itemBuyCost;
             countText.text = itemCount.ToString();
-            itemBuyText.text = (itemCount * itemBuyCost).ToString();
+            itemBuyText.text = totalCost.ToString();
+        }
+
+        public void OnYesClick()
+        {
+            GameManager.Instance.ValidateBuyTransaction(itemCount, totalCost);
+        }
+
+        public void OnNoClick()
+        {
+            gameObject.SetActive(false);
         }
 
         public void EnableNegativeBtn()
