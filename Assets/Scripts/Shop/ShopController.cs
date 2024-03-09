@@ -21,6 +21,8 @@ namespace InventoryShop.Shop
             this.shopView.SetupShopView();
             this.shopView.SetShopController(this);
         }
+
+        public void DisableDescription() => shopView.DisableDescription();
         #endregion ------------------
     }
 }

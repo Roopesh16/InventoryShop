@@ -1,10 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
 using InventoryShop.Events;
 using InventoryShop.Managers;
 using InventoryShop.Shop;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -31,7 +28,7 @@ public class ShopView : MonoBehaviour
     #region --------- Monobehavior Methods ---------
     private void Awake()
     {
-        buyButton.onClick.AddListener(SetBuyItemData);
+        buyButton.onClick.AddListener(EnableBuyBox);
     }
 
     private void OnEnable()
@@ -46,12 +43,12 @@ public class ShopView : MonoBehaviour
     #endregion ------------------
 
     #region --------- Private Methods ---------
-    private void SetBuyItemData() => ShopManager.Instance.SetBuyItemData(itemBuyCost, itemQuantity);
+    private void EnableBuyBox() => ShopManager.Instance.SetBuyItemData(itemBuyCost, itemQuantity);
     #endregion ------------------
 
     #region --------- Public Methods ---------
     public void SetupShopView() => descriptionBox.SetActive(false);
-    
+
     public void DisplayItemInfo(string itemName, Sprite itemIcon, string itemDescription, int itemBuyCost, int itemQuantity)
     {
         descriptionBox.SetActive(true);
@@ -68,5 +65,7 @@ public class ShopView : MonoBehaviour
     {
         this.shopController = shopController;
     }
+
+    public void DisableDescription() => descriptionBox.SetActive(false);
     #endregion ------------------
 }

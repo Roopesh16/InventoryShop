@@ -68,6 +68,14 @@ namespace InventoryShop.Managers
                 }
             }
         }
+
+        public void UpdateSelectedItem(int quantity)
+        {
+            foreach (ItemController item in itemSpawned)
+            {
+                item.DecrementItemQuantity(quantity);
+            }
+        }
         #endregion ------------------
     }
 
