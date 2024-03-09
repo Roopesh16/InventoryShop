@@ -40,7 +40,13 @@ namespace InventoryShop.Managers
                 Destroy(gameObject);
         }
 
-        private void Start()
+        #endregion ------------------
+
+        #region --------- Private Methods ---------
+        #endregion ------------------
+
+        #region --------- Public Methods ---------
+        public void Init()
         {
             ItemManager.Instance.SpawnItems(shopGridTransform);
             // ItemManager.Instance.SpawnItems(materialGridTransform, ItemType.MATERIAL);
@@ -55,12 +61,7 @@ namespace InventoryShop.Managers
             ShopController shopController = new(shopView);
             buyBoxController = new(buyBoxView);
         }
-        #endregion ------------------
 
-        #region --------- Private Methods ---------
-        #endregion ------------------
-
-        #region --------- Public Methods ---------
         public void SetBuyItemData(int itemBuyCost, int itemQuantity) => buyBoxController.SetBuyItemData(itemBuyCost, itemQuantity);
         #endregion ------------------
     }
