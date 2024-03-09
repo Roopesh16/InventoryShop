@@ -60,10 +60,11 @@ namespace InventoryShop.Shop.BuyBox
         {
             if (hasBought)
             {
-                buyBoxModel.itemQuantity -= itemCount;
+                buyBoxModel.itemQuantity -= buyBoxModel.itemCount;
                 if (buyBoxModel.itemQuantity <= 0)
                 {
                     buyBoxModel.itemQuantity = 0;
+                    ShopManager.Instance.DisableDescription();
                     buyBoxView.DisablePositiveBtn();
                     buyBoxView.DisableNegativeBtn();
                 }
