@@ -54,7 +54,10 @@ namespace InventoryShop.Items
                 itemModel.itemQuantity -= quantity;
 
                 if (itemModel.itemQuantity <= 0)
+                {
+                    itemModel.itemQuantity = 0;
                     itemView.DisableItemView();
+                }
 
                 itemView.UpdateItemQuantity(itemModel.itemQuantity);
             }
