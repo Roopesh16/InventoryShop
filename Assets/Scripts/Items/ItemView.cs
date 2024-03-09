@@ -45,6 +45,7 @@ namespace InventoryShop.Items
 
         public void SendItemData()
         {
+            itemController.SelectCurrentItem();
             itemController.SendItemData();
         }
 
