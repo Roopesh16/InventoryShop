@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace InventoryShop.Managers
 {
-    public class ShopManager : MonoBehaviour
+    public class ShopService : MonoBehaviour
     {
         #region --------- Serialized Variables ---------
         [Header("Grid Transform")]
@@ -16,13 +16,13 @@ namespace InventoryShop.Managers
         #endregion ------------------
 
         #region --------- Private Variables ---------
-        private static ShopManager instance = null;
+        private static ShopService instance = null;
         private BuyBoxController buyBoxController;
         private ShopController shopController;
         #endregion ------------------
 
         #region --------- Public Variables ---------
-        public static ShopManager Instance
+        public static ShopService Instance
         {
             get { return instance; }
         }
@@ -45,7 +45,7 @@ namespace InventoryShop.Managers
         #region --------- Public Methods ---------
         public void Init()
         {
-            ItemManager.Instance.SpawnItems(shopGridTransform);
+            ItemService.Instance.SpawnItems(shopGridTransform);
 
             shopController = new(shopView);
             buyBoxController = new(buyBoxView);

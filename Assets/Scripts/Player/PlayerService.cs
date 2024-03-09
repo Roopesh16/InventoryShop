@@ -2,18 +2,18 @@ using UnityEngine;
 
 namespace InventoryShop.Managers
 {
-    public class PlayerManager : MonoBehaviour
+    public class PlayerService : MonoBehaviour
     {
         #region --------- Serialized Variables ---------
         [SerializeField] private int currentMoney = 0;
         #endregion ------------------
 
         #region --------- Private Variables ---------
-        private static PlayerManager instance = null;
+        private static PlayerService instance = null;
         #endregion ------------------
 
         #region --------- Public Variables ---------
-        public static PlayerManager Instance
+        public static PlayerService Instance
         {
             get { return instance; }
         }

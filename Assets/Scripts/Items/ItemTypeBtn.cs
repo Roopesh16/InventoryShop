@@ -25,7 +25,7 @@ public class ItemTypeBtn : MonoBehaviour
     #endregion ------------------
 
     #region --------- Private Methods ---------
-    private void DisplayTypeItems() => ItemManager.Instance.DisplayType(itemType);
+    private void DisplayTypeItems() => ItemService.Instance.DisplayType(itemType);
     #endregion ------------------
 
     #region --------- Public Methods ---------

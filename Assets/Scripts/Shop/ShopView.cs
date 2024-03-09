@@ -33,17 +33,17 @@ public class ShopView : MonoBehaviour
 
     private void OnEnable()
     {
-        EventManager.Instance.OnItemClick.AddListener(DisplayItemInfo);
+        EventService.Instance.OnItemClick.AddListener(DisplayItemInfo);
     }
 
     private void OnDisable()
     {
-        EventManager.Instance.OnItemClick.RemoveListener(DisplayItemInfo);
+        EventService.Instance.OnItemClick.RemoveListener(DisplayItemInfo);
     }
     #endregion ------------------
 
     #region --------- Private Methods ---------
-    private void EnableBuyBox() => ShopManager.Instance.SetBuyItemData(itemBuyCost, itemQuantity);
+    private void EnableBuyBox() => ShopService.Instance.SetBuyItemData(itemBuyCost, itemQuantity);
     #endregion ------------------
 
     #region --------- Public Methods ---------

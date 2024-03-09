@@ -73,7 +73,7 @@ namespace InventoryShop.Managers
         {
             SetPanelActive();
             notificationText.gameObject.SetActive(false);
-            SetCurrentMoney(PlayerManager.Instance.GetCurrentMoney());
+            SetCurrentMoney(PlayerService.Instance.GetCurrentMoney());
         }
 
         public void SetNotificationText(string notification)

@@ -29,7 +29,7 @@ namespace InventoryShop.Managers
         private void Start()
         {
             UIManager.Instance.Init();
-            ShopManager.Instance.Init();
+            ShopService.Instance.Init();
         }
         #endregion ------------------
 
@@ -39,21 +39,21 @@ namespace InventoryShop.Managers
         #region --------- Public Methods ---------
         public void ValidateBuyTransaction(int itemCount, int itemBuyCost)
         {
-            if (PlayerManager.Instance.GetCurrentMoney() == 0)
+            if (PlayerService.Instance.GetCurrentMoney() == 0)
             {
                 UIManager.Instance.SetNotificationText("NO MONEY!");
                 return;
             }
 
-            if (itemBuyCost > PlayerManager.Instance.GetCurrentMoney())
+            if (itemBuyCost > PlayerService.Instance.GetCurrentMoney())
             {
                 UIManager.Instance.SetNotificationText("EXCEED COST!");
                 return;
             }
 
-            PlayerManager.Instance.DeductMoney(itemBuyCost);
-            UIManager.Instance.SetCurrentMoney(PlayerManager.Instance.GetCurrentMoney());
-            ItemManager.Instance.UpdateSelectedItem(itemCount);
+            PlayerService.Instance.DeductMoney(itemBuyCost);
+            UIManager.Instance.SetCurrentMoney(PlayerService.Instance.GetCurrentMoney());
+            ItemService.Instance.UpdateSelectedItem(itemCount);
         }
         #endregion ------------------
     }

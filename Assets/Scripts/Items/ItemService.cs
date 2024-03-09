@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace InventoryShop.Managers
 {
-    public class ItemManager : MonoBehaviour
+    public class ItemService : MonoBehaviour
     {
         #region --------- Serialized Variables ---------
         [SerializeField] private List<ItemScriptableObject> itemsList = new();
@@ -13,12 +13,12 @@ namespace InventoryShop.Managers
         #endregion ------------------
 
         #region --------- Private Variables ---------
-        private static ItemManager instance = null;
+        private static ItemService instance = null;
         private List<ItemController> itemSpawned = new();
         #endregion ------------------
 
         #region --------- Public Variables ---------
-        public static ItemManager Instance
+        public static ItemService Instance
         {
             get { return instance; }
         }

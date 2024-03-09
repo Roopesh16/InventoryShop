@@ -69,7 +69,7 @@ namespace InventoryShop.Shop.BuyBox
                 if (buyBoxModel.itemQuantity <= 0)
                 {
                     buyBoxModel.itemQuantity = 0;
-                    ShopManager.Instance.DisableDescription();
+                    ShopService.Instance.DisableDescription();
                     buyBoxView.DisablePositiveBtn();
                     buyBoxView.DisableNegativeBtn();
                 }

@@ -35,14 +35,14 @@ namespace InventoryShop.Items
 
         public void SendItemData()
         {
-            EventManager.Instance.OnItemClick.InvokeEvent(itemModel.itemName, itemModel.itemIcon,
+            EventService.Instance.OnItemClick.InvokeEvent(itemModel.itemName, itemModel.itemIcon,
                                                         itemModel.itemDescription, itemModel.itemBuyPrice, itemModel.itemQuantity);
         }
 
         public void SelectCurrentItem()
         {
             isSelected = true;
-            ItemManager.Instance.UnselectRestItems(this);
+            ItemService.Instance.UnselectRestItems(this);
         }
 
         public void UnselectCurrentItem() => isSelected = false;

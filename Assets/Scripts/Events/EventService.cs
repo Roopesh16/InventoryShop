@@ -2,19 +2,19 @@ using UnityEngine;
 
 namespace InventoryShop.Events
 {
-    public class EventManager
+    public class EventService
     {
         #region --------- Private Variables ---------
-        private static EventManager instance = null;
+        private static EventService instance = null;
         #endregion ------------------
 
         #region --------- Public Variables ---------
-        public static EventManager Instance
+        public static EventService Instance
         {
             get
             {
                 if (instance == null)
-                    instance = new EventManager();
+                    instance = new EventService();
 
                 return instance;
             }
@@ -24,7 +24,7 @@ namespace InventoryShop.Events
         #endregion ------------------
 
         #region --------- Public Methods ---------
-        public EventManager()
+        public EventService()
         {
             OnItemClick = new EventController<string, Sprite, string, int, int>();
         }
