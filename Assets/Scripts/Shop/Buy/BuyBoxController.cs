@@ -1,3 +1,7 @@
+using System;
+using System.Diagnostics;
+using UnityEngine;
+
 namespace InventoryShop.Shop.BuyBox
 {
     public class BuyBoxController
@@ -51,6 +55,23 @@ namespace InventoryShop.Shop.BuyBox
         }
 
         public void SetBuyItemData(int itemBuyCost, int itemQuantity) => buyBoxModel.SetItemData(itemBuyCost, itemQuantity);
+
+        public void ResetItemCounter(bool hasBought)
+        {
+            if (hasBought)
+            {
+                buyBoxModel.itemQuantity -= itemCount;
+                if (buyBoxModel.itemQuantity <= 0)
+                {
+                    buyBoxModel.itemQuantity = 0;
+                    buyBoxView.DisablePositiveBtn();
+                    buyBoxView.DisableNegativeBtn();
+                }
+            }
+
+            buyBoxModel.itemCount = 0;
+            buyBoxView.UpdateBuyCounter(buyBoxModel.itemCount, buyBoxModel.itemBuyCost);
+        }
         #endregion ------------------
     }
 }
