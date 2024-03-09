@@ -39,13 +39,13 @@ namespace InventoryShop.Managers
         #region --------- Public Methods ---------
         public void ValidateBuyTransaction(int itemCount, int itemBuyCost)
         {
-            if (PlayerManager.Instance.GetCurrentCost() == 0)
+            if (PlayerManager.Instance.GetCurrentMoney() == 0)
             {
                 UIManager.Instance.SetNotificationText("NO MONEY!");
                 return;
             }
 
-            if (itemBuyCost > PlayerManager.Instance.GetCurrentCost())
+            if (itemBuyCost > PlayerManager.Instance.GetCurrentMoney())
             {
                 UIManager.Instance.SetNotificationText("EXCEED COST!");
                 return;
