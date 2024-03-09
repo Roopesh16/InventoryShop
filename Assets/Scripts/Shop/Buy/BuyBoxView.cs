@@ -81,6 +81,8 @@ namespace InventoryShop.Shop.BuyBox
 
         public void DisableNegativeBtn() => negativeBtn.interactable = false;
 
+        public void EnableBuyBox() => gameObject.SetActive(true);
+
         #endregion ------------------
     }
 }
