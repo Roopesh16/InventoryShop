@@ -56,12 +56,17 @@ namespace InventoryShop.Items
                 if (itemModel.itemQuantity <= 0)
                 {
                     itemModel.itemQuantity = 0;
-                    itemView.DisableItemView();
+                    itemView.DisableItemBtn();
                 }
 
                 itemView.UpdateItemQuantity(itemModel.itemQuantity);
             }
         }
+
+        public void DisableItemView() => itemView.gameObject.SetActive(false);
+        public void EnableItemView() => itemView.gameObject.SetActive(true);
+
+        public ItemType GetItemType() => itemModel.itemType;
         #endregion ------------------
     }
 

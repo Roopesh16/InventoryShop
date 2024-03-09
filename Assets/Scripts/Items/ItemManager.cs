@@ -47,17 +47,6 @@ namespace InventoryShop.Managers
             }
         }
 
-        public void SpawnItems(Transform parentTransform, ItemType itemType)
-        {
-            foreach (ItemScriptableObject item in itemsList)
-            {
-                if (item.itemType == itemType)
-                {
-                    ItemController itemController = new(item, itemPrefab, parentTransform);
-                }
-            }
-        }
-
         public void UnselectRestItems(ItemController selectedItem)
         {
             foreach (ItemController item in itemSpawned)
@@ -74,6 +63,21 @@ namespace InventoryShop.Managers
             foreach (ItemController item in itemSpawned)
             {
                 item.DecrementItemQuantity(quantity);
+            }
+        }
+
+        public void DisplayType(ItemType itemType)
+        {
+            foreach (ItemController item in itemSpawned)
+            {
+                if (item.GetItemType() != itemType)
+                {
+                    item.DisableItemView();
+                }
+                else
+                {
+                    item.EnableItemView();
+                }
             }
         }
         #endregion ------------------
