@@ -45,8 +45,13 @@ namespace InventoryShop.Items
 
         public void SendItemData()
         {
+            itemController.SelectCurrentItem();
             itemController.SendItemData();
         }
+
+        public void DisableItemView() => itemButton.interactable = false;
+
+        public void UpdateItemQuantity(int itemQuantity) => quantityText.text = "x" + itemQuantity.ToString();
 
         #endregion ------------------
     }

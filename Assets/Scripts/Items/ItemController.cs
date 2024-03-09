@@ -1,4 +1,5 @@
 using InventoryShop.Events;
+using InventoryShop.Managers;
 using InventoryShop.ScriptableObjects;
 using UnityEngine;
 
@@ -9,12 +10,23 @@ namespace InventoryShop.Items
         #region --------- Private Variables ---------
         private ItemModel itemModel;
         private ItemView itemView;
+        private bool isSelected = false;
         #endregion ------------------
 
         #region --------- Public Variables ---------
+
         #endregion ------------------
 
         #region --------- Private Methods ---------
+        private void DecrementItemQuantity(int quantity)
+        {
+            itemModel.itemQuantity -= quantity;
+
+            if (itemModel.itemQuantity <= 0)
+                itemView.DisableItemView();
+
+            itemView.UpdateItemQuantity(itemModel.itemQuantity);
+        }
         #endregion ------------------
 
         #region --------- Public Methods ---------
@@ -32,8 +44,16 @@ namespace InventoryShop.Items
         public void SendItemData()
         {
             EventManager.Instance.OnItemClick.InvokeEvent(itemModel.itemName, itemModel.itemIcon,
-                                                        itemModel.itemDescription, itemModel.itemBuyPrice,itemModel.itemQuantity);
+                                                        itemModel.itemDescription, itemModel.itemBuyPrice, itemModel.itemQuantity);
         }
+
+        public void SelectCurrentItem()
+        {
+            isSelected = true;
+            ItemManager.Instance.UnselectRestItems(this);
+        }
+
+        public void UnselectCurrentItem() => isSelected = false;
         #endregion ------------------
     }
 

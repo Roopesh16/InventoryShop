@@ -14,6 +14,7 @@ namespace InventoryShop.Managers
 
         #region --------- Private Variables ---------
         private static ItemManager instance = null;
+        private List<ItemController> itemSpawned = new();
         #endregion ------------------
 
         #region --------- Public Variables ---------
@@ -42,6 +43,7 @@ namespace InventoryShop.Managers
             foreach (ItemScriptableObject item in itemsList)
             {
                 ItemController itemController = new(item, itemPrefab, parentTransform);
+                itemSpawned.Add(itemController);
             }
         }
 
@@ -52,6 +54,17 @@ namespace InventoryShop.Managers
                 if (item.itemType == itemType)
                 {
                     ItemController itemController = new(item, itemPrefab, parentTransform);
+                }
+            }
+        }
+
+        public void UnselectRestItems(ItemController selectedItem)
+        {
+            foreach (ItemController item in itemSpawned)
+            {
+                if (item != selectedItem)
+                {
+                    item.UnselectCurrentItem();
                 }
             }
         }
