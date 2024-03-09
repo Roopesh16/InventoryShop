@@ -25,8 +25,8 @@ namespace InventoryShop.Items
         #endregion ------------------
 
         #region --------- Public Methods ---------
-        public ItemController(EventService eventService, ItemService itemService, ItemScriptableObject item, ItemView itemView,
-                            Transform parentTransform)
+        public ItemController(EventService eventService, ItemService itemService, ItemScriptableObject item,
+                                ItemView itemView, Transform parentTransform)
         {
             this.eventService = eventService;
             this.itemService = itemService;

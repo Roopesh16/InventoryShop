@@ -11,6 +11,7 @@ namespace InventoryShop.Managers
         #region --------- Private Variables ---------
         private List<ItemScriptableObject> itemsList = new();
         private ItemView itemPrefab;
+        private List<ItemTypeBtn> itemTypeBtns = new();
         private List<ItemController> itemSpawned = new();
         #endregion ------------------
 
@@ -21,10 +22,19 @@ namespace InventoryShop.Managers
         #endregion ------------------
 
         #region --------- Public Methods ---------
-        public ItemService(List<ItemScriptableObject> itemsList, ItemView itemPrefab)
+        public ItemService(List<ItemScriptableObject> itemsList, ItemView itemPrefab, List<ItemTypeBtn> itemTypeBtns)
         {
             this.itemsList = itemsList;
             this.itemPrefab = itemPrefab;
+            this.itemTypeBtns = itemTypeBtns;
+        }
+
+        public void Init()
+        {
+            foreach (ItemTypeBtn itemTypeBtn in itemTypeBtns)
+            {
+                itemTypeBtn.Init(this);
+            }
         }
 
         public void SpawnItems(EventService eventService, Transform parentTransform)
