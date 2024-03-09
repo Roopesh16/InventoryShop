@@ -1,18 +1,20 @@
 using InventoryShop.ScriptableObjects;
 using System.Collections.Generic;
+using InventoryShop.Events;
 using InventoryShop.Items;
 using UnityEngine;
+using UnityEngine.PlayerLoop;
 
 namespace InventoryShop.Managers
 {
     public class ItemService : MonoBehaviour
     {
         #region --------- Serialized Variables ---------
-        [SerializeField] private List<ItemScriptableObject> itemsList = new();
-        [SerializeField] private ItemView itemPrefab;
         #endregion ------------------
 
         #region --------- Private Variables ---------
+        private List<ItemScriptableObject> itemsList = new();
+        private ItemView itemPrefab;
         private static ItemService instance = null;
         private List<ItemController> itemSpawned = new();
         #endregion ------------------
@@ -38,11 +40,17 @@ namespace InventoryShop.Managers
         #endregion ------------------
 
         #region --------- Public Methods ---------
-        public void SpawnItems(Transform parentTransform)
+        public ItemService(List<ItemScriptableObject> itemsList, ItemView itemPrefab)
+        {
+            this.itemsList = itemsList;
+            this.itemPrefab = itemPrefab;
+        }
+
+        public void SpawnItems(EventService eventService, Transform parentTransform)
         {
             foreach (ItemScriptableObject item in itemsList)
             {
-                ItemController itemController = new(item, itemPrefab, parentTransform);
+                ItemController itemController = new(eventService, item, itemPrefab, parentTransform);
                 itemSpawned.Add(itemController);
             }
         }
