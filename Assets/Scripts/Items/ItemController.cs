@@ -8,6 +8,7 @@ namespace InventoryShop.Items
     public class ItemController
     {
         #region --------- Private Variables ---------
+        private EventService eventService;
         private ItemModel itemModel;
         private ItemView itemView;
         private bool isSelected = false;
@@ -22,8 +23,11 @@ namespace InventoryShop.Items
         #endregion ------------------
 
         #region --------- Public Methods ---------
-        public ItemController(ItemScriptableObject item, ItemView itemView, Transform parentTransform)
+        public ItemController(EventService eventService, ItemScriptableObject item, ItemView itemView, 
+                            Transform parentTransform)
         {
+            this.eventService = eventService;
+
             itemModel = new(item.itemName, item.itemType, item.itemIcon, item.itemDescription, item.itemBuyPrice,
                             item.itemSellPrice, item.itemWeight, item.itemRarity, item.itemQuantity);
             itemModel.SetItemController(this);
@@ -35,7 +39,7 @@ namespace InventoryShop.Items
 
         public void SendItemData()
         {
-            EventService.Instance.OnItemClick.InvokeEvent(itemModel.itemName, itemModel.itemIcon,
+            eventService.OnItemClick.InvokeEvent(itemModel.itemName, itemModel.itemIcon,
                                                         itemModel.itemDescription, itemModel.itemBuyPrice, itemModel.itemQuantity);
         }
 
