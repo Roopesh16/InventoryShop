@@ -4,11 +4,8 @@ namespace InventoryShop.Managers
 {
     public class PlayerService : MonoBehaviour
     {
-        #region --------- Serialized Variables ---------
-        [SerializeField] private int currentMoney = 0;
-        #endregion ------------------
-
         #region --------- Private Variables ---------
+        private int currentMoney = 0;
         private static PlayerService instance = null;
         #endregion ------------------
 
@@ -33,6 +30,11 @@ namespace InventoryShop.Managers
         #endregion ------------------
 
         #region --------- Public Methods ---------
+        public PlayerService(int currentMoney)
+        {
+            this.currentMoney = currentMoney;
+        }
+
         public int GetCurrentMoney() => currentMoney;
         public int DeductMoney(int buyCost) => currentMoney -= buyCost;
         #endregion ------------------
