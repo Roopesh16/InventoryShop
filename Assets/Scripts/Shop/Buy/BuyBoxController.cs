@@ -1,4 +1,4 @@
-using InventoryShop.Managers;
+using InventoryShop.Services;
 
 namespace InventoryShop.Shop.BuyBox
 {

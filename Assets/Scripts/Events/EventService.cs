@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace InventoryShop.Events
+namespace InventoryShop.Services.Events
 {
     public class EventService
     {

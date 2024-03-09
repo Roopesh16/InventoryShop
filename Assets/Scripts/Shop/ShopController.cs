@@ -1,5 +1,5 @@
-using InventoryShop.Events;
-using InventoryShop.Managers;
+using InventoryShop.Services.Events;
+using InventoryShop.Services;
 using UnityEngine;
 
 namespace InventoryShop.Shop

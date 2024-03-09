@@ -1,10 +1,11 @@
 using InventoryShop.ScriptableObjects;
+using InventoryShop.Services.Events;
 using System.Collections.Generic;
-using InventoryShop.Events;
+using InventoryShop.Services;
 using InventoryShop.Items;
 using UnityEngine;
 
-namespace InventoryShop.Managers
+namespace InventoryShop.Services
 {
     public class ItemService
     {

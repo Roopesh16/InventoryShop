@@ -1,6 +1,6 @@
-using InventoryShop.Managers;
-using UnityEngine;
+using InventoryShop.Services;
 using UnityEngine.UI;
+using UnityEngine;
 
 public class ItemTypeBtn : MonoBehaviour
 {

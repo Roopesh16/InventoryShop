@@ -1,9 +1,9 @@
-using InventoryShop.Events;
-using InventoryShop.Managers;
+using InventoryShop.Services.Events;
+using InventoryShop.Services;
 using InventoryShop.Shop;
-using TMPro;
-using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine;
+using TMPro;
 
 public class ShopView : MonoBehaviour
 {

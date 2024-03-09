@@ -1,9 +1,9 @@
+using InventoryShop.Services.Events;
 using InventoryShop.Shop.BuyBox;
 using InventoryShop.Shop;
 using UnityEngine;
-using InventoryShop.Events;
 
-namespace InventoryShop.Managers
+namespace InventoryShop.Services
 {
     public class ShopService
     {

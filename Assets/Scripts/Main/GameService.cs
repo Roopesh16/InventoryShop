@@ -1,8 +1,8 @@
 using InventoryShop.ScriptableObjects;
+using InventoryShop.Services.Events;
 using System.Collections.Generic;
 using InventoryShop.Shop.BuyBox;
 using InventoryShop.Managers;
-using InventoryShop.Events;
 using InventoryShop.Items;
 using UnityEngine;
 
