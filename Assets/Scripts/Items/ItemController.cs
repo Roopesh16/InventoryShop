@@ -13,10 +13,10 @@ namespace InventoryShop.Items
 
         private ItemModel itemModel;
         private ItemView itemView;
-        private bool isSelected = false;
         #endregion ------------------
 
         #region --------- Public Variables ---------
+        public bool IsSelected { get; set; } = false;
 
         #endregion ------------------
 
@@ -26,7 +26,7 @@ namespace InventoryShop.Items
 
         #region --------- Public Methods ---------
         public ItemController(EventService eventService, ItemService itemService, ItemScriptableObject item,
-                                ItemView itemView, Transform parentTransform)
+                                    ItemView itemView, Transform parentTransform)
         {
             this.eventService = eventService;
             this.itemService = itemService;
@@ -48,26 +48,21 @@ namespace InventoryShop.Items
 
         public void SelectCurrentItem()
         {
-            isSelected = true;
+            IsSelected = true;
             itemService.UnselectRestItems(this);
         }
 
-        public void UnselectCurrentItem() => isSelected = false;
-
         public void DecrementItemQuantity(int quantity)
         {
-            if (isSelected)
+            itemModel.itemQuantity -= quantity;
+
+            if (itemModel.itemQuantity <= 0)
             {
-                itemModel.itemQuantity -= quantity;
-
-                if (itemModel.itemQuantity <= 0)
-                {
-                    itemModel.itemQuantity = 0;
-                    itemView.DisableItemBtn();
-                }
-
-                itemView.UpdateItemQuantity(itemModel.itemQuantity);
+                itemModel.itemQuantity = 0;
+                itemView.DisableItemBtn();
             }
+
+            itemView.UpdateItemQuantity(itemModel.itemQuantity);
         }
 
         public void DisableItemView() => itemView.gameObject.SetActive(false);
@@ -75,6 +70,6 @@ namespace InventoryShop.Items
 
         public ItemType GetItemType() => itemModel.itemType;
         #endregion ------------------
-    }
 
+    }
 }
