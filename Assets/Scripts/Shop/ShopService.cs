@@ -11,6 +11,7 @@ namespace InventoryShop.Services
     {
         #region --------- Private Variables ---------
         private ItemService itemService;
+        private EventService eventService;
 
         private ShopView shopView;
         private BuyBoxView buyBoxView;
@@ -19,9 +20,9 @@ namespace InventoryShop.Services
         #endregion ------------------
 
         #region --------- Private Methods ---------
-        private void InitializeVariables(EventService eventService, List<ItemScriptableObject> shopItems)
+        private void InitializeVariables(List<ItemScriptableObject> shopItems)
         {
-            itemService.SpawnShopItems(eventService);
+            itemService.SpawnShopItems();
             shopController = new(eventService, this, shopView, shopItems);
             buyBoxController = new(buyBoxView, this);
         }
@@ -37,8 +38,9 @@ namespace InventoryShop.Services
         public void Init(EventService eventService, ItemService itemService, List<ItemScriptableObject> shopItems)
         {
             this.itemService = itemService;
-
-            InitializeVariables(eventService, shopItems);
+            this.eventService = eventService;
+            
+            InitializeVariables(shopItems);
         }
 
         public void SetBuyItemData(int itemBuyCost, int itemQuantity) => buyBoxController.SetBuyItemData(itemBuyCost, itemQuantity);
