@@ -6,6 +6,7 @@ namespace InventoryShop.Shop.BuyBox
     {
         #region --------- Private Variables ---------
         private ShopService shopService;
+        private ItemService itemService;
 
         private BuyBoxModel buyBoxModel;
         private BuyBoxView buyBoxView;
@@ -20,9 +21,10 @@ namespace InventoryShop.Shop.BuyBox
         #endregion ------------------
 
         #region --------- Public Methods ---------
-        public BuyBoxController(BuyBoxView buyBoxView, ShopService shopService)
+        public BuyBoxController(BuyBoxView buyBoxView, ShopService shopService,ItemService itemService)
         {
             this.shopService = shopService;
+            this.itemService = itemService;
 
             buyBoxModel = new(itemCount);
             buyBoxModel.SetBuyBoxController(this);
@@ -75,6 +77,7 @@ namespace InventoryShop.Shop.BuyBox
                     buyBoxView.DisableNegativeBtn();
                 }
                 shopService.SetItemQuantity(buyBoxModel.itemQuantity);
+                itemService.SpawnInventoryItems(buyBoxModel.itemName, buyBoxModel.itemCount);
             }
 
             buyBoxModel.itemCount = 0;

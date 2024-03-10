@@ -24,7 +24,7 @@ namespace InventoryShop.Services
         {
             itemService.SpawnShopItems();
             shopController = new(eventService, this, shopView, shopItems);
-            buyBoxController = new(buyBoxView, this);
+            buyBoxController = new(buyBoxView, this, itemService);
         }
         #endregion ------------------
 
