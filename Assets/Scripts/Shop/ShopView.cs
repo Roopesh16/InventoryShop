@@ -20,6 +20,7 @@ public class ShopView : MonoBehaviour
     private EventService eventService;
     private ShopService shopService;
     private ShopController shopController;
+    private string itemName;
     private int itemBuyCost;
     private int itemQuantity;
     #endregion ------------------
@@ -35,7 +36,7 @@ public class ShopView : MonoBehaviour
     #endregion ------------------
 
     #region --------- Private Methods ---------
-    private void EnableBuyBox() => shopService.SetBuyItemData(itemBuyCost, itemQuantity);
+    private void EnableBuyBox() => shopService.SetBuyItemData(itemName, itemBuyCost, itemQuantity);
     private void SubscribeToEvent() => eventService.OnItemClick.AddListener(DisplayItemInfo);
     #endregion ------------------
 
@@ -57,6 +58,7 @@ public class ShopView : MonoBehaviour
         itemDesctiptionText.text = itemDescription;
         itemBuyText.text = itemBuyCost.ToString();
 
+        this.itemName = itemName;
         this.itemBuyCost = itemBuyCost;
         this.itemQuantity = itemQuantity;
     }
