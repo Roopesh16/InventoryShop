@@ -29,7 +29,7 @@ namespace InventoryShop.Inventory
             this.inventoryView.SetInventoryController(this);
         }
 
-        // public void DisableDescription() => inventoryView.DisableDescription();
+        public void DisableDescription() => inventoryView.DisableDescription();
 
         // public void SetItemQuantity(int index, int quantity) => inventoryModel.SetItemQuantity(index, quantity);
         #endregion ------------------
