@@ -89,6 +89,7 @@ namespace InventoryShop.Items
         public void EnableItemView() => itemView.gameObject.SetActive(true);
 
         public ItemType GetItemType() => itemModel.itemType;
+        public string GetItemName() => itemModel.itemName;
         #endregion ------------------
 
     }
