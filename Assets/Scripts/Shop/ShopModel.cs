@@ -47,6 +47,11 @@ namespace InventoryShop.Shop
         {
             return itemDataList[index];
         }
+
+        public void SetItemQuantity(int index, int quantity)
+        {
+            itemDataList[index].itemQuantity = quantity;
+        }
         #endregion ------------------
     }
 }
