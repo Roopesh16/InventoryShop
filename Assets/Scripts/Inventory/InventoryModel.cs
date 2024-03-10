@@ -19,6 +19,7 @@ namespace InventoryShop.Inventory
     public class InventoryModel
     {
         #region --------- Private Variables ---------
+        private InventoryController inventoryController;
         #endregion ------------------
 
         #region --------- Public Variables ---------
@@ -29,9 +30,9 @@ namespace InventoryShop.Inventory
         #endregion ------------------
 
         #region --------- Public Methods ---------
-        public InventoryModel()
+        public InventoryModel(InventoryController inventoryController)
         {
-
+            this.inventoryController = inventoryController;
         }
 
         public void SetItemQuantity(string itemName, int quantity)
@@ -61,11 +62,6 @@ namespace InventoryShop.Inventory
             };
 
             itemDataList.Add(itemData);
-        }
-
-        public void SetItemQuantity(int index, int quantity)
-        {
-            itemDataList[index].itemQuantity = quantity;
         }
         #endregion ------------------
     }
