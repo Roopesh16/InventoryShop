@@ -1,9 +1,9 @@
-using InventoryShop.Events;
-using InventoryShop.Managers;
+using InventoryShop.Services.Events;
+using InventoryShop.Services;
 using InventoryShop.Shop;
-using TMPro;
-using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine;
+using TMPro;
 
 public class ShopView : MonoBehaviour
 {
@@ -17,6 +17,8 @@ public class ShopView : MonoBehaviour
     #endregion ------------------
 
     #region --------- Private Variables ---------
+    private EventService eventService;
+    private ShopService shopService;
     private ShopController shopController;
     private int itemBuyCost;
     private int itemQuantity;
@@ -31,23 +33,26 @@ public class ShopView : MonoBehaviour
         buyButton.onClick.AddListener(EnableBuyBox);
     }
 
-    private void OnEnable()
-    {
-        EventManager.Instance.OnItemClick.AddListener(DisplayItemInfo);
-    }
-
     private void OnDisable()
     {
-        EventManager.Instance.OnItemClick.RemoveListener(DisplayItemInfo);
+        eventService.OnItemClick.RemoveListener(DisplayItemInfo);
     }
     #endregion ------------------
 
     #region --------- Private Methods ---------
-    private void EnableBuyBox() => ShopManager.Instance.SetBuyItemData(itemBuyCost, itemQuantity);
+    private void EnableBuyBox() => shopService.SetBuyItemData(itemBuyCost, itemQuantity);
+    private void SubscribeToEvent() => eventService.OnItemClick.AddListener(DisplayItemInfo);
     #endregion ------------------
 
     #region --------- Public Methods ---------
-    public void SetupShopView() => descriptionBox.SetActive(false);
+    public void SetupShopView(EventService eventService,ShopService shopService)
+    {
+        this.eventService = eventService;
+        this.shopService = shopService;
+        
+        SubscribeToEvent();
+        descriptionBox.SetActive(false);
+    }
 
     public void DisplayItemInfo(string itemName, Sprite itemIcon, string itemDescription, int itemBuyCost, int itemQuantity)
     {

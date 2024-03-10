@@ -1,6 +1,6 @@
-using InventoryShop.Events;
-using InventoryShop.Managers;
 using InventoryShop.ScriptableObjects;
+using InventoryShop.Services.Events;
+using InventoryShop.Services;
 using UnityEngine;
 
 namespace InventoryShop.Items
@@ -8,6 +8,9 @@ namespace InventoryShop.Items
     public class ItemController
     {
         #region --------- Private Variables ---------
+        private EventService eventService;
+        private ItemService itemService;
+
         private ItemModel itemModel;
         private ItemView itemView;
         private bool isSelected = false;
@@ -22,8 +25,12 @@ namespace InventoryShop.Items
         #endregion ------------------
 
         #region --------- Public Methods ---------
-        public ItemController(ItemScriptableObject item, ItemView itemView, Transform parentTransform)
+        public ItemController(EventService eventService, ItemService itemService, ItemScriptableObject item,
+                                ItemView itemView, Transform parentTransform)
         {
+            this.eventService = eventService;
+            this.itemService = itemService;
+
             itemModel = new(item.itemName, item.itemType, item.itemIcon, item.itemDescription, item.itemBuyPrice,
                             item.itemSellPrice, item.itemWeight, item.itemRarity, item.itemQuantity);
             itemModel.SetItemController(this);
@@ -35,14 +42,14 @@ namespace InventoryShop.Items
 
         public void SendItemData()
         {
-            EventManager.Instance.OnItemClick.InvokeEvent(itemModel.itemName, itemModel.itemIcon,
+            eventService.OnItemClick.InvokeEvent(itemModel.itemName, itemModel.itemIcon,
                                                         itemModel.itemDescription, itemModel.itemBuyPrice, itemModel.itemQuantity);
         }
 
         public void SelectCurrentItem()
         {
             isSelected = true;
-            ItemManager.Instance.UnselectRestItems(this);
+            itemService.UnselectRestItems(this);
         }
 
         public void UnselectCurrentItem() => isSelected = false;
@@ -56,12 +63,17 @@ namespace InventoryShop.Items
                 if (itemModel.itemQuantity <= 0)
                 {
                     itemModel.itemQuantity = 0;
-                    itemView.DisableItemView();
+                    itemView.DisableItemBtn();
                 }
 
                 itemView.UpdateItemQuantity(itemModel.itemQuantity);
             }
         }
+
+        public void DisableItemView() => itemView.gameObject.SetActive(false);
+        public void EnableItemView() => itemView.gameObject.SetActive(true);
+
+        public ItemType GetItemType() => itemModel.itemType;
         #endregion ------------------
     }
 

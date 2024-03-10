@@ -25,6 +25,7 @@ namespace InventoryShop.Managers
         private static UIManager instance = null;
         private bool isShopActive = true;
         private bool isInventoryActive = false;
+        private PlayerService playerService;
         #endregion ------------------
 
         #region --------- Public Variables ---------
@@ -69,11 +70,13 @@ namespace InventoryShop.Managers
         #endregion ------------------
 
         #region --------- Public Methods ---------
-        public void Init()
+        public void Init(PlayerService playerService)
         {
+            this.playerService = playerService;
+            
             SetPanelActive();
             notificationText.gameObject.SetActive(false);
-            SetCurrentMoney(PlayerManager.Instance.GetCurrentMoney());
+            // SetCurrentMoney(PlayerService.Instance.GetCurrentMoney());
         }
 
         public void SetNotificationText(string notification)

@@ -1,3 +1,5 @@
+using InventoryShop.Services.Events;
+using InventoryShop.Services;
 using UnityEngine;
 
 namespace InventoryShop.Shop
@@ -15,10 +17,10 @@ namespace InventoryShop.Shop
         #endregion ------------------
 
         #region --------- Public Methods ---------
-        public ShopController(ShopView shopView)
+        public ShopController(EventService eventService, ShopService shopService, ShopView shopView)
         {
             this.shopView = shopView;
-            this.shopView.SetupShopView();
+            this.shopView.SetupShopView(eventService,shopService);
             this.shopView.SetShopController(this);
         }
 

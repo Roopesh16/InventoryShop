@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using InventoryShop.Services;
 using UnityEngine;
 
 namespace InventoryShop.Managers
@@ -11,6 +12,8 @@ namespace InventoryShop.Managers
 
         #region --------- Private Variables ---------
         private static GameManager instance = null;
+        private PlayerService playerService;
+        private ItemService itemService;
         #endregion ------------------
 
         #region --------- Public Variables ---------
@@ -25,35 +28,36 @@ namespace InventoryShop.Managers
             else if (instance != this)
                 Destroy(gameObject);
         }
-
-        private void Start()
-        {
-            UIManager.Instance.Init();
-            ShopManager.Instance.Init();
-        }
+        
         #endregion ------------------
 
         #region --------- Private Methods ---------
         #endregion ------------------
 
         #region --------- Public Methods ---------
+        public void Init(PlayerService playerService,ItemService itemService)
+        {
+            this.playerService = playerService;
+            this.itemService = itemService;
+        }
+
         public void ValidateBuyTransaction(int itemCount, int itemBuyCost)
         {
-            if (PlayerManager.Instance.GetCurrentMoney() == 0)
-            {
-                UIManager.Instance.SetNotificationText("NO MONEY!");
-                return;
-            }
+            // if (PlayerService.Instance.GetCurrentMoney() == 0)
+            // {
+            //     UIManager.Instance.SetNotificationText("NO MONEY!");
+            //     return;
+            // }
 
-            if (itemBuyCost > PlayerManager.Instance.GetCurrentMoney())
-            {
-                UIManager.Instance.SetNotificationText("EXCEED COST!");
-                return;
-            }
+            // if (itemBuyCost > PlayerService.Instance.GetCurrentMoney())
+            // {
+            //     UIManager.Instance.SetNotificationText("EXCEED COST!");
+            //     return;
+            // }
 
-            PlayerManager.Instance.DeductMoney(itemBuyCost);
-            UIManager.Instance.SetCurrentMoney(PlayerManager.Instance.GetCurrentMoney());
-            ItemManager.Instance.UpdateSelectedItem(itemCount);
+            // PlayerService.Instance.DeductMoney(itemBuyCost);
+            // UIManager.Instance.SetCurrentMoney(PlayerService.Instance.GetCurrentMoney());
+            // // ItemService.Instance.UpdateSelectedItem(itemCount);
         }
         #endregion ------------------
     }

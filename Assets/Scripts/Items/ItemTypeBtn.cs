@@ -1,0 +1,31 @@
+using InventoryShop.Services;
+using UnityEngine.UI;
+using UnityEngine;
+
+public class ItemTypeBtn : MonoBehaviour
+{
+    #region --------- Serialized Variables ---------
+    [SerializeField] private ItemType itemType;
+    #endregion ------------------
+
+    #region --------- Private Variables ---------
+    private Button typeBtn;
+    private ItemService itemService;
+    #endregion ------------------
+
+    #region --------- Monobehavior Methods ---------
+    private void Awake()
+    {
+        typeBtn = GetComponent<Button>();
+
+    }
+    #endregion ------------------
+
+    #region --------- Private Methods ---------
+    public void DisplayTypeItems() => itemService.DisplayType(itemType);
+    #endregion ------------------
+
+    #region --------- Public Methods ---------
+    public void Init(ItemService itemService) => this.itemService = itemService;
+    #endregion ------------------
+}
