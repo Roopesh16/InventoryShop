@@ -21,7 +21,6 @@ namespace InventoryShop.Items
         #endregion ------------------
 
         #region --------- Private Methods ---------
-
         #endregion ------------------
 
         #region --------- Public Methods ---------
@@ -77,6 +76,12 @@ namespace InventoryShop.Items
                 itemView.DisableItemBtn();
             }
 
+            itemView.UpdateItemQuantity(itemModel.itemQuantity);
+        }
+
+        public void IncrementItemQuantity(int quantity)
+        {
+            itemModel.itemQuantity += quantity;
             itemView.UpdateItemQuantity(itemModel.itemQuantity);
         }
 
