@@ -58,8 +58,11 @@ namespace InventoryShop.Managers
             playerService.DeductMoney(itemBuyCost);
             UIManager.Instance.SetCurrentMoney(playerService.GetCurrentMoney());
             itemService.UpdateSelectedItem(itemCount);
+
             return true;
         }
+
+        public void DisplayTypeItem(ItemType itemType) => itemService.DisplayType(itemType);
         #endregion ------------------
     }
 }
