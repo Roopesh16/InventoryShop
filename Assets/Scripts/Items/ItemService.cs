@@ -17,6 +17,7 @@ namespace InventoryShop.Services
         #endregion ------------------
 
         #region --------- Public Variables ---------
+        public int SelectedIndex { get; private set; }
         #endregion ------------------
 
         #region --------- Private Methods ---------
@@ -53,16 +54,20 @@ namespace InventoryShop.Services
             {
                 if (item != selectedItem)
                 {
-                    item.UnselectCurrentItem();
+                    item.IsSelected = false;
                 }
             }
         }
 
         public void UpdateSelectedItem(int quantity)
         {
-            foreach (ItemController item in itemSpawned)
+            for (int i = 0; i < itemSpawned.Count; i++)
             {
-                item.DecrementItemQuantity(quantity);
+                if (itemSpawned[i].IsSelected)
+                {
+                    SelectedIndex = i;
+                    itemSpawned[i].DecrementItemQuantity(quantity);
+                }
             }
         }
 
