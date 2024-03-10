@@ -40,6 +40,21 @@ namespace InventoryShop.Items
             this.itemView.SetItemController(this);
         }
 
+        public ItemController(EventService eventService, ItemService itemService, ItemScriptableObject item,
+                                    ItemView itemView, Transform parentTransform,int quantity)
+        {
+            this.eventService = eventService;
+            this.itemService = itemService;
+
+            itemModel = new(item.itemName, item.itemType, item.itemIcon, item.itemDescription, item.itemBuyPrice,
+                            item.itemSellPrice, item.itemWeight, item.itemRarity, quantity);
+            itemModel.SetItemController(this);
+
+            this.itemView = GameObject.Instantiate<ItemView>(itemView, parentTransform);
+            this.itemView.SetItemView(item.itemIcon, quantity);
+            this.itemView.SetItemController(this);
+        }
+
         public void SendItemData()
         {
             eventService.OnItemClick.InvokeEvent(itemModel.itemName, itemModel.itemIcon,
