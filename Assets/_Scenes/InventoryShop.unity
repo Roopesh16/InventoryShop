@@ -3886,7 +3886,7 @@ MonoBehaviour:
   - {fileID: 888540962}
   - {fileID: 537019975}
   itemPrefab: {fileID: -5718064315299832449, guid: da3f0bd8d8d87374ca0683e602fc0333, type: 3}
-  currentMoney: 500
+  currentMoney: 0
   shopGridTransform: {fileID: 1201423025046210501}
   shopView: {fileID: 952161631}
   buyBoxView: {fileID: 5340997093868736918}
