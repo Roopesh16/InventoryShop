@@ -13,7 +13,6 @@ namespace InventoryShop.Services
         #region --------- Serialized Variables ---------
         [Header("Item Service References")]
         [SerializeField] private List<ItemScriptableObject> itemsList = new();
-        [SerializeField] private List<ItemTypeBtn> itemTypeBtns = new();
         [SerializeField] private ItemView itemPrefab;
 
         [Header("Player Service References")]
@@ -52,7 +51,7 @@ namespace InventoryShop.Services
         {
             eventService = new();
             playerService = new(currentMoney);
-            itemService = new(itemsList, itemPrefab, itemTypeBtns);
+            itemService = new(itemsList, itemPrefab);
             shopService = new(shopGridTransform, shopView, buyBoxView);
         }
 
