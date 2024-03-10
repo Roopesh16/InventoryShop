@@ -19,7 +19,7 @@ namespace InventoryShop.Services
         #endregion ------------------
 
         #region --------- Private Methods ---------
-        private void InitializeVariables(EventService eventService, List<ItemScriptableObject> shopItems)
+        private void InitializeVariables(EventService eventService)
         {
             itemService.SpawnItems(eventService, inventoryGridTransform);
             inventoryController = new(eventService, this, inventoryView);
@@ -28,18 +28,18 @@ namespace InventoryShop.Services
         #endregion ------------------
 
         #region --------- Public Methods ---------
-        public InventoryService(Transform shopGridTransform, InventoryView inventoryView)
+        public InventoryService(Transform inventoryGridTransform, InventoryView inventoryView)
         {
-            this.inventoryGridTransform = shopGridTransform;
+            this.inventoryGridTransform = inventoryGridTransform;
             this.inventoryView = inventoryView;
             // this.buyBoxView = buyBoxView;
         }
 
-        public void Init(EventService eventService, ItemService itemService, List<ItemScriptableObject> shopItems)
+        public void Init(EventService eventService, ItemService itemService)
         {
             this.itemService = itemService;
 
-            InitializeVariables(eventService, shopItems);
+            InitializeVariables(eventService);
         }
 
         // public void SetBuyItemData(int itemBuyCost, int itemQuantity) => buyBoxController.SetBuyItemData(itemBuyCost, itemQuantity);
