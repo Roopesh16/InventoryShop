@@ -28,14 +28,14 @@ namespace InventoryShop.Managers
             else if (instance != this)
                 Destroy(gameObject);
         }
-        
+
         #endregion ------------------
 
         #region --------- Private Methods ---------
         #endregion ------------------
 
         #region --------- Public Methods ---------
-        public void Init(PlayerService playerService,ItemService itemService)
+        public void Init(PlayerService playerService, ItemService itemService)
         {
             this.playerService = playerService;
             this.itemService = itemService;
@@ -43,21 +43,21 @@ namespace InventoryShop.Managers
 
         public void ValidateBuyTransaction(int itemCount, int itemBuyCost)
         {
-            // if (PlayerService.Instance.GetCurrentMoney() == 0)
-            // {
-            //     UIManager.Instance.SetNotificationText("NO MONEY!");
-            //     return;
-            // }
+            if (playerService.GetCurrentMoney() == 0)
+            {
+                UIManager.Instance.SetNotificationText("NO MONEY!");
+                return;
+            }
 
-            // if (itemBuyCost > PlayerService.Instance.GetCurrentMoney())
-            // {
-            //     UIManager.Instance.SetNotificationText("EXCEED COST!");
-            //     return;
-            // }
+            if (itemBuyCost > playerService.GetCurrentMoney())
+            {
+                UIManager.Instance.SetNotificationText("EXCEED COST!");
+                return;
+            }
 
-            // PlayerService.Instance.DeductMoney(itemBuyCost);
-            // UIManager.Instance.SetCurrentMoney(PlayerService.Instance.GetCurrentMoney());
-            // // ItemService.Instance.UpdateSelectedItem(itemCount);
+            playerService.DeductMoney(itemBuyCost);
+            UIManager.Instance.SetCurrentMoney(playerService.GetCurrentMoney());
+            itemService.UpdateSelectedItem(itemCount);
         }
         #endregion ------------------
     }
