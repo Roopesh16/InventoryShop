@@ -21,7 +21,7 @@ namespace InventoryShop.Services
         #region --------- Private Methods ---------
         private void InitializeVariables(EventService eventService)
         {
-            itemService.SpawnItems(eventService, inventoryGridTransform);
+            itemService.SpawnItems(eventService);
             inventoryController = new(eventService, this, inventoryView);
             // buyBoxController = new(buyBoxView, this);
         }

@@ -15,17 +15,17 @@ namespace InventoryShop.Services
         [Header("Item Service References")]
         [SerializeField] private List<ItemScriptableObject> itemsList = new();
         [SerializeField] private ItemView itemPrefab;
+        [SerializeField] private Transform shopGridTransform;
+        [SerializeField] private Transform inventoryGridTransform;
 
         [Header("Player Service References")]
         [SerializeField] private int currentMoney = 0;
 
         [Header("Shop Service References")]
-        [SerializeField] private Transform shopGridTransform;
         [SerializeField] private ShopView shopView;
         [SerializeField] private BuyBoxView buyBoxView;
 
         [Header("Inventory Service References")]
-        [SerializeField] private Transform inventoryGridTransform;
         [SerializeField] private InventoryView inventoryView;
 
         [Header("Managers")]
@@ -57,8 +57,8 @@ namespace InventoryShop.Services
         {
             eventService = new();
             playerService = new(currentMoney);
-            itemService = new(itemsList, itemPrefab);
-            shopService = new(shopGridTransform, shopView, buyBoxView);
+            itemService = new(itemsList, itemPrefab,shopGridTransform,inventoryGridTransform);
+            shopService = new(shopView, buyBoxView);
             inventoryService = new(inventoryGridTransform, inventoryView);
         }
 

@@ -13,6 +13,8 @@ namespace InventoryShop.Services
         private List<ItemScriptableObject> itemsList = new();
         private ItemView itemPrefab;
         private List<ItemController> itemSpawned = new();
+        private Transform shopGridTransform;
+        private Transform inventoryGridTransform;
         #endregion ------------------
 
         #region --------- Public Variables ---------
@@ -23,17 +25,19 @@ namespace InventoryShop.Services
         #endregion ------------------
 
         #region --------- Public Methods ---------
-        public ItemService(List<ItemScriptableObject> itemsList, ItemView itemPrefab)
+        public ItemService(List<ItemScriptableObject> itemsList, ItemView itemPrefab,Transform shopGridTransform,Transform inventoryGridTransform)
         {
             this.itemsList = itemsList;
             this.itemPrefab = itemPrefab;
+            this.shopGridTransform = shopGridTransform;
+            this.inventoryGridTransform = inventoryGridTransform;
         }
 
-        public void SpawnItems(EventService eventService, Transform parentTransform)
+        public void SpawnItems(EventService eventService)
         {
             foreach (ItemScriptableObject item in itemsList)
             {
-                ItemController itemController = new(eventService, this, item, itemPrefab, parentTransform);
+                ItemController itemController = new(eventService, this, item, itemPrefab, shopGridTransform);
                 itemSpawned.Add(itemController);
             }
         }
