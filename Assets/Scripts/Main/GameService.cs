@@ -60,7 +60,7 @@ namespace InventoryShop.Services
         {
             GameManager.Instance.Init(playerService, itemService);
             UIManager.Instance.Init(playerService);
-            shopService.Init(eventService, itemService);
+            shopService.Init(eventService, itemService, itemsList);
         }
         #endregion ------------------
 
