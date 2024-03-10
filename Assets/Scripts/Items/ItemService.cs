@@ -63,7 +63,7 @@ namespace InventoryShop.Services
 
         public void UnselectRestItems(ItemController selectedItem)
         {
-            foreach (ItemController item in itemSpawned)
+            foreach (ItemController item in shopItemSpawned)
             {
                 if (item != selectedItem)
                 {
@@ -74,19 +74,19 @@ namespace InventoryShop.Services
 
         public void UpdateSelectedItem(int quantity)
         {
-            for (int i = 0; i < itemSpawned.Count; i++)
+            for (int i = 0; i < shopItemSpawned.Count; i++)
             {
-                if (itemSpawned[i].IsSelected)
+                if (shopItemSpawned[i].IsSelected)
                 {
                     SelectedIndex = i;
-                    itemSpawned[i].DecrementItemQuantity(quantity);
+                    shopItemSpawned[i].DecrementItemQuantity(quantity);
                 }
             }
         }
 
         public void DisplayType(ItemType itemType)
         {
-            foreach (ItemController item in itemSpawned)
+            foreach (ItemController item in shopItemSpawned)
             {
                 if (item.GetItemType() != itemType)
                 {
