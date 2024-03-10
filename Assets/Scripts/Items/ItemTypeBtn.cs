@@ -18,12 +18,11 @@ public class ItemTypeBtn : MonoBehaviour
     {
         typeBtn = GetComponent<Button>();
 
-        typeBtn.onClick.AddListener(DisplayTypeItems);
     }
     #endregion ------------------
 
     #region --------- Private Methods ---------
-    private void DisplayTypeItems() => itemService.DisplayType(itemType);
+    public void DisplayTypeItems() => itemService.DisplayType(itemType);
     #endregion ------------------
 
     #region --------- Public Methods ---------
