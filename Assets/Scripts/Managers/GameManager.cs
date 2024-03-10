@@ -41,23 +41,24 @@ namespace InventoryShop.Managers
             this.itemService = itemService;
         }
 
-        public void ValidateBuyTransaction(int itemCount, int itemBuyCost)
+        public bool ValidateBuyTransaction(int itemCount, int itemBuyCost)
         {
             if (playerService.GetCurrentMoney() == 0)
             {
                 UIManager.Instance.SetNotificationText("NO MONEY!");
-                return;
+                return false;
             }
 
             if (itemBuyCost > playerService.GetCurrentMoney())
             {
                 UIManager.Instance.SetNotificationText("EXCEED COST!");
-                return;
+                return false;
             }
 
             playerService.DeductMoney(itemBuyCost);
             UIManager.Instance.SetCurrentMoney(playerService.GetCurrentMoney());
             itemService.UpdateSelectedItem(itemCount);
+            return true;
         }
         #endregion ------------------
     }
