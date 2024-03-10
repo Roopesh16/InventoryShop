@@ -25,7 +25,7 @@ namespace InventoryShop.Services
         #endregion ------------------
 
         #region --------- Public Methods ---------
-        public ItemService(List<ItemScriptableObject> itemsList, ItemView itemPrefab,Transform shopGridTransform,Transform inventoryGridTransform)
+        public ItemService(List<ItemScriptableObject> itemsList, ItemView itemPrefab, Transform shopGridTransform, Transform inventoryGridTransform)
         {
             this.itemsList = itemsList;
             this.itemPrefab = itemPrefab;
@@ -33,7 +33,7 @@ namespace InventoryShop.Services
             this.inventoryGridTransform = inventoryGridTransform;
         }
 
-        public void SpawnItems(EventService eventService)
+        public void SpawnShopItems(EventService eventService)
         {
             foreach (ItemScriptableObject item in itemsList)
             {
