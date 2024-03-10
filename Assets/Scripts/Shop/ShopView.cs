@@ -40,11 +40,11 @@ public class ShopView : MonoBehaviour
     #endregion ------------------
 
     #region --------- Public Methods ---------
-    public void SetupShopView(EventService eventService,ShopService shopService)
+    public void SetupShopView(EventService eventService, ShopService shopService)
     {
         this.eventService = eventService;
         this.shopService = shopService;
-        
+
         SubscribeToEvent();
         descriptionBox.SetActive(false);
     }
