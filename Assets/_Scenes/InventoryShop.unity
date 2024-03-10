@@ -3383,6 +3383,8 @@ MonoBehaviour:
   shopGridTransform: {fileID: 1201423025046210501}
   shopView: {fileID: 952161631}
   buyBoxView: {fileID: 5340997093868736918}
+  inventoryGridTransform: {fileID: 1086369375}
+  inventoryView: {fileID: 1632891107}
   gameManager: {fileID: 1973820734}
   uIManager: {fileID: 53071281}
 --- !u!1 &1086369374

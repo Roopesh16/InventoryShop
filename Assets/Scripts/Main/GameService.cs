@@ -5,6 +5,7 @@ using InventoryShop.Shop.BuyBox;
 using InventoryShop.Managers;
 using InventoryShop.Items;
 using UnityEngine;
+using InventoryShop.Inventory;
 
 namespace InventoryShop.Services
 {
@@ -23,6 +24,10 @@ namespace InventoryShop.Services
         [SerializeField] private ShopView shopView;
         [SerializeField] private BuyBoxView buyBoxView;
 
+        [Header("Inventory Service References")]
+        [SerializeField] private Transform inventoryGridTransform;
+        [SerializeField] private InventoryView inventoryView;
+
         [Header("Managers")]
         [SerializeField] private GameManager gameManager;
         [SerializeField] private UIManager uIManager;
@@ -33,6 +38,7 @@ namespace InventoryShop.Services
         private ItemService itemService;
         private PlayerService playerService;
         private ShopService shopService;
+        private InventoryService inventoryService;
         #endregion ------------------
 
         #region --------- Public Variables ---------
@@ -53,6 +59,7 @@ namespace InventoryShop.Services
             playerService = new(currentMoney);
             itemService = new(itemsList, itemPrefab);
             shopService = new(shopGridTransform, shopView, buyBoxView);
+            inventoryService = new(inventoryGridTransform, inventoryView);
         }
 
         private void InjectDependency()
@@ -60,6 +67,7 @@ namespace InventoryShop.Services
             GameManager.Instance.Init(playerService, itemService);
             UIManager.Instance.Init(playerService);
             shopService.Init(eventService, itemService, itemsList);
+            inventoryService.Init(eventService, itemService);
         }
         #endregion ------------------
 
