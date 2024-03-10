@@ -45,6 +45,8 @@ namespace InventoryShop.Services
 
         public void SetBuyItemData(int itemBuyCost, int itemQuantity) => buyBoxController.SetBuyItemData(itemBuyCost, itemQuantity);
         public void DisableDescription() => shopController.DisableDescription();
+
+        public void SetItemQuantity(int quantity) => shopController.SetItemQuantity(itemService.SelectedIndex, quantity);
         #endregion ------------------
     }
 }

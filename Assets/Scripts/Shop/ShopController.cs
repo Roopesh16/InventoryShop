@@ -30,6 +30,8 @@ namespace InventoryShop.Shop
         }
 
         public void DisableDescription() => shopView.DisableDescription();
+
+        public void SetItemQuantity(int index, int quantity) => shopModel.SetItemQuantity(index, quantity);
         #endregion ------------------
     }
 }
