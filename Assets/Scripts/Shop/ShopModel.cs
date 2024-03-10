@@ -10,11 +10,7 @@ namespace InventoryShop.Shop
     {
         public string itemName;
         public ItemType itemType;
-        public Sprite itemIcon;
-        public string itemDescription;
         public int itemBuyPrice;
-        public float itemWeight;
-        public ItemRarity itemRarity;
         public int itemQuantity;
     }
 
@@ -39,11 +35,7 @@ namespace InventoryShop.Shop
                 {
                     itemName = itemList[i].itemName,
                     itemType = itemList[i].itemType,
-                    itemIcon = itemList[i].itemIcon,
-                    itemDescription = itemList[i].itemDescription,
                     itemBuyPrice = itemList[i].itemBuyPrice,
-                    itemWeight = itemList[i].itemWeight,
-                    itemRarity = itemList[i].itemRarity,
                     itemQuantity = itemList[i].itemQuantity
                 };
 
