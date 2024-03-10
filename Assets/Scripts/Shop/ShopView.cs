@@ -32,11 +32,6 @@ public class ShopView : MonoBehaviour
     {
         buyButton.onClick.AddListener(EnableBuyBox);
     }
-
-    private void OnDisable()
-    {
-        eventService.OnItemClick.RemoveListener(DisplayItemInfo);
-    }
     #endregion ------------------
 
     #region --------- Private Methods ---------
