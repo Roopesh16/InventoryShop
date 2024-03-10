@@ -29,22 +29,38 @@ namespace InventoryShop.Inventory
         #endregion ------------------
 
         #region --------- Public Methods ---------
-        public InventoryModel(List<ItemScriptableObject> itemList)
+        public InventoryModel()
         {
-            for (int i = 0; i < itemList.Count; i++)
-            {
-                ItemData itemData = new()
-                {
-                    itemName = itemList[i].itemName,
-                    itemType = itemList[i].itemType,
-                    itemRarity = itemList[i].itemRarity,
-                    itemSellPrice = itemList[i].itemSellPrice,
-                    itemQuantity = itemList[i].itemQuantity,
-                    itemWeight = itemList[i].itemWeight
-                };
 
-                itemDataList.Add(itemData);
+        }
+
+        public void SetItemQuantity(string itemName, int quantity)
+        {
+            if (itemDataList.Count != 0)
+            {
+                foreach (ItemData item in itemDataList)
+                {
+                    if (item.itemName == itemName)
+                    {
+                        item.itemQuantity = quantity;
+                    }
+                }
             }
+        }
+
+        public void AddInventoryData(ItemScriptableObject item)
+        {
+            ItemData itemData = new()
+            {
+                itemName = item.itemName,
+                itemType = item.itemType,
+                itemRarity = item.itemRarity,
+                itemQuantity = item.itemQuantity,
+                itemSellPrice = item.itemSellPrice,
+                itemWeight = item.itemWeight
+            };
+
+            itemDataList.Add(itemData);
         }
 
         public void SetItemQuantity(int index, int quantity)
