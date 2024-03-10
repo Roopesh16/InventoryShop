@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using InventoryShop.Services;
 using InventoryShop.Items;
 using UnityEngine;
+using InventoryShop.Managers;
 
 namespace InventoryShop.Services
 {
@@ -12,7 +13,8 @@ namespace InventoryShop.Services
         #region --------- Private Variables ---------
         private List<ItemScriptableObject> itemsList = new();
         private ItemView itemPrefab;
-        private List<ItemController> itemSpawned = new();
+        private List<ItemController> shopItemSpawned = new();
+        private List<ItemController> inventoryItemSpawned = new();
         private Transform shopGridTransform;
         private Transform inventoryGridTransform;
 
@@ -45,18 +47,19 @@ namespace InventoryShop.Services
             foreach (ItemScriptableObject item in itemsList)
             {
                 ItemController itemController = new(eventService, this, item, itemPrefab, shopGridTransform);
-                itemSpawned.Add(itemController);
+                shopItemSpawned.Add(itemController);
             }
         }
 
-        public void SpawnInventoryItems(string itemName)
+        public void SpawnInventoryItems(string itemName, int quantity)
         {
             foreach (ItemScriptableObject item in itemsList)
             {
                 if (itemName == item.itemName)
                 {
-                    ItemController itemController = new(eventService, this, item, itemPrefab, inventoryGridTransform);
-                    itemSpawned.Add(itemController);
+                    ItemController itemController = new(eventService, this, item, itemPrefab, inventoryGridTransform, quantity);
+                    inventoryItemSpawned.Add(itemController);
+                    UIManager.Instance.SetNotificationText(itemName + " ADDED!");
                 }
             }
         }
