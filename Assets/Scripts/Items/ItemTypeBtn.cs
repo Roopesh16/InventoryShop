@@ -1,6 +1,6 @@
-using InventoryShop.Services;
 using UnityEngine.UI;
 using UnityEngine;
+using InventoryShop.Managers;
 
 public class ItemTypeBtn : MonoBehaviour
 {
@@ -10,22 +10,20 @@ public class ItemTypeBtn : MonoBehaviour
 
     #region --------- Private Variables ---------
     private Button typeBtn;
-    private ItemService itemService;
     #endregion ------------------
 
     #region --------- Monobehavior Methods ---------
     private void Awake()
     {
         typeBtn = GetComponent<Button>();
-
+        typeBtn.onClick.AddListener(DisplayTypeItems);
     }
     #endregion ------------------
 
     #region --------- Private Methods ---------
-    public void DisplayTypeItems() => itemService.DisplayType(itemType);
+    private void DisplayTypeItems() => GameManager.Instance.DisplayTypeItem(itemType);
     #endregion ------------------
 
     #region --------- Public Methods ---------
-    public void Init(ItemService itemService) => this.itemService = itemService;
     #endregion ------------------
 }
