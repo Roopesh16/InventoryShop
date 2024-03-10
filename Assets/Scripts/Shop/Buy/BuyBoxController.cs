@@ -21,7 +21,7 @@ namespace InventoryShop.Shop.BuyBox
         #endregion ------------------
 
         #region --------- Public Methods ---------
-        public BuyBoxController(BuyBoxView buyBoxView, ShopService shopService,ItemService itemService)
+        public BuyBoxController(BuyBoxView buyBoxView, ShopService shopService, ItemService itemService)
         {
             this.shopService = shopService;
             this.itemService = itemService;
@@ -58,9 +58,9 @@ namespace InventoryShop.Shop.BuyBox
             buyBoxView.UpdateBuyCounter(buyBoxModel.itemCount, buyBoxModel.itemBuyCost);
         }
 
-        public void SetBuyItemData(string itemName,int itemBuyCost, int itemQuantity)
+        public void SetBuyItemData(string itemName, int itemBuyCost, int itemQuantity)
         {
-            buyBoxModel.SetItemData(itemName,itemBuyCost, itemQuantity);
+            buyBoxModel.SetItemData(itemName, itemBuyCost, itemQuantity);
             buyBoxView.EnableBuyBox();
         }
 
@@ -77,7 +77,7 @@ namespace InventoryShop.Shop.BuyBox
                     buyBoxView.DisableNegativeBtn();
                 }
                 shopService.SetItemQuantity(buyBoxModel.itemQuantity);
-                itemService.SpawnInventoryItems(buyBoxModel.itemName, buyBoxModel.itemCount);
+                itemService.AddInventoryItems(buyBoxModel.itemName, buyBoxModel.itemCount);
             }
 
             buyBoxModel.itemCount = 0;
