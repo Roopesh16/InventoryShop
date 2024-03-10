@@ -23,6 +23,10 @@ namespace InventoryShop.Services
         [SerializeField] private Transform shopGridTransform;
         [SerializeField] private ShopView shopView;
         [SerializeField] private BuyBoxView buyBoxView;
+
+        [Header("Managers")]
+        [SerializeField] private GameManager gameManager;
+        [SerializeField] private UIManager uIManager;
         #endregion ------------------
 
         #region --------- Private Variables ---------
@@ -54,6 +58,8 @@ namespace InventoryShop.Services
 
         private void InjectDependency()
         {
+            GameManager.Instance.Init(playerService, itemService);
+            UIManager.Instance.Init(playerService);
             shopService.Init(eventService, itemService);
         }
         #endregion ------------------
