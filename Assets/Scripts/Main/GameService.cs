@@ -59,7 +59,7 @@ namespace InventoryShop.Services
             playerService = new(currentMoney);
             itemService = new(itemsList, itemPrefab,shopGridTransform,inventoryGridTransform);
             shopService = new(shopView, buyBoxView);
-            inventoryService = new(inventoryGridTransform, inventoryView);
+            inventoryService = new(inventoryView);
         }
 
         private void InjectDependency()
