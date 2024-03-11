@@ -4,6 +4,7 @@ using InventoryShop.Shop;
 using UnityEngine.UI;
 using UnityEngine;
 using TMPro;
+using TMPro.SpriteAssetUtilities;
 
 namespace InventoryShop.Inventory
 {
@@ -23,6 +24,8 @@ namespace InventoryShop.Inventory
         private EventService eventService;
         private InventoryService inventoryService;
         private InventoryController inventoryController;
+
+        private string itemName;
         private int itemSellCost;
         private int itemQuantity;
         #endregion ------------------
@@ -38,7 +41,7 @@ namespace InventoryShop.Inventory
         #endregion ------------------
 
         #region --------- Private Methods ---------
-        private void EnableSellBox() => inventoryService.SetSellItemData(itemSellCost, itemQuantity);
+        private void EnableSellBox() => inventoryService.SetSellItemData(itemName, itemSellCost, itemQuantity);
         private void SubscribeToEvent()
         {
         }
@@ -62,6 +65,7 @@ namespace InventoryShop.Inventory
             itemDesctiptionText.text = itemDescription;
             itemSellText.text = itemSellCost.ToString();
 
+            this.itemName = itemName;
             this.itemSellCost = itemSellCost;
             this.itemQuantity = itemQuantity;
         }

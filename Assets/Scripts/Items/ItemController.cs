@@ -93,6 +93,8 @@ namespace InventoryShop.Items
 
         public ItemType GetItemType() => itemModel.itemType;
         public string GetItemName() => itemModel.itemName;
+
+        public void DestroyItemView() => Object.Destroy(itemView.gameObject);
         #endregion ------------------
 
     }
