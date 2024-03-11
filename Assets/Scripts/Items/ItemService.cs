@@ -55,7 +55,6 @@ namespace InventoryShop.Services
 
         public void AddInventoryItems(string itemName, int quantity)
         {
-
             // Check if item exists
             foreach (ItemController item in inventoryItemSpawned)
             {
