@@ -7,7 +7,7 @@ namespace InventoryShop.Inventory.SellBox
     {
         #region --------- Private Variables ---------
         private InventoryService inventoryService;
-        private EventService eventService;
+        private ItemService itemService;
 
         private SellBoxModel sellBoxModel;
         private SellBoxView sellBoxView;
@@ -23,10 +23,10 @@ namespace InventoryShop.Inventory.SellBox
         #endregion ------------------
 
         #region --------- Public Methods ---------
-        public SellBoxController(SellBoxView sellBoxView, InventoryService inventoryService, EventService eventService)
+        public SellBoxController(SellBoxView sellBoxView, InventoryService inventoryService, ItemService itemService)
         {
             this.inventoryService = inventoryService;
-            this.eventService = eventService;
+            this.itemService = itemService;
 
             sellBoxModel = new(itemCount);
             sellBoxModel.SetSellBoxController(this);
@@ -77,7 +77,7 @@ namespace InventoryShop.Inventory.SellBox
                     inventoryService.DisableDescription();
                     sellBoxView.TogglePositiveBtn(false);
                     sellBoxView.ToggleNegativeBtn(false);
-                    eventService.onItemRemove.InvokeEvent(sellBoxModel.itemName);
+                    itemService.RemoveInventoryItem(sellBoxModel.itemName);
                 }
                 inventoryService.SetItemQuantity(sellBoxModel.itemQuantity);
             }

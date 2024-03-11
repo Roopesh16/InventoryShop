@@ -23,7 +23,7 @@ namespace InventoryShop.Services
         private void InitializeVariables()
         {
             inventoryController = new(eventService, this, inventoryView);
-            sellBoxController = new(sellBoxView, this, eventService);
+            sellBoxController = new(sellBoxView, this, itemService);
         }
         #endregion ------------------
 
