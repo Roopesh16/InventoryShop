@@ -41,7 +41,6 @@ namespace InventoryShop.Inventory
         // private void EnableBuyBox() => shopService.SetBuyItemData(itemBuyCost, itemQuantity);
         private void SubscribeToEvent()
         {
-            eventService.OnItemClick.AddListener(DisplayItemInfo);
         }
         #endregion ------------------
 
@@ -51,7 +50,7 @@ namespace InventoryShop.Inventory
             this.eventService = eventService;
             this.inventoryService = inventoryService;
 
-            SubscribeToEvent();
+            // SubscribeToEvent();
             descriptionBox.SetActive(false);
         }
 

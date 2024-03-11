@@ -37,7 +37,7 @@ public class ShopView : MonoBehaviour
 
     #region --------- Private Methods ---------
     private void EnableBuyBox() => shopService.SetBuyItemData(itemName, itemBuyCost, itemQuantity);
-    private void SubscribeToEvent() => eventService.OnItemClick.AddListener(DisplayItemInfo);
+    // private void SubscribeToEvent;
     #endregion ------------------
 
     #region --------- Public Methods ---------
@@ -46,7 +46,7 @@ public class ShopView : MonoBehaviour
         this.eventService = eventService;
         this.shopService = shopService;
 
-        SubscribeToEvent();
+        // SubscribeToEvent();
         descriptionBox.SetActive(false);
     }
 
