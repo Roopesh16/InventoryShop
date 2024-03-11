@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Security;
 using InventoryShop.Services;
 using UnityEngine;
 
@@ -47,7 +48,7 @@ namespace InventoryShop.Managers
 
         public bool ValidateBuyTransaction(int itemCount, int itemBuyCost)
         {
-            if(itemCount == 0)
+            if (itemCount == 0)
                 return false;
 
             if (playerService.GetCurrentMoney() == 0)
@@ -64,9 +65,22 @@ namespace InventoryShop.Managers
 
             playerService.DeductMoney(itemBuyCost);
             UIManager.Instance.SetCurrentMoney(playerService.GetCurrentMoney());
-            itemService.UpdateSelectedItem(itemCount);
+            itemService.UpdateShopSelectedItem(itemCount);
 
             return true;
+        }
+
+        public bool ValidateSellTransaction(int itemCount, int itemSellCost)
+        {
+            if (itemCount == 0)
+                return false;
+
+            playerService.IncrementMoney(itemSellCost);
+            UIManager.Instance.SetCurrentMoney(playerService.GetCurrentMoney());
+            itemService.UpdateInventorySelectedItem(itemCount);
+
+            return true;
+
         }
 
         public void SendShopItemData(string name, Sprite icon, string description, int buyCost, int quantity)
