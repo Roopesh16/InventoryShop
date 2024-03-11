@@ -1,11 +1,12 @@
 using InventoryShop.ScriptableObjects;
+using InventoryShop.Inventory.SellBox;
 using InventoryShop.Services.Events;
 using System.Collections.Generic;
 using InventoryShop.Shop.BuyBox;
+using InventoryShop.Inventory;
 using InventoryShop.Managers;
 using InventoryShop.Items;
 using UnityEngine;
-using InventoryShop.Inventory;
 
 namespace InventoryShop.Services
 {
@@ -27,6 +28,7 @@ namespace InventoryShop.Services
 
         [Header("Inventory Service References")]
         [SerializeField] private InventoryView inventoryView;
+        [SerializeField] private SellBoxView sellBoxView;
 
         [Header("Managers")]
         [SerializeField] private GameManager gameManager;
@@ -59,7 +61,7 @@ namespace InventoryShop.Services
             playerService = new(currentMoney);
             itemService = new(itemsList, itemPrefab,shopGridTransform,inventoryGridTransform);
             shopService = new(shopView, buyBoxView);
-            inventoryService = new(inventoryView);
+            inventoryService = new(inventoryView,sellBoxView);
         }
 
         private void InjectDependency()
