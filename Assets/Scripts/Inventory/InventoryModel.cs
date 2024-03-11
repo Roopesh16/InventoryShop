@@ -35,17 +35,11 @@ namespace InventoryShop.Inventory
             this.inventoryController = inventoryController;
         }
 
-        public void SetItemQuantity(string itemName, int quantity)
+        public void SetItemQuantity(int index, int quantity)
         {
             if (itemDataList.Count != 0)
             {
-                foreach (ItemData item in itemDataList)
-                {
-                    if (item.itemName == itemName)
-                    {
-                        item.itemQuantity = quantity;
-                    }
-                }
+                itemDataList[index].itemQuantity = quantity;
             }
         }
 

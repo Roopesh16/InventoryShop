@@ -45,7 +45,7 @@ namespace InventoryShop.Services
         public void DisableDescription() => inventoryController.DisableDescription();
         public void DisableEmptyBox() => inventoryController.DisableEmptyBox();
 
-        // public void SetItemQuantity(int quantity) => inventoryController.SetItemQuantity(itemService.SelectedIndex, quantity);
+        public void SetItemQuantity(int quantity) => inventoryController.SetItemQuantity(itemService.SelectedIndex, quantity);
         #endregion ------------------
     }
 }
