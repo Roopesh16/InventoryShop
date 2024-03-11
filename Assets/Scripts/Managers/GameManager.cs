@@ -14,6 +14,8 @@ namespace InventoryShop.Managers
         private static GameManager instance = null;
         private PlayerService playerService;
         private ItemService itemService;
+        private ShopService shopService;
+        private InventoryService inventoryService;
         #endregion ------------------
 
         #region --------- Public Variables ---------
@@ -35,10 +37,12 @@ namespace InventoryShop.Managers
         #endregion ------------------
 
         #region --------- Public Methods ---------
-        public void Init(PlayerService playerService, ItemService itemService)
+        public void Init(PlayerService playerService, ItemService itemService, ShopService shopService, InventoryService inventoryService)
         {
             this.playerService = playerService;
             this.itemService = itemService;
+            this.shopService = shopService;
+            this.inventoryService = inventoryService;
         }
 
         public bool ValidateBuyTransaction(int itemCount, int itemBuyCost)

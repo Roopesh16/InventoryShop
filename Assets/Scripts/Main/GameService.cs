@@ -64,7 +64,7 @@ namespace InventoryShop.Services
 
         private void InjectDependency()
         {
-            GameManager.Instance.Init(playerService, itemService);
+            GameManager.Instance.Init(playerService, itemService,shopService,inventoryService);
             UIManager.Instance.Init(playerService);
             itemService.Init(eventService,inventoryService);
             shopService.Init(eventService, itemService, itemsList);
