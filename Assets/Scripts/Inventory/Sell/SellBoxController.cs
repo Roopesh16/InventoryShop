@@ -1,86 +1,86 @@
 using InventoryShop.Services;
 
-namespace InventoryShop.Shop.BuyBox
+namespace InventoryShop.Inventory.SellBox
 {
     public class SellBoxController
     {
-    //     #region --------- Private Variables ---------
-    //     private ShopService shopService;
+        #region --------- Private Variables ---------
+        private InventoryService inventoryService;
 
-    //     private BuyBoxModel buyBoxModel;
-    //     private BuyBoxView buyBoxView;
+        private SellBoxModel sellBoxModel;
+        private SellBoxView sellBoxView;
 
-    //     private const int itemCount = 0;
-    //     #endregion ------------------
+        private const int itemCount = 0;
+        #endregion ------------------
 
-    //     #region --------- Public Variables ---------
-    //     #endregion ------------------
+        #region --------- Public Variables ---------
+        #endregion ------------------
 
-    //     #region --------- Private Methods ---------
-    //     #endregion ------------------
+        #region --------- Private Methods ---------
+        #endregion ------------------
 
-    //     #region --------- Public Methods ---------
-    //     public BuyBoxController(BuyBoxView buyBoxView, ShopService shopService)
-    //     {
-    //         this.shopService = shopService;
+        #region --------- Public Methods ---------
+        public SellBoxController(SellBoxView sellBoxView, InventoryService inventoryService)
+        {
+            this.inventoryService = inventoryService;
 
-    //         buyBoxModel = new(itemCount);
-    //         buyBoxModel.SetBuyBoxController(this);
+            sellBoxModel = new(itemCount);
+            sellBoxModel.SetSellBoxController(this);
 
-    //         this.buyBoxView = buyBoxView;
-    //         this.buyBoxView.SetBuyBoxView(itemCount);
-    //         this.buyBoxView.SetBuyBoxController(this);
-    //     }
+            this.sellBoxView = sellBoxView;
+            this.sellBoxView.SetSellBoxView(itemCount);
+            this.sellBoxView.SetSellBoxController(this);
+        }
 
-    //     public void IncrementItemCount()
-    //     {
-    //         buyBoxModel.itemCount++;
-    //         buyBoxView.EnableNegativeBtn();
-    //         if (buyBoxModel.itemCount >= buyBoxModel.itemQuantity)
-    //         {
-    //             buyBoxModel.itemCount = buyBoxModel.itemQuantity;
-    //             buyBoxView.DisablePositiveBtn();
-    //         }
-    //         buyBoxView.UpdateBuyCounter(buyBoxModel.itemCount, buyBoxModel.itemBuyCost);
-    //     }
+        public void IncrementItemCount()
+        {
+            sellBoxModel.itemCount++;
+            sellBoxView.EnableNegativeBtn();
+            if (sellBoxModel.itemCount >= sellBoxModel.itemQuantity)
+            {
+                sellBoxModel.itemCount = sellBoxModel.itemQuantity;
+                sellBoxView.DisablePositiveBtn();
+            }
+            sellBoxView.UpdateSellCounter(sellBoxModel.itemCount, sellBoxModel.itemSellCost);
+        }
 
-    //     public void DecrementItemCount()
-    //     {
-    //         buyBoxModel.itemCount--;
-    //         buyBoxView.EnablePositiveBtn();
-    //         if (buyBoxModel.itemCount <= 0)
-    //         {
-    //             buyBoxModel.itemCount = 0;
-    //             buyBoxView.DisableNegativeBtn();
-    //         }
-    //         buyBoxView.UpdateBuyCounter(buyBoxModel.itemCount, buyBoxModel.itemBuyCost);
-    //     }
+        public void DecrementItemCount()
+        {
+            sellBoxModel.itemCount--;
+            sellBoxView.EnablePositiveBtn();
+            if (sellBoxModel.itemCount <= 0)
+            {
+                sellBoxModel.itemCount = 0;
+                sellBoxView.DisableNegativeBtn();
+            }
+            sellBoxView.UpdateSellCounter(sellBoxModel.itemCount, sellBoxModel.itemSellCost);
+        }
 
-    //     public void SetBuyItemData(int itemBuyCost, int itemQuantity)
-    //     {
-    //         buyBoxModel.SetItemData(itemBuyCost, itemQuantity);
-    //         buyBoxView.EnableBuyBox();
-    //     }
+        public void SetSellItemData(int itemSellCost, int itemQuantity)
+        {
+            sellBoxModel.SetItemData(itemSellCost, itemQuantity);
+            sellBoxView.EnableSellBox();
+        }
 
-    //     public void ResetItemCounter(bool hasBought)
-    //     {
-    //         if (hasBought)
-    //         {
-    //             buyBoxModel.itemQuantity -= buyBoxModel.itemCount;
-    //             if (buyBoxModel.itemQuantity <= 0)
-    //             {
-    //                 buyBoxModel.itemQuantity = 0;
-    //                 shopService.DisableDescription();
-    //                 buyBoxView.DisablePositiveBtn();
-    //                 buyBoxView.DisableNegativeBtn();
-    //             }
-    //             shopService.SetItemQuantity(buyBoxModel.itemQuantity);
-    //         }
+        public void ResetItemCounter(bool hasBought)
+        {
+            if (hasBought)
+            {
+                sellBoxModel.itemQuantity -= sellBoxModel.itemCount;
+                if (sellBoxModel.itemQuantity <= 0)
+                {
+                    sellBoxModel.itemQuantity = 0;
+                    inventoryService.DisableDescription();
+                    sellBoxView.DisablePositiveBtn();
+                    sellBoxView.DisableNegativeBtn();
+                }
+                inventoryService.SetItemQuantity(sellBoxModel.itemQuantity);
+            }
 
-    //         buyBoxModel.itemCount = 0;
-    //         buyBoxView.UpdateBuyCounter(buyBoxModel.itemCount, buyBoxModel.itemBuyCost);
-    //     }
-    //     #endregion ------------------
+            sellBoxModel.itemCount = 0;
+            sellBoxView.UpdateSellCounter(sellBoxModel.itemCount, sellBoxModel.itemSellCost);
+        }
+        #endregion ------------------
     }
 }
 
