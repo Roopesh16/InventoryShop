@@ -6,14 +6,12 @@ namespace InventoryShop.Services.Events
     {
         #region --------- Public Variables ---------
         public EventController<string, Sprite, string, int, int> OnItemClick;
-        public EventController<bool> onItemAdded;
         #endregion ------------------
 
         #region --------- Public Methods ---------
         public EventService()
         {
             OnItemClick = new EventController<string, Sprite, string, int, int>();
-            onItemAdded = new EventController<bool>();
         }
         #endregion ------------------
 
