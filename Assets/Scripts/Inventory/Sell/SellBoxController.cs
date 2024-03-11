@@ -80,6 +80,7 @@ namespace InventoryShop.Inventory.SellBox
                     itemService.RemoveInventoryItem(sellBoxModel.itemName);
                 }
                 inventoryService.SetItemQuantity(sellBoxModel.itemQuantity);
+                itemService.AddShopItems(sellBoxModel.itemName,sellBoxModel.itemCount);
             }
 
             sellBoxModel.itemCount = 0;

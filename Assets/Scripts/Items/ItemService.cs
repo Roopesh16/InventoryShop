@@ -54,6 +54,18 @@ namespace InventoryShop.Services
             }
         }
 
+        public void AddShopItems(string itemName, int quantity)
+        {
+            foreach (ItemController item in shopItemSpawned)
+            {
+                if (item.GetItemName() == itemName)
+                {
+                    item.IncrementItemQuantity(quantity);
+                    return;
+                }
+            }
+        }
+
         public void AddInventoryItems(string itemName, int quantity)
         {
             // Check if item exists
