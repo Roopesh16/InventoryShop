@@ -21,7 +21,8 @@ namespace InventoryShop.Managers
         }
 
         public int GetCurrentMoney() => currentMoney;
-        public int DeductMoney(int buyCost) => currentMoney -= buyCost;
+        public void DeductMoney(int buyCost) => currentMoney -= buyCost;
+        public void IncrementMoney(int sellCost) => currentMoney += sellCost;
         #endregion ------------------
     }
 }
