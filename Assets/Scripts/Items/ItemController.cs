@@ -2,6 +2,7 @@ using InventoryShop.ScriptableObjects;
 using InventoryShop.Services.Events;
 using InventoryShop.Services;
 using UnityEngine;
+using InventoryShop.Managers;
 
 namespace InventoryShop.Items
 {
@@ -40,7 +41,7 @@ namespace InventoryShop.Items
         }
 
         public ItemController(EventService eventService, ItemService itemService, ItemScriptableObject item,
-                                    ItemView itemView, Transform parentTransform,int quantity)
+                                    ItemView itemView, Transform parentTransform, int quantity)
         {
             this.eventService = eventService;
             this.itemService = itemService;
@@ -56,8 +57,10 @@ namespace InventoryShop.Items
 
         public void SendItemData()
         {
-            eventService.OnItemClick.InvokeEvent(itemModel.itemName, itemModel.itemIcon,
-                                                        itemModel.itemDescription, itemModel.itemBuyPrice, itemModel.itemQuantity);
+            if (UIManager.Instance.GetShopActive())
+                GameManager.Instance.SendShopItemData(itemModel.itemName, itemModel.itemIcon, itemModel.itemDescription, itemModel.itemBuyPrice, itemModel.itemQuantity);
+            else
+                GameManager.Instance.SendInventoryItemData(itemModel.itemName, itemModel.itemIcon, itemModel.itemDescription, itemModel.itemBuyPrice, itemModel.itemQuantity);
         }
 
         public void SelectCurrentItem()
