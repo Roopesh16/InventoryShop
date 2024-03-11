@@ -2,7 +2,6 @@ using InventoryShop.ScriptableObjects;
 using InventoryShop.Services.Events;
 using System.Collections.Generic;
 using InventoryShop.Services;
-using UnityEngine;
 
 namespace InventoryShop.Inventory
 {
@@ -35,8 +34,10 @@ namespace InventoryShop.Inventory
 
         public void DisableDescription() => inventoryView.DisableDescription();
         public void DisableEmptyBox() => inventoryView.ToggleEmptyBox(false);
+        public void EnableEmptyBox() => inventoryView.ToggleEmptyBox(true);
         public void SetItemQuantity(int index, int quantity) => inventoryModel.SetItemQuantity(index, quantity);
         public void AddItemData(ItemScriptableObject item,int quantity) => inventoryModel.AddInventoryData(item,quantity);
+        public void RemoveItemData(string itemName) => inventoryModel.RemoveItemData(itemName);
         #endregion ------------------
     }
 }

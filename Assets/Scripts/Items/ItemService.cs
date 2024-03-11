@@ -103,8 +103,14 @@ namespace InventoryShop.Services
                 {
                     item.DisableItemView();
                     UIManager.Instance.SetNotificationText(itemName + " REMOVED!");
+                    inventoryItemSpawned.Remove(item);
+                    inventoryService.RemoveInventoryItem(itemName);
+                    break;
                 }
             }
+
+            if (inventoryItemSpawned.Count == 0)
+                inventoryService.EnableEmptyBox();
         }
 
         public void UnselectRestItems(ItemController selectedItem)

@@ -44,6 +44,18 @@ namespace InventoryShop.Inventory
             }
         }
 
+        public void RemoveItemData(string itemName)
+        {
+            foreach (ItemData item in itemDataList)
+            {
+                if (item.itemName == itemName)
+                {
+                    itemDataList.Remove(item);
+                    return;
+                }
+            }
+        }
+
         public void AddInventoryData(ItemScriptableObject item, int quantity)
         {
             ItemData itemData = new()
