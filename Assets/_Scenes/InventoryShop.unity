@@ -1803,8 +1803,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.89500004}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0.9700012}
-  m_SizeDelta: {x: 0, y: -1.9400024}
+  m_AnchoredPosition: {x: 0, y: -88.00003}
+  m_SizeDelta: {x: 0, y: 176}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &575505476
 GameObject:
@@ -1975,8 +1975,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0.89500004}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: -88}
+  m_SizeDelta: {x: 0, y: -176}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &637810259
 GameObject:
@@ -2091,6 +2091,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 711658251}
+  - component: {fileID: 711658252}
   m_Layer: 5
   m_Name: SellScreen
   m_TagString: Untagged
@@ -2118,6 +2119,24 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &711658252
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 711658250}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be97ce371fad2c34f92772fe6fcaeb4b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  negativeBtn: {fileID: 129562872}
+  positiveBtn: {fileID: 1915486539}
+  yesButton: {fileID: 767380223}
+  noButton: {fileID: 2068616912}
+  countText: {fileID: 292480239}
+  itemSellText: {fileID: 1731755618}
 --- !u!1 &767380221
 GameObject:
   m_ObjectHideFlags: 0
@@ -2200,19 +2219,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 767380224}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 711658250}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &767380224
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2763,7 +2770,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: -80}
   m_SizeDelta: {x: 596, y: 88}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &918278042
@@ -3379,12 +3386,13 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 7ddd7ceb10afaf8418eef5faae237dc1, type: 2}
   - {fileID: 11400000, guid: 5c4afb6ef0f665143a64eac685cb0f8d, type: 2}
   itemPrefab: {fileID: -5718064315299832449, guid: da3f0bd8d8d87374ca0683e602fc0333, type: 3}
-  currentMoney: 0
   shopGridTransform: {fileID: 1201423025046210501}
+  inventoryGridTransform: {fileID: 1086369375}
+  currentMoney: 0
   shopView: {fileID: 952161631}
   buyBoxView: {fileID: 5340997093868736918}
-  inventoryGridTransform: {fileID: 1086369375}
   inventoryView: {fileID: 1632891107}
+  sellBoxView: {fileID: 711658252}
   gameManager: {fileID: 1973820734}
   uIManager: {fileID: 53071281}
 --- !u!1 &1086369374
@@ -4916,8 +4924,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 665.54, y: 278.2}
+  m_AnchoredPosition: {x: 0, y: -50.67}
+  m_SizeDelta: {x: 665.54, y: 176.87}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1518973073
 MonoBehaviour:
@@ -4973,8 +4981,8 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
-  m_VerticalAlignment: 256
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -7059,19 +7067,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2068616913}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 711658250}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &2068616913
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7648,19 +7644,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1551701222004343715}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1731826160050402108}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!224 &2339301632970677748
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8017,19 +8001,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 4333371581670114007}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1731826160050402108}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &3809483078467625721
 MonoBehaviour:
   m_ObjectHideFlags: 0
