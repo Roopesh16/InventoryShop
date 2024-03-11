@@ -33,12 +33,12 @@ namespace InventoryShop.Inventory
         #region --------- Monobehavior Methods ---------
         private void Awake()
         {
-            // sellButton.onClick.AddListener(EnableBuyBox);
+            sellButton.onClick.AddListener(EnableSellBox);
         }
         #endregion ------------------
 
         #region --------- Private Methods ---------
-        // private void EnableBuyBox() => shopService.SetBuyItemData(itemBuyCost, itemQuantity);
+        private void EnableSellBox() => inventoryService.SetSellItemData(itemSellCost, itemQuantity);
         private void SubscribeToEvent()
         {
         }

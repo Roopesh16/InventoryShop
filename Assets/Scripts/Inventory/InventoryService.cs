@@ -1,6 +1,5 @@
-using InventoryShop.ScriptableObjects;
+using InventoryShop.Inventory.SellBox;
 using InventoryShop.Services.Events;
-using System.Collections.Generic;
 using InventoryShop.Inventory;
 using UnityEngine;
 
@@ -13,8 +12,8 @@ namespace InventoryShop.Services
         private EventService eventService;
 
         private InventoryView inventoryView;
-        // private SellBoxView sellBoxView;
-        // private BuyBoxController buyBoxController;
+        private SellBoxView sellBoxView;
+        private SellBoxController sellBoxController;
         private InventoryController inventoryController;
         #endregion ------------------
 
@@ -22,15 +21,15 @@ namespace InventoryShop.Services
         private void InitializeVariables()
         {
             inventoryController = new(eventService, this, inventoryView);
-            // buyBoxController = new(buyBoxView, this);
+            sellBoxController = new(sellBoxView, this);
         }
         #endregion ------------------
 
         #region --------- Public Methods ---------
-        public InventoryService(InventoryView inventoryView)
+        public InventoryService(InventoryView inventoryView, SellBoxView sellBoxView)
         {
             this.inventoryView = inventoryView;
-            // this.buyBoxView = buyBoxView;
+            this.sellBoxView = sellBoxView;
         }
 
         public void Init(EventService eventService, ItemService itemService)
@@ -46,7 +45,7 @@ namespace InventoryShop.Services
             inventoryView.DisplayItemInfo(name, icon, description, buyCost, quantity);
         }
 
-        // public void SetBuyItemData(int itemBuyCost, int itemQuantity) => buyBoxController.SetBuyItemData(itemBuyCost, itemQuantity);
+        public void SetSellItemData(int itemSellCost, int itemQuantity) => sellBoxController.SetSellItemData(itemSellCost, itemQuantity);
         public void DisableDescription() => inventoryController.DisableDescription();
         public void DisableEmptyBox() => inventoryController.DisableEmptyBox();
         public void SetItemQuantity(int quantity) => inventoryController.SetItemQuantity(itemService.SelectedIndex, quantity);
