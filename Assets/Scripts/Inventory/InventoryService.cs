@@ -2,6 +2,7 @@ using InventoryShop.Inventory.SellBox;
 using InventoryShop.Services.Events;
 using InventoryShop.Inventory;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace InventoryShop.Services
 {
@@ -21,7 +22,7 @@ namespace InventoryShop.Services
         private void InitializeVariables()
         {
             inventoryController = new(eventService, this, inventoryView);
-            sellBoxController = new(sellBoxView, this);
+            sellBoxController = new(sellBoxView, this, eventService);
         }
         #endregion ------------------
 
@@ -45,7 +46,7 @@ namespace InventoryShop.Services
             inventoryView.DisplayItemInfo(name, icon, description, buyCost, quantity);
         }
 
-        public void SetSellItemData(int itemSellCost, int itemQuantity) => sellBoxController.SetSellItemData(itemSellCost, itemQuantity);
+        public void SetSellItemData(string itemName, int itemSellCost, int itemQuantity) => sellBoxController.SetSellItemData(itemName, itemSellCost, itemQuantity);
         public void DisableDescription() => inventoryController.DisableDescription();
         public void DisableEmptyBox() => inventoryController.DisableEmptyBox();
         public void SetItemQuantity(int quantity) => inventoryController.SetItemQuantity(itemService.SelectedIndex, quantity);
