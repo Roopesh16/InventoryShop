@@ -47,6 +47,9 @@ namespace InventoryShop.Managers
 
         public bool ValidateBuyTransaction(int itemCount, int itemBuyCost)
         {
+            if(itemCount == 0)
+                return false;
+
             if (playerService.GetCurrentMoney() == 0)
             {
                 UIManager.Instance.SetNotificationText("NO MONEY!");
