@@ -44,7 +44,8 @@ namespace InventoryShop.Inventory
 
         public void IncreaseInventoryWeight(float weight)
         {
-            inventoryModel.SetInventoryWeight(inventoryModel.GetCurrentWeight() + weight);
+            float newWeight = inventoryModel.GetCurrentWeight() + weight;
+            inventoryModel.SetInventoryWeight(newWeight);
         }
 
         public void DecreaseInventoryWeight(float weight)
