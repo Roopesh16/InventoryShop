@@ -37,11 +37,11 @@ namespace InventoryShop.Shop.BuyBox
         public void IncrementItemCount()
         {
             buyBoxModel.itemCount++;
-            buyBoxView.EnableNegativeBtn();
+            buyBoxView.ToggleNegativeBtn(true);
             if (buyBoxModel.itemCount >= buyBoxModel.itemQuantity)
             {
                 buyBoxModel.itemCount = buyBoxModel.itemQuantity;
-                buyBoxView.DisablePositiveBtn();
+                buyBoxView.TogglePositiveBtn(false);
             }
             buyBoxView.UpdateBuyCounter(buyBoxModel.itemCount, buyBoxModel.itemBuyCost);
         }
@@ -49,11 +49,11 @@ namespace InventoryShop.Shop.BuyBox
         public void DecrementItemCount()
         {
             buyBoxModel.itemCount--;
-            buyBoxView.EnablePositiveBtn();
+            buyBoxView.TogglePositiveBtn(true);
             if (buyBoxModel.itemCount <= 0)
             {
                 buyBoxModel.itemCount = 0;
-                buyBoxView.DisableNegativeBtn();
+                buyBoxView.ToggleNegativeBtn(false);
             }
             buyBoxView.UpdateBuyCounter(buyBoxModel.itemCount, buyBoxModel.itemBuyCost);
         }
@@ -73,8 +73,8 @@ namespace InventoryShop.Shop.BuyBox
                 {
                     buyBoxModel.itemQuantity = 0;
                     shopService.DisableDescription();
-                    buyBoxView.DisablePositiveBtn();
-                    buyBoxView.DisableNegativeBtn();
+                    buyBoxView.TogglePositiveBtn(false);
+                    buyBoxView.ToggleNegativeBtn(false);
                 }
                 shopService.SetItemQuantity(buyBoxModel.itemQuantity);
                 itemService.AddInventoryItems(buyBoxModel.itemName, buyBoxModel.itemCount);

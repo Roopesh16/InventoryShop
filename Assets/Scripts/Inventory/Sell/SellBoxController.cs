@@ -19,6 +19,7 @@ namespace InventoryShop.Inventory.SellBox
         #endregion ------------------
 
         #region --------- Private Methods ---------
+
         #endregion ------------------
 
         #region --------- Public Methods ---------
@@ -38,11 +39,11 @@ namespace InventoryShop.Inventory.SellBox
         public void IncrementItemCount()
         {
             sellBoxModel.itemCount++;
-            sellBoxView.EnableNegativeBtn();
+            sellBoxView.ToggleNegativeBtn(true);
             if (sellBoxModel.itemCount >= sellBoxModel.itemQuantity)
             {
                 sellBoxModel.itemCount = sellBoxModel.itemQuantity;
-                sellBoxView.DisablePositiveBtn();
+                sellBoxView.TogglePositiveBtn(false);
             }
             sellBoxView.UpdateSellCounter(sellBoxModel.itemCount, sellBoxModel.itemSellCost);
         }
@@ -50,11 +51,11 @@ namespace InventoryShop.Inventory.SellBox
         public void DecrementItemCount()
         {
             sellBoxModel.itemCount--;
-            sellBoxView.EnablePositiveBtn();
+            sellBoxView.TogglePositiveBtn(true);
             if (sellBoxModel.itemCount <= 0)
             {
                 sellBoxModel.itemCount = 0;
-                sellBoxView.DisableNegativeBtn();
+                sellBoxView.ToggleNegativeBtn(false);
             }
             sellBoxView.UpdateSellCounter(sellBoxModel.itemCount, sellBoxModel.itemSellCost);
         }
@@ -74,8 +75,8 @@ namespace InventoryShop.Inventory.SellBox
                 {
                     sellBoxModel.itemQuantity = 0;
                     inventoryService.DisableDescription();
-                    sellBoxView.DisablePositiveBtn();
-                    sellBoxView.DisableNegativeBtn();
+                    sellBoxView.TogglePositiveBtn(false);
+                    sellBoxView.ToggleNegativeBtn(false);
                     eventService.onItemRemove.InvokeEvent(sellBoxModel.itemName);
                 }
                 inventoryService.SetItemQuantity(sellBoxModel.itemQuantity);

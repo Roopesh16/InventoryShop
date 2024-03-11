@@ -1,7 +1,7 @@
 using InventoryShop.Managers;
-using TMPro;
-using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine;
+using TMPro;
 
 namespace InventoryShop.Shop.BuyBox
 {
@@ -45,7 +45,7 @@ namespace InventoryShop.Shop.BuyBox
             gameObject.SetActive(false);
             countText.text = itemCount.ToString();
             UpdateBuyCounter(itemCount, itemCount);
-            DisableNegativeBtn();
+            ToggleNegativeBtn(false);
         }
         public void SetBuyBoxController(BuyBoxController buyBoxController) => this.buyBoxController = buyBoxController;
 
@@ -63,9 +63,9 @@ namespace InventoryShop.Shop.BuyBox
 
         public void OnYesClick()
         {
-            if(GameManager.Instance.ValidateBuyTransaction(itemCount, totalCost))
+            if (GameManager.Instance.ValidateBuyTransaction(itemCount, totalCost))
                 buyBoxController.ResetItemCounter(true);
-            
+
             gameObject.SetActive(false);
         }
 
@@ -75,13 +75,9 @@ namespace InventoryShop.Shop.BuyBox
             buyBoxController.ResetItemCounter(false);
         }
 
-        public void EnableNegativeBtn() => negativeBtn.interactable = true;
+        public void ToggleNegativeBtn(bool isActive) => negativeBtn.interactable = isActive;
 
-        public void EnablePositiveBtn() => positiveBtn.interactable = true;
-
-        public void DisablePositiveBtn() => positiveBtn.interactable = false;
-
-        public void DisableNegativeBtn() => negativeBtn.interactable = false;
+        public void TogglePositiveBtn(bool isActive) => positiveBtn.interactable = isActive;
 
         public void EnableBuyBox() => gameObject.SetActive(true);
 

@@ -2,8 +2,6 @@ public interface ICountBtnClick
 {
     void OnNegativeBtnClick();
     void OnPositiveBtnClick();
-    void EnableNegativeBtn();
-    void EnablePositiveBtn();
-    void DisablePositiveBtn();
-    void DisableNegativeBtn();
+    void ToggleNegativeBtn(bool isActive);
+    void TogglePositiveBtn(bool isActive);
 }

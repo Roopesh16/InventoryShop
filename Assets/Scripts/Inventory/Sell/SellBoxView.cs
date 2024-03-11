@@ -45,7 +45,7 @@ namespace InventoryShop.Inventory.SellBox
             gameObject.SetActive(false);
             countText.text = itemCount.ToString();
             UpdateSellCounter(itemCount, itemCount);
-            DisableNegativeBtn();
+            ToggleNegativeBtn(false);
         }
         public void SetSellBoxController(SellBoxController buyBoxController) => this.buyBoxController = buyBoxController;
 
@@ -63,8 +63,11 @@ namespace InventoryShop.Inventory.SellBox
 
         public void OnYesClick()
         {
-            if(GameManager.Instance.ValidateSellTransaction(itemCount, totalCost))
-                buyBoxController.ResetItemCounter(true);
+            // if(GameManager.Instance.ValidateSellTransaction(itemCount, totalCost))
+            //     buyBoxController.ResetItemCounter(true);
+            gameObject.SetActive(false);
+            buyBoxController.ResetItemCounter(false);
+
         }
 
         public void OnNoClick()
@@ -73,13 +76,9 @@ namespace InventoryShop.Inventory.SellBox
             buyBoxController.ResetItemCounter(false);
         }
 
-        public void EnableNegativeBtn() => negativeBtn.interactable = true;
+        public void ToggleNegativeBtn(bool isActive) => negativeBtn.interactable = isActive;
 
-        public void EnablePositiveBtn() => positiveBtn.interactable = true;
-
-        public void DisablePositiveBtn() => positiveBtn.interactable = false;
-
-        public void DisableNegativeBtn() => negativeBtn.interactable = false;
+        public void TogglePositiveBtn(bool isActive) => positiveBtn.interactable = isActive;
 
         public void EnableSellBox() => gameObject.SetActive(true);
 
