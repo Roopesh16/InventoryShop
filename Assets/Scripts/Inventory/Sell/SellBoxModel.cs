@@ -21,7 +21,7 @@ namespace InventoryShop.Inventory.SellBox
             this.itemCount = itemCount;
         }
 
-        public void SetBuyBoxController(SellBoxController sellBoxController) => this.sellBoxController = sellBoxController;
+        public void SetSellBoxController(SellBoxController sellBoxController) => this.sellBoxController = sellBoxController;
 
         public void SetItemData(int itemSellCost, int itemQuantity)
         {
