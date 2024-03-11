@@ -75,6 +75,9 @@ namespace InventoryShop.Services
                     }
                 }
             }
+
+            if(inventoryItemSpawned.Count!=0)
+                eventService.onItemAdded.InvokeEvent(false);
         }
 
         public void UnselectRestItems(ItemController selectedItem)

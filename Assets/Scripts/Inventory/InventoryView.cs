@@ -39,7 +39,11 @@ namespace InventoryShop.Inventory
 
         #region --------- Private Methods ---------
         // private void EnableBuyBox() => shopService.SetBuyItemData(itemBuyCost, itemQuantity);
-        private void SubscribeToEvent() => eventService.OnItemClick.AddListener(DisplayItemInfo);
+        private void SubscribeToEvent()
+        {
+            eventService.OnItemClick.AddListener(DisplayItemInfo);
+            eventService.onItemAdded.AddListener(DisableEmptyBox);
+        }
         #endregion ------------------
 
         #region --------- Public Methods ---------
@@ -70,6 +74,8 @@ namespace InventoryShop.Inventory
         }
 
         public void DisableDescription() => descriptionBox.SetActive(false);
+
+        public void DisableEmptyBox(bool isActive) => emptyTextObject.SetActive(isActive);
         #endregion ------------------
     }
 }
