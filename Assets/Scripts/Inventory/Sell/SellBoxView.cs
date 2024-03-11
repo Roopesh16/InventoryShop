@@ -63,11 +63,9 @@ namespace InventoryShop.Inventory.SellBox
 
         public void OnYesClick()
         {
-            // if(GameManager.Instance.ValidateSellTransaction(itemCount, totalCost))
-            //     buyBoxController.ResetItemCounter(true);
+            if(GameManager.Instance.ValidateSellTransaction(itemCount, totalCost))
+                buyBoxController.ResetItemCounter(true);
             gameObject.SetActive(false);
-            buyBoxController.ResetItemCounter(false);
-
         }
 
         public void OnNoClick()
