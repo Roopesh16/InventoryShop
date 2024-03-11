@@ -65,6 +65,8 @@ namespace InventoryShop.Shop.BuyBox
         {
             if(GameManager.Instance.ValidateBuyTransaction(itemCount, totalCost))
                 buyBoxController.ResetItemCounter(true);
+            
+            gameObject.SetActive(false);
         }
 
         public void OnNoClick()
