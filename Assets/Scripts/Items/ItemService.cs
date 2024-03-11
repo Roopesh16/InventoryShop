@@ -55,30 +55,29 @@ namespace InventoryShop.Services
 
         public void AddInventoryItems(string itemName, int quantity)
         {
-            if (inventoryItemSpawned.Count != 0)
+
+            // Check if item exists
+            foreach (ItemController item in inventoryItemSpawned)
             {
-                foreach (ItemController item in inventoryItemSpawned)
+                if (item.GetItemName() == itemName)
                 {
-                    if (item.GetItemName() == itemName)
-                    {
-                        item.IncrementItemQuantity(quantity);
-                    }
+                    item.IncrementItemQuantity(quantity);
+                    return;
                 }
             }
-            else
-            {
-                foreach (ItemScriptableObject item in itemsList)
-                {
-                    if (itemName == item.itemName)
-                    {
-                        ItemController itemController = new(eventService, this, item, itemPrefab, inventoryGridTransform, quantity);
 
-                        if (inventoryItemSpawned.Count == 0)
-                            inventoryService.DisableEmptyBox();
-                            
-                        inventoryItemSpawned.Add(itemController);
-                        UIManager.Instance.SetNotificationText(itemName + " ADDED!");
-                    }
+            // If not, add new item
+            foreach (ItemScriptableObject item in itemsList)
+            {
+                if (itemName == item.itemName)
+                {
+                    ItemController itemController = new(eventService, this, item, itemPrefab, inventoryGridTransform, quantity);
+
+                    if (inventoryItemSpawned.Count == 0)
+                        inventoryService.DisableEmptyBox();
+
+                    inventoryItemSpawned.Add(itemController);
+                    UIManager.Instance.SetNotificationText(itemName + " ADDED!");
                 }
             }
         }
