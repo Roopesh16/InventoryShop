@@ -66,7 +66,7 @@ namespace InventoryShop.Services
         {
             GameManager.Instance.Init(playerService, itemService);
             UIManager.Instance.Init(playerService);
-            itemService.Init(eventService);
+            itemService.Init(eventService,inventoryService);
             shopService.Init(eventService, itemService, itemsList);
             inventoryService.Init(eventService, itemService);
         }

@@ -42,7 +42,6 @@ namespace InventoryShop.Inventory
         private void SubscribeToEvent()
         {
             eventService.OnItemClick.AddListener(DisplayItemInfo);
-            eventService.onItemAdded.AddListener(DisableEmptyBox);
         }
         #endregion ------------------
 
@@ -74,8 +73,7 @@ namespace InventoryShop.Inventory
         }
 
         public void DisableDescription() => descriptionBox.SetActive(false);
-
-        public void DisableEmptyBox(bool isActive) => emptyTextObject.SetActive(isActive);
+        public void ToggleEmptyBox(bool isActive) => emptyTextObject.SetActive(isActive);
         #endregion ------------------
     }
 }

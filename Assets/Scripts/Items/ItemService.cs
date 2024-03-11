@@ -19,6 +19,7 @@ namespace InventoryShop.Services
         private Transform inventoryGridTransform;
 
         private EventService eventService;
+        private InventoryService inventoryService;
         #endregion ------------------
 
         #region --------- Public Variables ---------
@@ -37,9 +38,10 @@ namespace InventoryShop.Services
             this.inventoryGridTransform = inventoryGridTransform;
         }
 
-        public void Init(EventService eventService)
+        public void Init(EventService eventService, InventoryService inventoryService)
         {
             this.eventService = eventService;
+            this.inventoryService = inventoryService;
         }
 
         public void SpawnShopItems()
@@ -70,14 +72,15 @@ namespace InventoryShop.Services
                     if (itemName == item.itemName)
                     {
                         ItemController itemController = new(eventService, this, item, itemPrefab, inventoryGridTransform, quantity);
+
+                        if (inventoryItemSpawned.Count == 0)
+                            inventoryService.DisableEmptyBox();
+                            
                         inventoryItemSpawned.Add(itemController);
                         UIManager.Instance.SetNotificationText(itemName + " ADDED!");
                     }
                 }
             }
-
-            if(inventoryItemSpawned.Count!=0)
-                eventService.onItemAdded.InvokeEvent(false);
         }
 
         public void UnselectRestItems(ItemController selectedItem)
