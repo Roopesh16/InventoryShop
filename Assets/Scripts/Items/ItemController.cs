@@ -60,7 +60,7 @@ namespace InventoryShop.Items
             if (UIManager.Instance.GetShopActive())
                 GameManager.Instance.SendShopItemData(itemModel.itemName, itemModel.itemIcon, itemModel.itemDescription, itemModel.itemBuyPrice, itemModel.itemQuantity);
             else
-                GameManager.Instance.SendInventoryItemData(itemModel.itemName, itemModel.itemIcon, itemModel.itemDescription, itemModel.itemBuyPrice, itemModel.itemQuantity);
+                GameManager.Instance.SendInventoryItemData(itemModel.itemName, itemModel.itemIcon, itemModel.itemDescription, itemModel.itemSellPrice, itemModel.itemQuantity);
         }
 
         public void SelectCurrentItem()
