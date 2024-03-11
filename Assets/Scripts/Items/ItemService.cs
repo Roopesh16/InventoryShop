@@ -78,7 +78,7 @@ namespace InventoryShop.Services
                         inventoryService.DisableEmptyBox();
 
                     inventoryItemSpawned.Add(itemController);
-                    inventoryService.AddInventoryItem(item);
+                    inventoryService.AddInventoryItem(item,quantity);
                     UIManager.Instance.SetNotificationText(itemName + " ADDED!");
                 }
             }

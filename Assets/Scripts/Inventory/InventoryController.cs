@@ -41,7 +41,7 @@ namespace InventoryShop.Inventory
         public void DisableDescription() => inventoryView.DisableDescription();
         public void DisableEmptyBox() => inventoryView.ToggleEmptyBox(false);
         public void SetItemQuantity(int index, int quantity) => inventoryModel.SetItemQuantity(index, quantity);
-        public void AddItemData(ItemScriptableObject item) => inventoryModel.AddInventoryData(item);
+        public void AddItemData(ItemScriptableObject item,int quantity) => inventoryModel.AddInventoryData(item,quantity);
         #endregion ------------------
     }
 }

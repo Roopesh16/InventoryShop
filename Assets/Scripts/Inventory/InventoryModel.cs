@@ -44,14 +44,14 @@ namespace InventoryShop.Inventory
             }
         }
 
-        public void AddInventoryData(ItemScriptableObject item)
+        public void AddInventoryData(ItemScriptableObject item, int quantity)
         {
             ItemData itemData = new()
             {
                 itemName = item.itemName,
                 itemType = item.itemType,
                 itemRarity = item.itemRarity,
-                itemQuantity = item.itemQuantity,
+                itemQuantity = quantity,
                 itemSellPrice = item.itemSellPrice,
                 itemWeight = item.itemWeight
             };
