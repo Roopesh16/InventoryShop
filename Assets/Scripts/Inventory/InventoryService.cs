@@ -3,6 +3,7 @@ using InventoryShop.Services.Events;
 using InventoryShop.Inventory;
 using UnityEngine;
 using UnityEngine.UI;
+using InventoryShop.ScriptableObjects;
 
 namespace InventoryShop.Services
 {
@@ -50,6 +51,7 @@ namespace InventoryShop.Services
         public void DisableDescription() => inventoryController.DisableDescription();
         public void DisableEmptyBox() => inventoryController.DisableEmptyBox();
         public void SetItemQuantity(int quantity) => inventoryController.SetItemQuantity(itemService.InventorySelectedIndex, quantity);
+        public void AddInventoryItem(ItemScriptableObject item) => inventoryController.AddItemData(item);
         #endregion ------------------
     }
 }
