@@ -83,14 +83,14 @@ namespace InventoryShop.Managers
 
         }
 
-        public void SendShopItemData(string name, Sprite icon, string description, int buyCost, int quantity)
+        public void SendShopItemData(string name, Sprite icon, string description, int buyCost, int quantity, float weight)
         {
-            shopService.DisplayItemInfo(name, icon, description, buyCost, quantity);
+            shopService.DisplayItemInfo(name, icon, description, buyCost, quantity, weight);
         }
 
-        public void SendInventoryItemData(string name, Sprite icon, string description, int buyCost, int quantity)
+        public void SendInventoryItemData(string name, Sprite icon, string description, int buyCost, int quantity,float weight)
         {
-            inventoryService.DisplayItemInfo(name, icon, description, buyCost, quantity);
+            inventoryService.DisplayItemInfo(name, icon, description, buyCost, quantity,weight);
         }
 
         public void DisplayTypeItem(ItemType itemType) => itemService.DisplayType(itemType);

@@ -11,6 +11,7 @@ namespace InventoryShop.Shop.BuyBox
         public int itemCount;
         public int itemBuyCost;
         public int itemQuantity;
+        public float itemWeight;
         #endregion ------------------
 
         #region --------- Private Methods ---------
@@ -24,11 +25,12 @@ namespace InventoryShop.Shop.BuyBox
 
         public void SetBuyBoxController(BuyBoxController buyBoxController) => this.buyBoxController = buyBoxController;
 
-        public void SetItemData(string itemName,int itemBuyCost, int itemQuantity)
+        public void SetItemData(string itemName,int itemBuyCost, int itemQuantity,float itemWeight)
         {
             this.itemName = itemName;
             this.itemBuyCost = itemBuyCost;
             this.itemQuantity = itemQuantity;
+            this.itemWeight = itemWeight;
         }
         #endregion ------------------
     }

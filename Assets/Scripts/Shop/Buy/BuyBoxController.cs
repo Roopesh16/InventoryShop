@@ -58,9 +58,9 @@ namespace InventoryShop.Shop.BuyBox
             buyBoxView.UpdateBuyCounter(buyBoxModel.itemCount, buyBoxModel.itemBuyCost);
         }
 
-        public void SetBuyItemData(string itemName, int itemBuyCost, int itemQuantity)
+        public void SetBuyItemData(string itemName, int itemBuyCost, int itemQuantity,float itemWeight)
         {
-            buyBoxModel.SetItemData(itemName, itemBuyCost, itemQuantity);
+            buyBoxModel.SetItemData(itemName, itemBuyCost, itemQuantity,itemWeight);
             buyBoxView.EnableBuyBox();
         }
 

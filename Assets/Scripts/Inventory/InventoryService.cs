@@ -42,9 +42,9 @@ namespace InventoryShop.Services
             InitializeVariables();
         }
 
-        public void DisplayItemInfo(string name, Sprite icon, string description, int buyCost, int quantity)
+        public void DisplayItemInfo(string name, Sprite icon, string description, int buyCost, int quantity, float weight)
         {
-            inventoryView.DisplayItemInfo(name, icon, description, buyCost, quantity);
+            inventoryView.DisplayItemInfo(name, icon, description, buyCost, quantity, weight);
         }
 
         public void SetSellItemData(string itemName, int itemSellCost, int itemQuantity) => sellBoxController.SetSellItemData(itemName, itemSellCost, itemQuantity);

@@ -28,6 +28,7 @@ namespace InventoryShop.Inventory
         private string itemName;
         private int itemSellCost;
         private int itemQuantity;
+        private float itemWeight;
         #endregion ------------------
 
         #region --------- Public Variables ---------
@@ -57,7 +58,7 @@ namespace InventoryShop.Inventory
             descriptionBox.SetActive(false);
         }
 
-        public void DisplayItemInfo(string itemName, Sprite itemIcon, string itemDescription, int itemSellCost, int itemQuantity)
+        public void DisplayItemInfo(string itemName, Sprite itemIcon, string itemDescription, int itemSellCost, int itemQuantity,float itemWeight)
         {
             descriptionBox.SetActive(true);
             itemNameText.text = itemName;
@@ -68,6 +69,7 @@ namespace InventoryShop.Inventory
             this.itemName = itemName;
             this.itemSellCost = itemSellCost;
             this.itemQuantity = itemQuantity;
+            this.itemWeight = itemWeight;
         }
 
         public void SetInventoryController(InventoryController inventoryController)

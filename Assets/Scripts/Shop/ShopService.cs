@@ -43,12 +43,12 @@ namespace InventoryShop.Services
             InitializeVariables(shopItems);
         }
 
-        public void DisplayItemInfo(string name, Sprite icon, string description, int buyCost, int quantity)
+        public void DisplayItemInfo(string name, Sprite icon, string description, int buyCost, int quantity,float weight)
         {
-            shopView.DisplayItemInfo(name, icon, description, buyCost, quantity);
+            shopView.DisplayItemInfo(name, icon, description, buyCost, quantity,weight);
         }
 
-        public void SetBuyItemData(string itemName, int itemBuyCost, int itemQuantity) => buyBoxController.SetBuyItemData(itemName, itemBuyCost, itemQuantity);
+        public void SetBuyItemData(string itemName, int itemBuyCost, int itemQuantity,float itemWeight) => buyBoxController.SetBuyItemData(itemName, itemBuyCost, itemQuantity,itemWeight);
         public void DisableDescription() => shopController.DisableDescription();
         public void SetItemQuantity(int quantity) => shopController.SetItemQuantity(itemService.ShopSelectedIndex, quantity);
         #endregion ------------------
