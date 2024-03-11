@@ -23,7 +23,8 @@ namespace InventoryShop.Services
         #endregion ------------------
 
         #region --------- Public Variables ---------
-        public int SelectedIndex { get; private set; }
+        public int ShopSelectedIndex { get; private set; }
+        public int InventorySelectedIndex { get; private set; }
         #endregion ------------------
 
         #region --------- Private Methods ---------
@@ -84,9 +85,9 @@ namespace InventoryShop.Services
 
         public void RemoveInventoryItem(string itemName)
         {
-            foreach(ItemController item in inventoryItemSpawned)
+            foreach (ItemController item in inventoryItemSpawned)
             {
-                if(item.GetItemName() == itemName)
+                if (item.GetItemName() == itemName)
                 {
                     item.DestroyItemView();
                     inventoryItemSpawned.Remove(item);
@@ -106,13 +107,25 @@ namespace InventoryShop.Services
             }
         }
 
-        public void UpdateSelectedItem(int quantity)
+        public void UpdateShopSelectedItem(int quantity)
         {
             for (int i = 0; i < shopItemSpawned.Count; i++)
             {
                 if (shopItemSpawned[i].IsSelected)
                 {
-                    SelectedIndex = i;
+                    ShopSelectedIndex = i;
+                    shopItemSpawned[i].DecrementItemQuantity(quantity);
+                }
+            }
+        }
+
+        public void UpdateInventorySelectedItem(int quantity)
+        {
+            for (int i = 0; i < inventoryItemSpawned.Count; i++)
+            {
+                if (shopItemSpawned[i].IsSelected)
+                {
+                    InventorySelectedIndex = i;
                     shopItemSpawned[i].DecrementItemQuantity(quantity);
                 }
             }
