@@ -27,6 +27,7 @@ namespace InventoryShop.Inventory
         #endregion ------------------
 
         #region --------- Private Methods ---------
+
         #endregion ------------------
 
         #region --------- Public Methods ---------
@@ -56,6 +57,18 @@ namespace InventoryShop.Inventory
             };
 
             itemDataList.Add(itemData);
+        }
+
+        public void RemoveItemData(string itemName)
+        {
+            foreach (ItemData itemData in itemDataList)
+            {
+                if (itemData.itemName == itemName)
+                {
+                    itemDataList.Remove(itemData);
+                    return;
+                }
+            }
         }
         #endregion ------------------
     }

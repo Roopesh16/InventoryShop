@@ -1,4 +1,5 @@
 using InventoryShop.Services;
+using InventoryShop.Services.Events;
 
 namespace InventoryShop.Inventory.SellBox
 {
@@ -6,6 +7,7 @@ namespace InventoryShop.Inventory.SellBox
     {
         #region --------- Private Variables ---------
         private InventoryService inventoryService;
+        private EventService eventService;
 
         private SellBoxModel sellBoxModel;
         private SellBoxView sellBoxView;
@@ -20,9 +22,10 @@ namespace InventoryShop.Inventory.SellBox
         #endregion ------------------
 
         #region --------- Public Methods ---------
-        public SellBoxController(SellBoxView sellBoxView, InventoryService inventoryService)
+        public SellBoxController(SellBoxView sellBoxView, InventoryService inventoryService, EventService eventService)
         {
             this.inventoryService = inventoryService;
+            this.eventService = eventService;
 
             sellBoxModel = new(itemCount);
             sellBoxModel.SetSellBoxController(this);
@@ -56,15 +59,15 @@ namespace InventoryShop.Inventory.SellBox
             sellBoxView.UpdateSellCounter(sellBoxModel.itemCount, sellBoxModel.itemSellCost);
         }
 
-        public void SetSellItemData(int itemSellCost, int itemQuantity)
+        public void SetSellItemData(string itemName, int itemSellCost, int itemQuantity)
         {
-            sellBoxModel.SetItemData(itemSellCost, itemQuantity);
+            sellBoxModel.SetItemData(itemName, itemSellCost, itemQuantity);
             sellBoxView.EnableSellBox();
         }
 
-        public void ResetItemCounter(bool hasBought)
+        public void ResetItemCounter(bool hasSold)
         {
-            if (hasBought)
+            if (hasSold)
             {
                 sellBoxModel.itemQuantity -= sellBoxModel.itemCount;
                 if (sellBoxModel.itemQuantity <= 0)
@@ -73,6 +76,7 @@ namespace InventoryShop.Inventory.SellBox
                     inventoryService.DisableDescription();
                     sellBoxView.DisablePositiveBtn();
                     sellBoxView.DisableNegativeBtn();
+                    eventService.onItemRemove.InvokeEvent(sellBoxModel.itemName);
                 }
                 inventoryService.SetItemQuantity(sellBoxModel.itemQuantity);
             }
