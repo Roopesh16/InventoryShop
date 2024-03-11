@@ -43,14 +43,14 @@ namespace InventoryShop.Services
             InitializeVariables(shopItems);
         }
 
-        public void DisplayItemInfo(string name,Sprite icon, string description,int buyCost,int quantity)
+        public void DisplayItemInfo(string name, Sprite icon, string description, int buyCost, int quantity)
         {
             shopView.DisplayItemInfo(name, icon, description, buyCost, quantity);
         }
 
         public void SetBuyItemData(string itemName, int itemBuyCost, int itemQuantity) => buyBoxController.SetBuyItemData(itemName, itemBuyCost, itemQuantity);
         public void DisableDescription() => shopController.DisableDescription();
-        public void SetItemQuantity(int quantity) => shopController.SetItemQuantity(itemService.SelectedIndex, quantity);
+        public void SetItemQuantity(int quantity) => shopController.SetItemQuantity(itemService.ShopSelectedIndex, quantity);
         #endregion ------------------
     }
 }
