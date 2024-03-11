@@ -46,10 +46,16 @@ namespace InventoryShop.Managers
             this.inventoryService = inventoryService;
         }
 
-        public bool ValidateBuyTransaction(int itemCount, int itemBuyCost)
+        public bool ValidateBuyTransaction(int itemCount, int itemBuyCost,float itemWeight)
         {
             if (itemCount == 0)
                 return false;
+
+            if(itemWeight + inventoryService.GetInventoryCurrentWeight() > inventoryService.GetInventoryMaxWeight())
+            {
+                UIManager.Instance.SetNotificationText("EXCEED WEIGHT!");
+                return false;
+            }
 
             if (playerService.GetCurrentMoney() == 0)
             {
