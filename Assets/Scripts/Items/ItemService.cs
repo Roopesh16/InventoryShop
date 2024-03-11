@@ -140,10 +140,10 @@ namespace InventoryShop.Services
         {
             for (int i = 0; i < inventoryItemSpawned.Count; i++)
             {
-                if (shopItemSpawned[i].IsSelected)
+                if (inventoryItemSpawned[i].IsSelected)
                 {
                     InventorySelectedIndex = i;
-                    shopItemSpawned[i].DecrementItemQuantity(quantity);
+                    inventoryItemSpawned[i].DecrementItemQuantity(quantity);
                 }
             }
         }
