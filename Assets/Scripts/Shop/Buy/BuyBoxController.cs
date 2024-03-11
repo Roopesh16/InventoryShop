@@ -1,4 +1,5 @@
 using InventoryShop.Services;
+using InventoryShop.Managers;
 
 namespace InventoryShop.Shop.BuyBox
 {
@@ -58,9 +59,9 @@ namespace InventoryShop.Shop.BuyBox
             buyBoxView.UpdateBuyCounter(buyBoxModel.itemCount, buyBoxModel.itemBuyCost);
         }
 
-        public void SetBuyItemData(string itemName, int itemBuyCost, int itemQuantity,float itemWeight)
+        public void SetBuyItemData(string itemName, int itemBuyCost, int itemQuantity, float itemWeight)
         {
-            buyBoxModel.SetItemData(itemName, itemBuyCost, itemQuantity,itemWeight);
+            buyBoxModel.SetItemData(itemName, itemBuyCost, itemQuantity, itemWeight);
             buyBoxView.EnableBuyBox();
         }
 
@@ -82,6 +83,14 @@ namespace InventoryShop.Shop.BuyBox
 
             buyBoxModel.itemCount = 0;
             buyBoxView.UpdateBuyCounter(buyBoxModel.itemCount, buyBoxModel.itemBuyCost);
+        }
+
+        public void ValidateBuyTransaction()
+        {
+            if (GameManager.Instance.ValidateBuyTransaction(buyBoxModel.itemCount,
+                                                            buyBoxModel.itemCount*buyBoxModel.itemBuyCost,
+                                                            buyBoxModel.itemCount*buyBoxModel.itemWeight))
+                ResetItemCounter(true);
         }
         #endregion ------------------
     }

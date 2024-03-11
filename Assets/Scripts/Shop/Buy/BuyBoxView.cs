@@ -63,16 +63,15 @@ namespace InventoryShop.Shop.BuyBox
 
         public void OnYesClick()
         {
-            if (GameManager.Instance.ValidateBuyTransaction(itemCount, totalCost))
-                buyBoxController.ResetItemCounter(true);
 
+            buyBoxController.ValidateBuyTransaction();
             gameObject.SetActive(false);
         }
 
         public void OnNoClick()
         {
-            gameObject.SetActive(false);
             buyBoxController.ResetItemCounter(false);
+            gameObject.SetActive(false);
         }
 
         public void ToggleNegativeBtn(bool isActive) => negativeBtn.interactable = isActive;
