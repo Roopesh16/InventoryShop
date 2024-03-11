@@ -20,8 +20,11 @@ public class ShopView : MonoBehaviour
     private EventService eventService;
     private ShopService shopService;
     private ShopController shopController;
+
+    private string itemName;
     private int itemBuyCost;
     private int itemQuantity;
+    private float itemWeight;
     #endregion ------------------
 
     #region --------- Public Variables ---------
@@ -35,21 +38,21 @@ public class ShopView : MonoBehaviour
     #endregion ------------------
 
     #region --------- Private Methods ---------
-    private void EnableBuyBox() => shopService.SetBuyItemData(itemBuyCost, itemQuantity);
-    private void SubscribeToEvent() => eventService.OnItemClick.AddListener(DisplayItemInfo);
+    private void EnableBuyBox() => shopService.SetBuyItemData(itemName, itemBuyCost, itemQuantity,itemWeight);
+    // private void SubscribeToEvent;
     #endregion ------------------
 
     #region --------- Public Methods ---------
-    public void SetupShopView(EventService eventService,ShopService shopService)
+    public void SetupShopView(EventService eventService, ShopService shopService)
     {
         this.eventService = eventService;
         this.shopService = shopService;
-        
-        SubscribeToEvent();
+
+        // SubscribeToEvent();
         descriptionBox.SetActive(false);
     }
 
-    public void DisplayItemInfo(string itemName, Sprite itemIcon, string itemDescription, int itemBuyCost, int itemQuantity)
+    public void DisplayItemInfo(string itemName, Sprite itemIcon, string itemDescription, int itemBuyCost, int itemQuantity, float itemWeight)
     {
         descriptionBox.SetActive(true);
         itemNameText.text = itemName;
@@ -57,8 +60,10 @@ public class ShopView : MonoBehaviour
         itemDesctiptionText.text = itemDescription;
         itemBuyText.text = itemBuyCost.ToString();
 
+        this.itemName = itemName;
         this.itemBuyCost = itemBuyCost;
         this.itemQuantity = itemQuantity;
+        this.itemWeight = itemWeight;
     }
 
     public void SetShopController(ShopController shopController)

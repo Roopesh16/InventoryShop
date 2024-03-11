@@ -3,9 +3,9 @@ using UnityEngine.UI;
 using UnityEngine;
 using TMPro;
 
-namespace InventoryShop.Shop.BuyBox
+namespace InventoryShop.Inventory.SellBox
 {
-    public class BuyBoxView : MonoBehaviour, ICountBtnClick, IItemTransfer
+    public class SellBoxView : MonoBehaviour, ICountBtnClick, IItemTransfer
     {
         #region --------- Serialized Variables ---------
         [SerializeField] private Button negativeBtn;
@@ -13,11 +13,11 @@ namespace InventoryShop.Shop.BuyBox
         [SerializeField] private Button yesButton;
         [SerializeField] private Button noButton;
         [SerializeField] private TextMeshProUGUI countText;
-        [SerializeField] private TextMeshProUGUI itemBuyText;
+        [SerializeField] private TextMeshProUGUI itemSellText;
         #endregion ------------------
 
         #region --------- Private Variables ---------
-        private BuyBoxController buyBoxController;
+        private SellBoxController buyBoxController;
         private int itemCount;
         private int totalCost;
         #endregion ------------------
@@ -40,45 +40,45 @@ namespace InventoryShop.Shop.BuyBox
         #endregion ------------------
 
         #region --------- Public Methods ---------
-        public void SetBuyBoxView(int itemCount)
+        public void SetSellBoxView(int itemCount)
         {
             gameObject.SetActive(false);
             countText.text = itemCount.ToString();
-            UpdateBuyCounter(itemCount, itemCount);
+            UpdateSellCounter(itemCount, itemCount);
             ToggleNegativeBtn(false);
         }
-        public void SetBuyBoxController(BuyBoxController buyBoxController) => this.buyBoxController = buyBoxController;
+        public void SetSellBoxController(SellBoxController buyBoxController) => this.buyBoxController = buyBoxController;
 
         public void OnNegativeBtnClick() => buyBoxController.DecrementItemCount();
 
         public void OnPositiveBtnClick() => buyBoxController.IncrementItemCount();
 
-        public void UpdateBuyCounter(int itemCount, int itemBuyCost)
+        public void UpdateSellCounter(int itemCount, int itemSellCost)
         {
             this.itemCount = itemCount;
-            totalCost = itemCount * itemBuyCost;
+            totalCost = itemCount * itemSellCost;
             countText.text = itemCount.ToString();
-            itemBuyText.text = totalCost.ToString();
+            itemSellText.text = totalCost.ToString();
         }
 
         public void OnYesClick()
         {
-
-            buyBoxController.ValidateBuyTransaction();
+            if(GameManager.Instance.ValidateSellTransaction(itemCount, totalCost))
+                buyBoxController.ResetItemCounter(true);
             gameObject.SetActive(false);
         }
 
         public void OnNoClick()
         {
-            buyBoxController.ResetItemCounter(false);
             gameObject.SetActive(false);
+            buyBoxController.ResetItemCounter(false);
         }
 
         public void ToggleNegativeBtn(bool isActive) => negativeBtn.interactable = isActive;
 
         public void TogglePositiveBtn(bool isActive) => positiveBtn.interactable = isActive;
 
-        public void EnableBuyBox() => gameObject.SetActive(true);
+        public void EnableSellBox() => gameObject.SetActive(true);
 
         #endregion ------------------
     }

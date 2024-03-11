@@ -1,7 +1,6 @@
 using UnityEngine.UI;
 using UnityEngine;
 using TMPro;
-using System;
 
 namespace InventoryShop.Items
 {
@@ -37,8 +36,21 @@ namespace InventoryShop.Items
         #region --------- Public Methods ---------
         public void SetItemView(Sprite itemIcon, int itemQuantity)
         {
-            itemImage.sprite = itemIcon;
-            quantityText.text = "x" + itemQuantity;
+            if (itemImage != null)
+                itemImage.sprite = itemIcon;
+            else
+            {
+                itemImage = GetComponent<Image>();
+                itemImage.sprite = itemIcon;
+            }
+
+            if (quantityText != null)
+                quantityText.text = "x" + itemQuantity.ToString();
+            else
+            {
+                quantityText = GetComponentInChildren<TextMeshProUGUI>();
+                quantityText.text = "x" + itemQuantity.ToString();
+            }
         }
 
         public void SetItemController(ItemController itemController) => this.itemController = itemController;

@@ -73,7 +73,7 @@ namespace InventoryShop.Managers
         public void Init(PlayerService playerService)
         {
             this.playerService = playerService;
-            
+
             SetPanelActive();
             notificationText.gameObject.SetActive(false);
             SetCurrentMoney(this.playerService.GetCurrentMoney());
@@ -87,6 +87,7 @@ namespace InventoryShop.Managers
         }
 
         public void SetCurrentMoney(int money) => moneyText.text = money.ToString();
+        public bool GetShopActive() => isShopActive;
 
         #endregion ------------------
     }

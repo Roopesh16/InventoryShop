@@ -1,4 +1,5 @@
 using InventoryShop.Services;
+using InventoryShop.Managers;
 
 namespace InventoryShop.Shop.BuyBox
 {
@@ -6,6 +7,7 @@ namespace InventoryShop.Shop.BuyBox
     {
         #region --------- Private Variables ---------
         private ShopService shopService;
+        private ItemService itemService;
 
         private BuyBoxModel buyBoxModel;
         private BuyBoxView buyBoxView;
@@ -20,9 +22,10 @@ namespace InventoryShop.Shop.BuyBox
         #endregion ------------------
 
         #region --------- Public Methods ---------
-        public BuyBoxController(BuyBoxView buyBoxView, ShopService shopService)
+        public BuyBoxController(BuyBoxView buyBoxView, ShopService shopService, ItemService itemService)
         {
             this.shopService = shopService;
+            this.itemService = itemService;
 
             buyBoxModel = new(itemCount);
             buyBoxModel.SetBuyBoxController(this);
@@ -35,11 +38,11 @@ namespace InventoryShop.Shop.BuyBox
         public void IncrementItemCount()
         {
             buyBoxModel.itemCount++;
-            buyBoxView.EnableNegativeBtn();
+            buyBoxView.ToggleNegativeBtn(true);
             if (buyBoxModel.itemCount >= buyBoxModel.itemQuantity)
             {
                 buyBoxModel.itemCount = buyBoxModel.itemQuantity;
-                buyBoxView.DisablePositiveBtn();
+                buyBoxView.TogglePositiveBtn(false);
             }
             buyBoxView.UpdateBuyCounter(buyBoxModel.itemCount, buyBoxModel.itemBuyCost);
         }
@@ -47,18 +50,18 @@ namespace InventoryShop.Shop.BuyBox
         public void DecrementItemCount()
         {
             buyBoxModel.itemCount--;
-            buyBoxView.EnablePositiveBtn();
+            buyBoxView.TogglePositiveBtn(true);
             if (buyBoxModel.itemCount <= 0)
             {
                 buyBoxModel.itemCount = 0;
-                buyBoxView.DisableNegativeBtn();
+                buyBoxView.ToggleNegativeBtn(false);
             }
             buyBoxView.UpdateBuyCounter(buyBoxModel.itemCount, buyBoxModel.itemBuyCost);
         }
 
-        public void SetBuyItemData(int itemBuyCost, int itemQuantity)
+        public void SetBuyItemData(string itemName, int itemBuyCost, int itemQuantity, float itemWeight)
         {
-            buyBoxModel.SetItemData(itemBuyCost, itemQuantity);
+            buyBoxModel.SetItemData(itemName, itemBuyCost, itemQuantity, itemWeight);
             buyBoxView.EnableBuyBox();
         }
 
@@ -71,14 +74,23 @@ namespace InventoryShop.Shop.BuyBox
                 {
                     buyBoxModel.itemQuantity = 0;
                     shopService.DisableDescription();
-                    buyBoxView.DisablePositiveBtn();
-                    buyBoxView.DisableNegativeBtn();
+                    buyBoxView.TogglePositiveBtn(false);
+                    buyBoxView.ToggleNegativeBtn(false);
                 }
                 shopService.SetItemQuantity(buyBoxModel.itemQuantity);
+                itemService.AddInventoryItems(buyBoxModel.itemName, buyBoxModel.itemCount);
             }
 
             buyBoxModel.itemCount = 0;
             buyBoxView.UpdateBuyCounter(buyBoxModel.itemCount, buyBoxModel.itemBuyCost);
+        }
+
+        public void ValidateBuyTransaction()
+        {
+            if (GameManager.Instance.ValidateBuyTransaction(buyBoxModel.itemCount,
+                                                            buyBoxModel.itemCount*buyBoxModel.itemBuyCost,
+                                                            buyBoxModel.itemCount*buyBoxModel.itemWeight))
+                ResetItemCounter(true);
         }
         #endregion ------------------
     }

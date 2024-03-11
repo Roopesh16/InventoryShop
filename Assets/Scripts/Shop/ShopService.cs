@@ -11,8 +11,8 @@ namespace InventoryShop.Services
     {
         #region --------- Private Variables ---------
         private ItemService itemService;
+        private EventService eventService;
 
-        private Transform shopGridTransform;
         private ShopView shopView;
         private BuyBoxView buyBoxView;
         private BuyBoxController buyBoxController;
@@ -20,18 +20,17 @@ namespace InventoryShop.Services
         #endregion ------------------
 
         #region --------- Private Methods ---------
-        private void InitializeVariables(EventService eventService, List<ItemScriptableObject> shopItems)
+        private void InitializeVariables(List<ItemScriptableObject> shopItems)
         {
-            itemService.SpawnItems(eventService, shopGridTransform);
+            itemService.SpawnShopItems();
             shopController = new(eventService, this, shopView, shopItems);
-            buyBoxController = new(buyBoxView, this);
+            buyBoxController = new(buyBoxView, this, itemService);
         }
         #endregion ------------------
 
         #region --------- Public Methods ---------
-        public ShopService(Transform shopGridTransform, ShopView shopView, BuyBoxView buyBoxView)
+        public ShopService(ShopView shopView, BuyBoxView buyBoxView)
         {
-            this.shopGridTransform = shopGridTransform;
             this.shopView = shopView;
             this.buyBoxView = buyBoxView;
         }
@@ -39,14 +38,19 @@ namespace InventoryShop.Services
         public void Init(EventService eventService, ItemService itemService, List<ItemScriptableObject> shopItems)
         {
             this.itemService = itemService;
+            this.eventService = eventService;
 
-            InitializeVariables(eventService, shopItems);
+            InitializeVariables(shopItems);
         }
 
-        public void SetBuyItemData(int itemBuyCost, int itemQuantity) => buyBoxController.SetBuyItemData(itemBuyCost, itemQuantity);
-        public void DisableDescription() => shopController.DisableDescription();
+        public void DisplayItemInfo(string name, Sprite icon, string description, int buyCost, int quantity,float weight)
+        {
+            shopView.DisplayItemInfo(name, icon, description, buyCost, quantity,weight);
+        }
 
-        public void SetItemQuantity(int quantity) => shopController.SetItemQuantity(itemService.SelectedIndex, quantity);
+        public void SetBuyItemData(string itemName, int itemBuyCost, int itemQuantity,float itemWeight) => buyBoxController.SetBuyItemData(itemName, itemBuyCost, itemQuantity,itemWeight);
+        public void DisableDescription() => shopController.DisableDescription();
+        public void SetItemQuantity(int quantity) => shopController.SetItemQuantity(itemService.ShopSelectedIndex, quantity);
         #endregion ------------------
     }
 }
