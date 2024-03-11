@@ -49,7 +49,7 @@ namespace InventoryShop.Services
         public void SetSellItemData(string itemName, int itemSellCost, int itemQuantity) => sellBoxController.SetSellItemData(itemName, itemSellCost, itemQuantity);
         public void DisableDescription() => inventoryController.DisableDescription();
         public void DisableEmptyBox() => inventoryController.DisableEmptyBox();
-        public void SetItemQuantity(int quantity) => inventoryController.SetItemQuantity(itemService.SelectedIndex, quantity);
+        public void SetItemQuantity(int quantity) => inventoryController.SetItemQuantity(itemService.InventorySelectedIndex, quantity);
         #endregion ------------------
     }
 }
