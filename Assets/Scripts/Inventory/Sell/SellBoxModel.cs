@@ -1,33 +1,33 @@
-namespace InventoryShop.Shop.BuyBox
+namespace InventoryShop.Inventory.SellBox
 {
     public class SellBoxModel
     {
-        // #region --------- Private Variables ---------
-        // private BuyBoxController buyBoxController;
-        // #endregion ------------------
+        #region --------- Private Variables ---------
+        private SellBoxController sellBoxController;
+        #endregion ------------------
 
-        // #region --------- Public Variables ---------
-        // public int itemCount;
-        // public int itemBuyCost;
-        // public int itemQuantity;
-        // #endregion ------------------
+        #region --------- Public Variables ---------
+        public int itemCount;
+        public int itemSellCost;
+        public int itemQuantity;
+        #endregion ------------------
 
-        // #region --------- Private Methods ---------
-        // #endregion ------------------
+        #region --------- Private Methods ---------
+        #endregion ------------------
 
-        // #region --------- Public Methods ---------
-        // public BuyBoxModel(int itemCount)
-        // {
-        //     this.itemCount = itemCount;
-        // }
+        #region --------- Public Methods ---------
+        public SellBoxModel(int itemCount)
+        {
+            this.itemCount = itemCount;
+        }
 
-        // public void SetBuyBoxController(BuyBoxController buyBoxController) => this.buyBoxController = buyBoxController;
+        public void SetBuyBoxController(SellBoxController sellBoxController) => this.sellBoxController = sellBoxController;
 
-        // public void SetItemData(int itemBuyCost, int itemQuantity)
-        // {
-        //     this.itemBuyCost = itemBuyCost;
-        //     this.itemQuantity = itemQuantity;
-        // }
-        // #endregion ------------------
+        public void SetItemData(int itemSellCost, int itemQuantity)
+        {
+            this.itemSellCost = itemSellCost;
+            this.itemQuantity = itemQuantity;
+        }
+        #endregion ------------------
     }
 }
