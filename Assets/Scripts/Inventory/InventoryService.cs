@@ -54,6 +54,10 @@ namespace InventoryShop.Services
         public void SetItemQuantity(int quantity) => inventoryController.SetItemQuantity(itemService.InventorySelectedIndex, quantity);
         public void AddInventoryItem(ItemScriptableObject item, int quantity) => inventoryController.AddItemData(item, quantity);
         public void RemoveInventoryItem(string itemName) => inventoryController.RemoveItemData(itemName);
+
+        public float GetInventoryMaxWeight() => inventoryController.GetMaxWeight();
+        public float GetInventoryCurrentWeight() => inventoryController.GetCurrentWeight();
+        public void IncreaseInventoryWeight(float weight) => inventoryController.IncreaseInventoryWeight(weight);
         #endregion ------------------
     }
 }

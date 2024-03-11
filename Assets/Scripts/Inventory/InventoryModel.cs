@@ -27,7 +27,8 @@ namespace InventoryShop.Inventory
         #endregion ------------------
 
         #region --------- Private Methods ---------
-
+        private const float maxWeight = 50f;
+        private float currentWeight = 0f;
         #endregion ------------------
 
         #region --------- Public Methods ---------
@@ -70,6 +71,10 @@ namespace InventoryShop.Inventory
 
             itemDataList.Add(itemData);
         }
+
+        public float GetMaxWeight() => maxWeight;
+        public float GetCurrentWeight() => currentWeight;
+        public void SetInventoryWeight(float weight) => currentWeight = weight;
         #endregion ------------------
     }
 }

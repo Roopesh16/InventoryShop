@@ -19,6 +19,7 @@ namespace InventoryShop.Inventory
         #endregion ------------------
 
         #region --------- Private Methods ---------
+
         #endregion ------------------
 
         #region --------- Public Methods ---------
@@ -36,8 +37,25 @@ namespace InventoryShop.Inventory
         public void DisableEmptyBox() => inventoryView.ToggleEmptyBox(false);
         public void EnableEmptyBox() => inventoryView.ToggleEmptyBox(true);
         public void SetItemQuantity(int index, int quantity) => inventoryModel.SetItemQuantity(index, quantity);
-        public void AddItemData(ItemScriptableObject item,int quantity) => inventoryModel.AddInventoryData(item,quantity);
+        public void AddItemData(ItemScriptableObject item, int quantity) => inventoryModel.AddInventoryData(item, quantity);
         public void RemoveItemData(string itemName) => inventoryModel.RemoveItemData(itemName);
+        public float GetMaxWeight() => inventoryModel.GetMaxWeight();
+        public float GetCurrentWeight() => inventoryModel.GetCurrentWeight();
+
+        public void IncreaseInventoryWeight(float weight)
+        {
+            inventoryModel.SetInventoryWeight(inventoryModel.GetCurrentWeight() + weight);
+        }
+
+        public void DecreaseInventoryWeight(float weight)
+        {
+            float newWeight = inventoryModel.GetCurrentWeight() - weight;
+
+            if (newWeight <= 0)
+                newWeight = 0;
+
+            inventoryModel.SetInventoryWeight(newWeight);
+        }
         #endregion ------------------
     }
 }
