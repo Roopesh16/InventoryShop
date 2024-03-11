@@ -28,7 +28,6 @@ namespace InventoryShop.Services
         #endregion ------------------
 
         #region --------- Private Methods ---------
-        private void SubscribeToEvents() => eventService.onItemRemove.AddListener(RemoveInventoryItem);
         #endregion ------------------
 
         #region --------- Public Methods ---------
@@ -78,7 +77,7 @@ namespace InventoryShop.Services
                         inventoryService.DisableEmptyBox();
 
                     inventoryItemSpawned.Add(itemController);
-                    inventoryService.AddInventoryItem(item,quantity);
+                    inventoryService.AddInventoryItem(item, quantity);
                     UIManager.Instance.SetNotificationText(itemName + " ADDED!");
                 }
             }
@@ -90,8 +89,7 @@ namespace InventoryShop.Services
             {
                 if (item.GetItemName() == itemName)
                 {
-                    item.DestroyItemView();
-                    inventoryItemSpawned.Remove(item);
+                    item.DisableItemView();
                     UIManager.Instance.SetNotificationText(itemName + " REMOVED!");
                 }
             }
