@@ -62,6 +62,16 @@ namespace InventoryShop.Managers
             return true;
         }
 
+        public void SendShopItemData(string name, Sprite icon, string description, int buyCost, int quantity)
+        {
+            shopService.DisplayItemInfo(name, icon, description, buyCost, quantity);
+        }
+
+        public void SendInventoryItemData(string name, Sprite icon, string description, int buyCost, int quantity)
+        {
+            inventoryService.DisplayItemInfo(name, icon, description, buyCost, quantity);
+        }
+
         public void DisplayTypeItem(ItemType itemType) => itemService.DisplayType(itemType);
         #endregion ------------------
     }
