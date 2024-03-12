@@ -17,6 +17,7 @@ namespace InventoryShop.Services
         private List<ItemController> inventoryItemSpawned = new();
         private Transform shopGridTransform;
         private Transform inventoryGridTransform;
+        private bool isFirst = true;
 
         private EventService eventService;
         private InventoryService inventoryService;
@@ -28,6 +29,17 @@ namespace InventoryShop.Services
         #endregion ------------------
 
         #region --------- Private Methods ---------
+        private void SubscribeToEvents() => eventService.OnResouceClick.AddListener(PopulateInventoryItems);
+        private void PopulateInventoryItems()
+        {
+            int count = Random.Range(1, 4);
+
+            for (int i = 0; i < count; i++)
+            {
+                AddInventoryItems();
+            }
+            if (isFirst) { isFirst = false; }
+        }
         #endregion ------------------
 
         #region --------- Public Methods ---------
@@ -43,6 +55,8 @@ namespace InventoryShop.Services
         {
             this.eventService = eventService;
             this.inventoryService = inventoryService;
+
+            SubscribeToEvents();
         }
 
         public void SpawnShopItems()
@@ -92,6 +106,29 @@ namespace InventoryShop.Services
                     inventoryService.AddInventoryItem(item, quantity);
                     UIManager.Instance.SetNotificationText(itemName + " ADDED!");
                 }
+            }
+        }
+
+        public void AddInventoryItems()
+        {
+            int quantity = Random.Range(1, 4);
+
+            if (isFirst)
+            {
+                int index = Random.Range(0, itemsList.Count);
+                ItemScriptableObject item = itemsList[index];
+                ItemController itemController = new(eventService, this, item, itemPrefab, inventoryGridTransform, quantity);
+
+                if (inventoryItemSpawned.Count == 0)
+                    inventoryService.DisableEmptyBox();
+
+                inventoryItemSpawned.Add(itemController);
+            }
+            else
+            {
+                int index = Random.Range(0, inventoryItemSpawned.Count);
+                ItemController item = inventoryItemSpawned[index];
+                item.IncrementItemQuantity(quantity);
             }
         }
 
