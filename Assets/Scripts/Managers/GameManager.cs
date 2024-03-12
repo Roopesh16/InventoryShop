@@ -72,6 +72,7 @@ namespace InventoryShop.Managers
             playerService.DeductMoney(itemBuyCost);
             UIManager.Instance.SetCurrentMoney(playerService.GetCurrentMoney());
             itemService.UpdateShopSelectedItem(itemCount);
+            inventoryService.IncreaseInventoryWeight(itemWeight);
 
             return true;
         }
