@@ -43,7 +43,7 @@ namespace InventoryShop.Inventory
         #endregion ------------------
 
         #region --------- Private Methods ---------
-        private void EnableSellBox() => inventoryService.SetSellItemData(itemName, itemSellCost, itemQuantity);
+        private void EnableSellBox() => inventoryService.SetSellItemData(itemName, itemSellCost, itemQuantity,itemWeight);
         private void SubscribeToEvent()
         {
         }

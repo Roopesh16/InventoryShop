@@ -47,7 +47,7 @@ namespace InventoryShop.Services
             inventoryView.DisplayItemInfo(name, icon, description, buyCost, quantity, weight);
         }
 
-        public void SetSellItemData(string itemName, int itemSellCost, int itemQuantity) => sellBoxController.SetSellItemData(itemName, itemSellCost, itemQuantity);
+        public void SetSellItemData(string itemName, int itemSellCost, int itemQuantity,float itemWeight) => sellBoxController.SetSellItemData(itemName, itemSellCost, itemQuantity,itemWeight);
         public void DisableDescription() => inventoryController.DisableDescription();
         public void DisableEmptyBox() => inventoryController.DisableEmptyBox();
         public void EnableEmptyBox() => inventoryController.EnableEmptyBox();
@@ -58,6 +58,7 @@ namespace InventoryShop.Services
         public float GetInventoryMaxWeight() => inventoryController.GetMaxWeight();
         public float GetInventoryCurrentWeight() => inventoryController.GetCurrentWeight();
         public void IncreaseInventoryWeight(float weight) => inventoryController.IncreaseInventoryWeight(weight);
+        public void DecreaseInventoryWeight(float weight) => inventoryController.DecreaseInventoryWeight(weight);
         #endregion ------------------
     }
 }
