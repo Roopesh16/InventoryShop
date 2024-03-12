@@ -57,16 +57,17 @@ namespace InventoryShop.Items
 
         public void SendItemData()
         {
-            if (UIManager.Instance.GetShopActive())
-                GameManager.Instance.SendShopItemData(itemModel.itemName, itemModel.itemIcon, itemModel.itemDescription, itemModel.itemBuyPrice, itemModel.itemQuantity,itemModel.itemWeight);
-            else
-                GameManager.Instance.SendInventoryItemData(itemModel.itemName, itemModel.itemIcon, itemModel.itemDescription, itemModel.itemSellPrice, itemModel.itemQuantity,itemModel.itemWeight);
-        }
-
-        public void SelectCurrentItem()
-        {
             IsSelected = true;
-            itemService.UnselectRestItems(this);
+            if (UIManager.Instance.GetShopActive())
+            {
+                itemService.UnselectRestShopItems(this);
+                GameManager.Instance.SendShopItemData(itemModel.itemName, itemModel.itemIcon, itemModel.itemDescription, itemModel.itemBuyPrice, itemModel.itemQuantity, itemModel.itemWeight);
+            }
+            else
+            {
+                itemService.UnselectRestInventoryItems(this);
+                GameManager.Instance.SendInventoryItemData(itemModel.itemName, itemModel.itemIcon, itemModel.itemDescription, itemModel.itemSellPrice, itemModel.itemQuantity, itemModel.itemWeight);
+            }
         }
 
         public void DecrementItemQuantity(int quantity)
