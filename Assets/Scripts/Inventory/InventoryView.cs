@@ -14,10 +14,12 @@ namespace InventoryShop.Inventory
         [SerializeField] private TextMeshProUGUI itemNameText;
         [SerializeField] private TextMeshProUGUI itemDesctiptionText;
         [SerializeField] private TextMeshProUGUI itemSellText;
+        [SerializeField] private TextMeshProUGUI weightCountText;
         [SerializeField] private GameObject emptyTextObject;
         [SerializeField] private GameObject descriptionBox;
         [SerializeField] private Image itemImage;
         [SerializeField] private Button sellButton;
+        [SerializeField] private Button resourceButton;
         #endregion ------------------
 
         #region --------- Private Variables ---------
@@ -37,15 +39,14 @@ namespace InventoryShop.Inventory
         #region --------- Monobehavior Methods ---------
         private void Awake()
         {
-            sellButton.onClick.AddListener(EnableSellBox);
+            sellButton.onClick.AddListener(OnSellBoxClick);
+            resourceButton.onClick.AddListener(OnResourceClick);
         }
         #endregion ------------------
 
         #region --------- Private Methods ---------
-        private void EnableSellBox() => inventoryService.SetSellItemData(itemName, itemSellCost, itemQuantity);
-        private void SubscribeToEvent()
-        {
-        }
+        private void OnSellBoxClick() => inventoryService.SetSellItemData(itemName, itemSellCost, itemQuantity, itemWeight);
+        private void OnResourceClick() => eventService.OnResouceClick.InvokeEvent();
         #endregion ------------------
 
         #region --------- Public Methods ---------
@@ -54,11 +55,11 @@ namespace InventoryShop.Inventory
             this.eventService = eventService;
             this.inventoryService = inventoryService;
 
-            // SubscribeToEvent();
+            UpdateWeightText();
             descriptionBox.SetActive(false);
         }
 
-        public void DisplayItemInfo(string itemName, Sprite itemIcon, string itemDescription, int itemSellCost, int itemQuantity,float itemWeight)
+        public void DisplayItemInfo(string itemName, Sprite itemIcon, string itemDescription, int itemSellCost, int itemQuantity, float itemWeight)
         {
             descriptionBox.SetActive(true);
             itemNameText.text = itemName;
@@ -77,8 +78,14 @@ namespace InventoryShop.Inventory
             this.inventoryController = inventoryController;
         }
 
+        public void UpdateWeightText()
+        {
+            weightCountText.text = inventoryController.GetCurrentWeight().ToString() + "/" + inventoryController.GetMaxWeight().ToString();
+        }
+
         public void DisableDescription() => descriptionBox.SetActive(false);
         public void ToggleEmptyBox(bool isActive) => emptyTextObject.SetActive(isActive);
+        public void ToggleResourceBtn(bool isActive) => resourceButton.interactable = isActive;
         #endregion ------------------
     }
 }

@@ -59,18 +59,19 @@ namespace InventoryShop.Services
         {
             eventService = new();
             playerService = new(currentMoney);
-            itemService = new(itemsList, itemPrefab,shopGridTransform,inventoryGridTransform);
+            itemService = new(itemsList, itemPrefab, shopGridTransform, inventoryGridTransform);
             shopService = new(shopView, buyBoxView);
-            inventoryService = new(inventoryView,sellBoxView);
+            inventoryService = new(inventoryView, sellBoxView);
         }
 
         private void InjectDependency()
         {
-            GameManager.Instance.Init(playerService, itemService,shopService,inventoryService);
+            GameManager.Instance.Init(playerService, itemService, shopService, inventoryService);
             UIManager.Instance.Init(playerService);
-            itemService.Init(eventService,inventoryService);
+            itemService.Init(eventService, inventoryService);
             shopService.Init(eventService, itemService, itemsList);
             inventoryService.Init(eventService, itemService);
+            playerService.Init(eventService);
         }
         #endregion ------------------
 

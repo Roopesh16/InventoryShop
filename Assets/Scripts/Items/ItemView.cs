@@ -55,11 +55,7 @@ namespace InventoryShop.Items
 
         public void SetItemController(ItemController itemController) => this.itemController = itemController;
 
-        public void SendItemData()
-        {
-            itemController.SelectCurrentItem();
-            itemController.SendItemData();
-        }
+        public void SendItemData() => itemController.SendItemData();
 
         public void DisableItemBtn() => itemButton.interactable = false;
 

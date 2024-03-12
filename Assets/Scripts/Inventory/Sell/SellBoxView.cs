@@ -17,7 +17,7 @@ namespace InventoryShop.Inventory.SellBox
         #endregion ------------------
 
         #region --------- Private Variables ---------
-        private SellBoxController buyBoxController;
+        private SellBoxController sellBoxController;
         private int itemCount;
         private int totalCost;
         #endregion ------------------
@@ -47,11 +47,11 @@ namespace InventoryShop.Inventory.SellBox
             UpdateSellCounter(itemCount, itemCount);
             ToggleNegativeBtn(false);
         }
-        public void SetSellBoxController(SellBoxController buyBoxController) => this.buyBoxController = buyBoxController;
+        public void SetSellBoxController(SellBoxController sellBoxController) => this.sellBoxController = sellBoxController;
 
-        public void OnNegativeBtnClick() => buyBoxController.DecrementItemCount();
+        public void OnNegativeBtnClick() => sellBoxController.DecrementItemCount();
 
-        public void OnPositiveBtnClick() => buyBoxController.IncrementItemCount();
+        public void OnPositiveBtnClick() => sellBoxController.IncrementItemCount();
 
         public void UpdateSellCounter(int itemCount, int itemSellCost)
         {
@@ -63,16 +63,14 @@ namespace InventoryShop.Inventory.SellBox
 
         public void OnYesClick()
         {
-            if(GameManager.Instance.ValidateSellTransaction(itemCount, totalCost))
-                buyBoxController.ResetItemCounter(true);
-                
+            sellBoxController.ValidateSellTransaction();
             gameObject.SetActive(false);
         }
 
         public void OnNoClick()
         {
             gameObject.SetActive(false);
-            buyBoxController.ResetItemCounter(false);
+            sellBoxController.ResetItemCounter(false);
         }
 
         public void ToggleNegativeBtn(bool isActive) => negativeBtn.interactable = isActive;
