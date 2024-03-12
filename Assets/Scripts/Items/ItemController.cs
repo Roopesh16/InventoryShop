@@ -93,7 +93,7 @@ namespace InventoryShop.Items
 
         public ItemType GetItemType() => itemModel.itemType;
         public string GetItemName() => itemModel.itemName;
-        public ItemRarity GetItemRarity() => itemModel.itemRarity;
+        public float GetItemWeight() => itemModel.itemWeight;
         #endregion ------------------
 
     }
