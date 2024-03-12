@@ -123,13 +123,16 @@ namespace InventoryShop.Services
                     inventoryService.DisableEmptyBox();
 
                 inventoryItemSpawned.Add(itemController);
+                inventoryService.IncreaseInventoryWeight(quantity * item.itemWeight);
             }
             else
             {
                 int index = Random.Range(0, inventoryItemSpawned.Count);
                 ItemController item = inventoryItemSpawned[index];
                 item.IncrementItemQuantity(quantity);
+                inventoryService.IncreaseInventoryWeight(quantity * item.GetItemWeight());
             }
+
         }
 
         public void RemoveInventoryItem(string itemName)
