@@ -85,6 +85,7 @@ namespace InventoryShop.Inventory
 
         public void DisableDescription() => descriptionBox.SetActive(false);
         public void ToggleEmptyBox(bool isActive) => emptyTextObject.SetActive(isActive);
+        public void ToggleResourceBtn(bool isActive) => resourceButton.interactable = isActive;
         #endregion ------------------
     }
 }

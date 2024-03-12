@@ -45,6 +45,8 @@ namespace InventoryShop.Inventory
         public void IncreaseInventoryWeight(float weight)
         {
             float newWeight = inventoryModel.GetCurrentWeight() + weight;
+            if (newWeight >= inventoryModel.GetMaxWeight())
+                inventoryView.ToggleResourceBtn(false);
             inventoryModel.SetInventoryWeight(newWeight);
             inventoryView.UpdateWeightText();
         }
@@ -53,6 +55,9 @@ namespace InventoryShop.Inventory
         {
             float newWeight = inventoryModel.GetCurrentWeight() - weight;
 
+            if(newWeight < inventoryModel.GetMaxWeight())
+                inventoryView.ToggleResourceBtn(true);
+                
             if (newWeight <= 0)
                 newWeight = 0;
 
