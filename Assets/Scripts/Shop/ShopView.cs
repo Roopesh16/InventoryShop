@@ -33,12 +33,12 @@ public class ShopView : MonoBehaviour
     #region --------- Monobehavior Methods ---------
     private void Awake()
     {
-        buyButton.onClick.AddListener(EnableBuyBox);
+        buyButton.onClick.AddListener(OnBuyBoxClick);
     }
     #endregion ------------------
 
     #region --------- Private Methods ---------
-    private void EnableBuyBox() => shopService.SetBuyItemData(itemName, itemBuyCost, itemQuantity,itemWeight);
+    private void OnBuyBoxClick() => shopService.SetBuyItemData(itemName, itemBuyCost, itemQuantity,itemWeight);
     // private void SubscribeToEvent;
     #endregion ------------------
 
