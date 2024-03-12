@@ -18,6 +18,8 @@ namespace InventoryShop.Services
         private Transform shopGridTransform;
         private Transform inventoryGridTransform;
         private bool isFirst = true;
+        private const int minQuantity = 1;
+        private const int maxQuantity = 4;
 
         private EventService eventService;
         private InventoryService inventoryService;
@@ -111,7 +113,7 @@ namespace InventoryShop.Services
 
         public void AddInventoryItems()
         {
-            int quantity = Random.Range(1, 4);
+            int quantity = Random.Range(minQuantity, maxQuantity);
 
             if (isFirst)
             {
