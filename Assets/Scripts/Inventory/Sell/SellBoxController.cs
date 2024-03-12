@@ -1,6 +1,6 @@
 using InventoryShop.Services;
 using InventoryShop.Services.Events;
-
+using InventoryShop.Managers;
 namespace InventoryShop.Inventory.SellBox
 {
     public class SellBoxController
@@ -60,9 +60,9 @@ namespace InventoryShop.Inventory.SellBox
             sellBoxView.UpdateSellCounter(sellBoxModel.itemCount, sellBoxModel.itemSellCost);
         }
 
-        public void SetSellItemData(string itemName, int itemSellCost, int itemQuantity)
+        public void SetSellItemData(string itemName, int itemSellCost, int itemQuantity, float itemWeight)
         {
-            sellBoxModel.SetItemData(itemName, itemSellCost, itemQuantity);
+            sellBoxModel.SetItemData(itemName, itemSellCost, itemQuantity, itemWeight);
             sellBoxView.EnableSellBox();
         }
 
@@ -80,11 +80,17 @@ namespace InventoryShop.Inventory.SellBox
                     itemService.RemoveInventoryItem(sellBoxModel.itemName);
                 }
                 inventoryService.SetItemQuantity(sellBoxModel.itemQuantity);
-                itemService.AddShopItems(sellBoxModel.itemName,sellBoxModel.itemCount);
+                itemService.AddShopItems(sellBoxModel.itemName, sellBoxModel.itemCount);
             }
 
             sellBoxModel.itemCount = 0;
             sellBoxView.UpdateSellCounter(sellBoxModel.itemCount, sellBoxModel.itemSellCost);
+        }
+
+        public void ValidateSellTransaction()
+        {
+            if (GameManager.Instance.ValidateSellTransaction(sellBoxModel.itemCount, sellBoxModel.itemCount * sellBoxModel.itemSellCost, sellBoxModel.itemCount * sellBoxModel.itemWeight))
+                ResetItemCounter(true);
         }
         #endregion ------------------
     }
