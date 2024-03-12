@@ -19,6 +19,7 @@ namespace InventoryShop.Inventory
         [SerializeField] private GameObject descriptionBox;
         [SerializeField] private Image itemImage;
         [SerializeField] private Button sellButton;
+        [SerializeField] private Button resourceButton;
         #endregion ------------------
 
         #region --------- Private Variables ---------
@@ -39,14 +40,13 @@ namespace InventoryShop.Inventory
         private void Awake()
         {
             sellButton.onClick.AddListener(EnableSellBox);
+            resourceButton.onClick.AddListener(OnResourceClick);
         }
         #endregion ------------------
 
         #region --------- Private Methods ---------
-        private void EnableSellBox() => inventoryService.SetSellItemData(itemName, itemSellCost, itemQuantity,itemWeight);
-        private void SubscribeToEvent()
-        {
-        }
+        private void EnableSellBox() => inventoryService.SetSellItemData(itemName, itemSellCost, itemQuantity, itemWeight);
+        private void OnResourceClick() => eventService.OnResouceClick.InvokeEvent();
         #endregion ------------------
 
         #region --------- Public Methods ---------
@@ -55,7 +55,6 @@ namespace InventoryShop.Inventory
             this.eventService = eventService;
             this.inventoryService = inventoryService;
 
-            // SubscribeToEvent();
             UpdateWeightText();
             descriptionBox.SetActive(false);
         }
