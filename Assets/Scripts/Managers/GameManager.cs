@@ -46,12 +46,12 @@ namespace InventoryShop.Managers
             this.inventoryService = inventoryService;
         }
 
-        public bool ValidateBuyTransaction(int itemCount, int itemBuyCost,float itemWeight)
+        public bool ValidateBuyTransaction(int itemCount, int itemBuyCost, float itemWeight)
         {
             if (itemCount == 0)
                 return false;
 
-            if(itemWeight + inventoryService.GetInventoryCurrentWeight() > inventoryService.GetInventoryMaxWeight())
+            if (itemWeight + inventoryService.GetInventoryCurrentWeight() > inventoryService.GetInventoryMaxWeight())
             {
                 UIManager.Instance.SetNotificationText("EXCEED WEIGHT!");
                 return false;
@@ -77,7 +77,7 @@ namespace InventoryShop.Managers
             return true;
         }
 
-        public bool ValidateSellTransaction(int itemCount, int itemSellCost)
+        public bool ValidateSellTransaction(int itemCount, int itemSellCost, float itemWeight)
         {
             if (itemCount == 0)
                 return false;
@@ -85,6 +85,7 @@ namespace InventoryShop.Managers
             playerService.IncrementMoney(itemSellCost);
             UIManager.Instance.SetCurrentMoney(playerService.GetCurrentMoney());
             itemService.UpdateInventorySelectedItem(itemCount);
+            inventoryService.DecreaseInventoryWeight(itemWeight);
 
             return true;
 
@@ -95,9 +96,9 @@ namespace InventoryShop.Managers
             shopService.DisplayItemInfo(name, icon, description, buyCost, quantity, weight);
         }
 
-        public void SendInventoryItemData(string name, Sprite icon, string description, int buyCost, int quantity,float weight)
+        public void SendInventoryItemData(string name, Sprite icon, string description, int buyCost, int quantity, float weight)
         {
-            inventoryService.DisplayItemInfo(name, icon, description, buyCost, quantity,weight);
+            inventoryService.DisplayItemInfo(name, icon, description, buyCost, quantity, weight);
         }
 
         public void DisplayTypeItem(ItemType itemType) => itemService.DisplayType(itemType);
