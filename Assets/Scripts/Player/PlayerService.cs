@@ -8,6 +8,8 @@ namespace InventoryShop.Managers
         #region --------- Private Variables ---------
         private EventService eventService;
         private int currentMoney = 0;
+        private const int minMoney = 0;
+        private const int maxMoney = 100;
         #endregion ------------------
 
         #region --------- Public Variables ---------
@@ -17,7 +19,7 @@ namespace InventoryShop.Managers
         private void SubscribeToEvents() => eventService.OnResouceClick.AddListener(RandomizeMoney);
         private void RandomizeMoney()
         {
-            currentMoney += Random.Range(currentMoney, 501);
+            currentMoney += Random.Range(minMoney, maxMoney);
             UIManager.Instance.SetCurrentMoney(currentMoney);
         }
         #endregion ------------------
