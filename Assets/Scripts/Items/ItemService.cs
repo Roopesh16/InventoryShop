@@ -119,13 +119,28 @@ namespace InventoryShop.Services
             {
                 int index = Random.Range(0, itemsList.Count);
                 ItemScriptableObject item = itemsList[index];
-                ItemController itemController = new(eventService, this, item, itemPrefab, inventoryGridTransform, quantity);
 
-                if (inventoryItemSpawned.Count == 0)
-                    inventoryService.DisableEmptyBox();
+                if (inventoryItemSpawned.Count != 0)
+                {
+                    foreach (ItemController itemSpawned in inventoryItemSpawned)
+                    {
+                        if (itemSpawned.GetItemName() == item.itemName)
+                        {
+                            itemSpawned.IncrementItemQuantity(quantity);
+                            inventoryService.IncreaseInventoryWeight(quantity * itemSpawned.GetItemWeight());
+                        }
+                    }
+                }
+                else
+                {
+                    ItemController itemController = new(eventService, this, item, itemPrefab, inventoryGridTransform, quantity);
 
-                inventoryItemSpawned.Add(itemController);
-                inventoryService.IncreaseInventoryWeight(quantity * item.itemWeight);
+                    if (inventoryItemSpawned.Count == 0)
+                        inventoryService.DisableEmptyBox();
+
+                    inventoryItemSpawned.Add(itemController);
+                    inventoryService.IncreaseInventoryWeight(quantity * item.itemWeight);
+                }
             }
             else
             {
@@ -155,9 +170,20 @@ namespace InventoryShop.Services
                 inventoryService.EnableEmptyBox();
         }
 
-        public void UnselectRestItems(ItemController selectedItem)
+        public void UnselectRestShopItems(ItemController selectedItem)
         {
             foreach (ItemController item in shopItemSpawned)
+            {
+                if (item != selectedItem)
+                {
+                    item.IsSelected = false;
+                }
+            }
+        }
+
+        public void UnselectRestInventoryItems(ItemController selectedItem)
+        {
+            foreach (ItemController item in inventoryItemSpawned)
             {
                 if (item != selectedItem)
                 {
