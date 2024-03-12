@@ -3656,7 +3656,7 @@ MonoBehaviour:
   itemPrefab: {fileID: -5718064315299832449, guid: da3f0bd8d8d87374ca0683e602fc0333, type: 3}
   shopGridTransform: {fileID: 1201423025046210501}
   inventoryGridTransform: {fileID: 1086369375}
-  currentMoney: 500
+  currentMoney: 0
   shopView: {fileID: 952161631}
   buyBoxView: {fileID: 5340997093868736918}
   inventoryView: {fileID: 1632891107}
@@ -5944,6 +5944,7 @@ MonoBehaviour:
   descriptionBox: {fileID: 1534256970}
   itemImage: {fileID: 412898994}
   sellButton: {fileID: 1010887511}
+  resourceButton: {fileID: 874423220}
 --- !u!1 &1657722510
 GameObject:
   m_ObjectHideFlags: 0
