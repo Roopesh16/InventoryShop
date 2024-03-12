@@ -29,8 +29,8 @@ namespace InventoryShop.Inventory
 
             inventoryModel = new(this);
             this.inventoryView = inventoryView;
-            this.inventoryView.SetupShopView(eventService, inventoryService);
             this.inventoryView.SetInventoryController(this);
+            this.inventoryView.SetupShopView(eventService, inventoryService);
         }
 
         public void DisableDescription() => inventoryView.DisableDescription();
@@ -46,6 +46,7 @@ namespace InventoryShop.Inventory
         {
             float newWeight = inventoryModel.GetCurrentWeight() + weight;
             inventoryModel.SetInventoryWeight(newWeight);
+            inventoryView.UpdateWeightText();
         }
 
         public void DecreaseInventoryWeight(float weight)
@@ -56,6 +57,7 @@ namespace InventoryShop.Inventory
                 newWeight = 0;
 
             inventoryModel.SetInventoryWeight(newWeight);
+            inventoryView.UpdateWeightText();
         }
         #endregion ------------------
     }

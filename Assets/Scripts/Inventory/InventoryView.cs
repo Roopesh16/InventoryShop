@@ -14,6 +14,7 @@ namespace InventoryShop.Inventory
         [SerializeField] private TextMeshProUGUI itemNameText;
         [SerializeField] private TextMeshProUGUI itemDesctiptionText;
         [SerializeField] private TextMeshProUGUI itemSellText;
+        [SerializeField] private TextMeshProUGUI weightCountText;
         [SerializeField] private GameObject emptyTextObject;
         [SerializeField] private GameObject descriptionBox;
         [SerializeField] private Image itemImage;
@@ -55,10 +56,11 @@ namespace InventoryShop.Inventory
             this.inventoryService = inventoryService;
 
             // SubscribeToEvent();
+            UpdateWeightText();
             descriptionBox.SetActive(false);
         }
 
-        public void DisplayItemInfo(string itemName, Sprite itemIcon, string itemDescription, int itemSellCost, int itemQuantity,float itemWeight)
+        public void DisplayItemInfo(string itemName, Sprite itemIcon, string itemDescription, int itemSellCost, int itemQuantity, float itemWeight)
         {
             descriptionBox.SetActive(true);
             itemNameText.text = itemName;
@@ -75,6 +77,11 @@ namespace InventoryShop.Inventory
         public void SetInventoryController(InventoryController inventoryController)
         {
             this.inventoryController = inventoryController;
+        }
+
+        public void UpdateWeightText()
+        {
+            weightCountText.text = inventoryController.GetCurrentWeight().ToString() + "/" + inventoryController.GetMaxWeight().ToString();
         }
 
         public void DisableDescription() => descriptionBox.SetActive(false);
