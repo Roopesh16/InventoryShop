@@ -7,13 +7,14 @@ namespace InventoryShop.Items
     public class ItemView : MonoBehaviour, IItemClick
     {
         #region --------- Serialized Variables ---------
+
+        [SerializeField] private Image itemImage;
+        [SerializeField] private Button itemButton;
+        [SerializeField] private TextMeshProUGUI quantityText;
         #endregion ------------------
 
         #region --------- Private Variables ---------
 
-        private Image itemImage;
-        private Button itemButton;
-        private TextMeshProUGUI quantityText;
         private ItemController itemController;
         #endregion ------------------
 
@@ -21,10 +22,6 @@ namespace InventoryShop.Items
 
         private void Awake()
         {
-            itemImage = GetComponent<Image>();
-            itemButton = GetComponent<Button>();
-            quantityText = GetComponentInChildren<TextMeshProUGUI>();
-
             itemButton.onClick.AddListener(SendItemData);
         }
         #endregion ------------------
