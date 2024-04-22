@@ -10,7 +10,7 @@ namespace InventoryShop.Managers
     public class GameManager : GenericMonoSingleton<GameManager>
     {
         #region --------- Private Variables ---------
-        private static GameManager instance = null;
+
         private PlayerService playerService;
         private ItemService itemService;
         private ShopService shopService;

@@ -25,7 +25,6 @@ namespace InventoryShop.Managers
 
         #region --------- Private Variables ---------
 
-        private static UIManager instance = null;
         private bool isShopActive = true;
         private bool isInventoryActive = false;
         private PlayerService playerService;
