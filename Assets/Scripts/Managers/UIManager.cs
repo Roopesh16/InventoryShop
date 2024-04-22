@@ -30,6 +30,14 @@ namespace InventoryShop.Managers
         private PlayerService playerService;
         #endregion ------------------
 
+        #region --------- Monobehavior Methods ---------
+        private void Awake()
+        {
+            leftButton.onClick.AddListener(ToggleLeftRight);
+            rightButton.onClick.AddListener(ToggleLeftRight);
+        }
+        #endregion ------------------
+
         #region --------- Private Methods ---------
 
         private void ToggleLeftRight()
