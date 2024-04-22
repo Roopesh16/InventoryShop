@@ -1,25 +1,27 @@
-using InventoryShop.Inventory.SellBox;
-using InventoryShop.Services.Events;
 using InventoryShop.Inventory;
-using UnityEngine;
-using UnityEngine.UI;
+using InventoryShop.Inventory.SellBox;
 using InventoryShop.ScriptableObjects;
+using InventoryShop.Services.Events;
+using InventoryShop.Transaction;
+using UnityEngine;
 
 namespace InventoryShop.Services
 {
     public class InventoryService
     {
         #region --------- Private Variables ---------
+
         private ItemService itemService;
         private EventService eventService;
 
         private InventoryView inventoryView;
-        private SellBoxView sellBoxView;
+        private TransactionBoxView sellBoxView;
         private SellBoxController sellBoxController;
         private InventoryController inventoryController;
         #endregion ------------------
 
         #region --------- Private Methods ---------
+
         private void InitializeVariables()
         {
             inventoryController = new(eventService, this, inventoryView);
@@ -28,7 +30,8 @@ namespace InventoryShop.Services
         #endregion ------------------
 
         #region --------- Public Methods ---------
-        public InventoryService(InventoryView inventoryView, SellBoxView sellBoxView)
+
+        public InventoryService(InventoryView inventoryView, TransactionBoxView sellBoxView)
         {
             this.inventoryView = inventoryView;
             this.sellBoxView = sellBoxView;
@@ -47,7 +50,7 @@ namespace InventoryShop.Services
             inventoryView.DisplayItemInfo(name, icon, description, buyCost, quantity, weight);
         }
 
-        public void SetSellItemData(string itemName, int itemSellCost, int itemQuantity,float itemWeight) => sellBoxController.SetSellItemData(itemName, itemSellCost, itemQuantity,itemWeight);
+        public void SetSellItemData(string itemName, int itemSellCost, int itemQuantity, float itemWeight) => sellBoxController.SetItemData(itemName, itemSellCost, itemQuantity, itemWeight);
         public void DisableDescription() => inventoryController.DisableDescription();
         public void DisableEmptyBox() => inventoryController.DisableEmptyBox();
         public void EnableEmptyBox() => inventoryController.EnableEmptyBox();

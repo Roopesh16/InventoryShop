@@ -1,39 +1,34 @@
-using UnityEngine.UI;
-using UnityEngine;
 using TMPro;
+using UnityEngine;
+using UnityEngine.UI;
 
 namespace InventoryShop.Items
 {
-    public class ItemView : MonoBehaviour, IItemClick
+    public class ItemView : MonoBehaviour
     {
         #region --------- Serialized Variables ---------
+
+        [SerializeField] private Image itemImage;
+        [SerializeField] private Button itemButton;
+        [SerializeField] private TextMeshProUGUI quantityText;
         #endregion ------------------
 
         #region --------- Private Variables ---------
-        private Image itemImage;
-        private Button itemButton;
-        private TextMeshProUGUI quantityText;
+
         private ItemController itemController;
         #endregion ------------------
 
-        #region --------- Public Variables ---------
-        #endregion ------------------
-
         #region --------- Monobehavior Methods ---------
+
         private void Awake()
         {
-            itemImage = GetComponent<Image>();
-            itemButton = GetComponent<Button>();
-            quantityText = GetComponentInChildren<TextMeshProUGUI>();
-
             itemButton.onClick.AddListener(SendItemData);
         }
         #endregion ------------------
 
-        #region --------- Private Methods ---------
-        #endregion ------------------
 
         #region --------- Public Methods ---------
+
         public void SetItemView(Sprite itemIcon, int itemQuantity)
         {
             if (itemImage != null)

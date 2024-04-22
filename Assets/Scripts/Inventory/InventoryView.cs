@@ -11,6 +11,7 @@ namespace InventoryShop.Inventory
     public class InventoryView : MonoBehaviour
     {
         #region --------- Serialized Variables ---------
+
         [SerializeField] private TextMeshProUGUI itemNameText;
         [SerializeField] private TextMeshProUGUI itemDesctiptionText;
         [SerializeField] private TextMeshProUGUI itemSellText;
@@ -23,6 +24,7 @@ namespace InventoryShop.Inventory
         #endregion ------------------
 
         #region --------- Private Variables ---------
+
         private EventService eventService;
         private InventoryService inventoryService;
         private InventoryController inventoryController;
@@ -33,10 +35,8 @@ namespace InventoryShop.Inventory
         private float itemWeight;
         #endregion ------------------
 
-        #region --------- Public Variables ---------
-        #endregion ------------------
-
         #region --------- Monobehavior Methods ---------
+
         private void Awake()
         {
             sellButton.onClick.AddListener(OnSellBoxClick);
@@ -45,11 +45,13 @@ namespace InventoryShop.Inventory
         #endregion ------------------
 
         #region --------- Private Methods ---------
+
         private void OnSellBoxClick() => inventoryService.SetSellItemData(itemName, itemSellCost, itemQuantity, itemWeight);
         private void OnResourceClick() => eventService.OnResouceClick.InvokeEvent();
         #endregion ------------------
 
         #region --------- Public Methods ---------
+        
         public void SetupShopView(EventService eventService, InventoryService inventoryService)
         {
             this.eventService = eventService;

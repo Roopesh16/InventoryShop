@@ -19,14 +19,17 @@ namespace InventoryShop.Inventory
     public class InventoryModel
     {
         #region --------- Private Variables ---------
+
         private InventoryController inventoryController;
         #endregion ------------------
 
         #region --------- Public Variables ---------
+
         public List<ItemData> itemDataList = new();
         #endregion ------------------
 
         #region --------- Private Methods ---------
+        
         private const float maxWeight = 50f;
         private float currentWeight = 0f;
         #endregion ------------------

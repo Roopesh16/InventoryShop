@@ -1,11 +1,10 @@
-using InventoryShop.ScriptableObjects;
-using InventoryShop.Inventory.SellBox;
-using InventoryShop.Services.Events;
-using System.Collections.Generic;
-using InventoryShop.Shop.BuyBox;
 using InventoryShop.Inventory;
-using InventoryShop.Managers;
 using InventoryShop.Items;
+using InventoryShop.Managers;
+using InventoryShop.ScriptableObjects;
+using InventoryShop.Services.Events;
+using InventoryShop.Transaction;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace InventoryShop.Services
@@ -13,6 +12,7 @@ namespace InventoryShop.Services
     public class GameService : MonoBehaviour
     {
         #region --------- Serialized Variables ---------
+
         [Header("Item Service References")]
         [SerializeField] private List<ItemScriptableObject> itemsList = new();
         [SerializeField] private ItemView itemPrefab;
@@ -24,11 +24,11 @@ namespace InventoryShop.Services
 
         [Header("Shop Service References")]
         [SerializeField] private ShopView shopView;
-        [SerializeField] private BuyBoxView buyBoxView;
+        [SerializeField] private TransactionBoxView buyBoxView;
 
         [Header("Inventory Service References")]
         [SerializeField] private InventoryView inventoryView;
-        [SerializeField] private SellBoxView sellBoxView;
+        [SerializeField] private TransactionBoxView sellBoxView;
 
         [Header("Managers")]
         [SerializeField] private GameManager gameManager;
@@ -36,6 +36,7 @@ namespace InventoryShop.Services
         #endregion ------------------
 
         #region --------- Private Variables ---------
+
         private EventService eventService;
         private ItemService itemService;
         private PlayerService playerService;
@@ -43,10 +44,8 @@ namespace InventoryShop.Services
         private InventoryService inventoryService;
         #endregion ------------------
 
-        #region --------- Public Variables ---------
-        #endregion ------------------
-
         #region --------- Monobehavior Methods ---------
+
         private void Start()
         {
             CreateService();
@@ -55,6 +54,7 @@ namespace InventoryShop.Services
         #endregion ------------------
 
         #region --------- Private Methods ---------
+
         private void CreateService()
         {
             eventService = new();
@@ -73,9 +73,6 @@ namespace InventoryShop.Services
             inventoryService.Init(eventService, itemService);
             playerService.Init(eventService);
         }
-        #endregion ------------------
-
-        #region --------- Public Methods ---------
         #endregion ------------------
     }
 }

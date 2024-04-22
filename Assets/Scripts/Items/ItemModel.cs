@@ -5,10 +5,12 @@ namespace InventoryShop.Items
     public class ItemModel
     {
         #region --------- Private Variables ---------
+
         private ItemController itemController;
         #endregion ------------------
 
         #region --------- Public Variables ---------
+
         public string itemName;
         public ItemType itemType;
         public Sprite itemIcon;
@@ -20,10 +22,8 @@ namespace InventoryShop.Items
         public int itemQuantity;
         #endregion ------------------
 
-        #region --------- Private Methods ---------
-        #endregion ------------------
-
         #region --------- Public Methods ---------
+        
         public ItemModel(string itemName,ItemType itemType, Sprite itemIcon, string itemDescription, int itemBuyPrice,
                         int itemSellPrice, float itemWeight, ItemRarity itemRarity, int itemQuantity)
         {
