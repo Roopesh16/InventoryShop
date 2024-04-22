@@ -1,10 +1,10 @@
-using UnityEngine.UI;
-using UnityEngine;
 using TMPro;
+using UnityEngine;
+using UnityEngine.UI;
 
 namespace InventoryShop.Items
 {
-    public class ItemView : MonoBehaviour, IItemClick
+    public class ItemView : MonoBehaviour
     {
         #region --------- Serialized Variables ---------
 
@@ -28,7 +28,7 @@ namespace InventoryShop.Items
 
 
         #region --------- Public Methods ---------
-        
+
         public void SetItemView(Sprite itemIcon, int itemQuantity)
         {
             if (itemImage != null)
