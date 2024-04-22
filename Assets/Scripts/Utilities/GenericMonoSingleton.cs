@@ -6,14 +6,14 @@ namespace InventoryShop.Utilities
 {
     public class GenericMonoSingleton<T> : MonoBehaviour where T : GenericMonoSingleton<T>
     {
-        private static GenericMonoSingleton instance = null;
+        private static T instance = null;
 
-        public static GenericMonoSingleton Instance { get { return instance; } }
+        public static T Instance { get { return instance; } }
 
         private void Awake()
         {
             if(instance == null)
-                instance = this;
+                instance = (T)this;
             else if(instance != this)
             {
                 Destroy(this);
