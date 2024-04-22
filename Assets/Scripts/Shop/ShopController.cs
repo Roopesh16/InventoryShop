@@ -9,18 +9,14 @@ namespace InventoryShop.Shop
     public class ShopController
     {
         #region --------- Private Variables ---------
+
         private ShopView shopView;
         private ShopModel shopModel;
         private List<ItemScriptableObject> shopItems = new();
         #endregion ------------------
 
-        #region --------- Public Variables ---------
-        #endregion ------------------
-
-        #region --------- Private Methods ---------
-        #endregion ------------------
-
         #region --------- Public Methods ---------
+        
         public ShopController(EventService eventService, ShopService shopService, ShopView shopView, List<ItemScriptableObject> shopItems)
         {
             shopModel = new(shopItems);

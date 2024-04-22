@@ -6,13 +6,11 @@ namespace InventoryShop.Managers
     public class PlayerService
     {
         #region --------- Private Variables ---------
+
         private EventService eventService;
         private int currentMoney = 0;
         private const int minMoney = 0;
         private const int maxMoney = 100;
-        #endregion ------------------
-
-        #region --------- Public Variables ---------
         #endregion ------------------
 
         #region --------- Private Methods ---------
@@ -25,6 +23,7 @@ namespace InventoryShop.Managers
         #endregion ------------------
 
         #region --------- Public Methods ---------
+        
         public PlayerService(int currentMoney)
         {
             this.currentMoney = currentMoney;

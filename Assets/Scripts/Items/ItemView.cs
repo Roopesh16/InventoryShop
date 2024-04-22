@@ -10,16 +10,15 @@ namespace InventoryShop.Items
         #endregion ------------------
 
         #region --------- Private Variables ---------
+
         private Image itemImage;
         private Button itemButton;
         private TextMeshProUGUI quantityText;
         private ItemController itemController;
         #endregion ------------------
 
-        #region --------- Public Variables ---------
-        #endregion ------------------
-
         #region --------- Monobehavior Methods ---------
+
         private void Awake()
         {
             itemImage = GetComponent<Image>();
@@ -30,10 +29,9 @@ namespace InventoryShop.Items
         }
         #endregion ------------------
 
-        #region --------- Private Methods ---------
-        #endregion ------------------
 
         #region --------- Public Methods ---------
+        
         public void SetItemView(Sprite itemIcon, int itemQuantity)
         {
             if (itemImage != null)

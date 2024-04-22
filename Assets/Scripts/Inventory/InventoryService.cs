@@ -10,6 +10,7 @@ namespace InventoryShop.Services
     public class InventoryService
     {
         #region --------- Private Variables ---------
+
         private ItemService itemService;
         private EventService eventService;
 
@@ -20,6 +21,7 @@ namespace InventoryShop.Services
         #endregion ------------------
 
         #region --------- Private Methods ---------
+
         private void InitializeVariables()
         {
             inventoryController = new(eventService, this, inventoryView);
@@ -28,6 +30,7 @@ namespace InventoryShop.Services
         #endregion ------------------
 
         #region --------- Public Methods ---------
+        
         public InventoryService(InventoryView inventoryView, SellBoxView sellBoxView)
         {
             this.inventoryView = inventoryView;

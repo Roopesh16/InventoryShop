@@ -9,22 +9,21 @@ namespace InventoryShop.Items
     public class ItemController
     {
         #region --------- Private Variables ---------
+
         private EventService eventService;
         private ItemService itemService;
-
         private ItemModel itemModel;
         private ItemView itemView;
         #endregion ------------------
 
         #region --------- Public Variables ---------
+
         public bool IsSelected { get; set; } = false;
 
         #endregion ------------------
 
-        #region --------- Private Methods ---------
-        #endregion ------------------
-
         #region --------- Public Methods ---------
+
         public ItemController(EventService eventService, ItemService itemService, ItemScriptableObject item,
                                     ItemView itemView, Transform parentTransform)
         {

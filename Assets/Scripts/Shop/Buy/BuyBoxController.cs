@@ -6,6 +6,7 @@ namespace InventoryShop.Shop.BuyBox
     public class BuyBoxController
     {
         #region --------- Private Variables ---------
+
         private ShopService shopService;
         private ItemService itemService;
 
@@ -15,13 +16,8 @@ namespace InventoryShop.Shop.BuyBox
         private const int itemCount = 0;
         #endregion ------------------
 
-        #region --------- Public Variables ---------
-        #endregion ------------------
-
-        #region --------- Private Methods ---------
-        #endregion ------------------
-
         #region --------- Public Methods ---------
+        
         public BuyBoxController(BuyBoxView buyBoxView, ShopService shopService, ItemService itemService)
         {
             this.shopService = shopService;

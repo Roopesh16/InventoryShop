@@ -10,9 +10,9 @@ namespace InventoryShop.Services
     public class ShopService
     {
         #region --------- Private Variables ---------
+
         private ItemService itemService;
         private EventService eventService;
-
         private ShopView shopView;
         private BuyBoxView buyBoxView;
         private BuyBoxController buyBoxController;
@@ -20,6 +20,7 @@ namespace InventoryShop.Services
         #endregion ------------------
 
         #region --------- Private Methods ---------
+
         private void InitializeVariables(List<ItemScriptableObject> shopItems)
         {
             itemService.SpawnShopItems();
@@ -29,6 +30,7 @@ namespace InventoryShop.Services
         #endregion ------------------
 
         #region --------- Public Methods ---------
+        
         public ShopService(ShopView shopView, BuyBoxView buyBoxView)
         {
             this.shopView = shopView;

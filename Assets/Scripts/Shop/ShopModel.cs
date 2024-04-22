@@ -16,17 +16,13 @@ namespace InventoryShop.Shop
 
     public class ShopModel
     {
-        #region --------- Private Variables ---------
-        #endregion ------------------
-
         #region --------- Public Variables ---------
+
         public List<ItemData> itemDataList = new();
         #endregion ------------------
 
-        #region --------- Private Methods ---------
-        #endregion ------------------
-
         #region --------- Public Methods ---------
+        
         public ShopModel(List<ItemScriptableObject> itemList)
         {
             for (int i = 0; i < itemList.Count; i++)

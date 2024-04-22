@@ -13,6 +13,7 @@ namespace InventoryShop.Services
     public class GameService : MonoBehaviour
     {
         #region --------- Serialized Variables ---------
+
         [Header("Item Service References")]
         [SerializeField] private List<ItemScriptableObject> itemsList = new();
         [SerializeField] private ItemView itemPrefab;
@@ -36,6 +37,7 @@ namespace InventoryShop.Services
         #endregion ------------------
 
         #region --------- Private Variables ---------
+
         private EventService eventService;
         private ItemService itemService;
         private PlayerService playerService;
@@ -43,10 +45,8 @@ namespace InventoryShop.Services
         private InventoryService inventoryService;
         #endregion ------------------
 
-        #region --------- Public Variables ---------
-        #endregion ------------------
-
         #region --------- Monobehavior Methods ---------
+
         private void Start()
         {
             CreateService();
@@ -55,6 +55,7 @@ namespace InventoryShop.Services
         #endregion ------------------
 
         #region --------- Private Methods ---------
+
         private void CreateService()
         {
             eventService = new();
@@ -73,9 +74,6 @@ namespace InventoryShop.Services
             inventoryService.Init(eventService, itemService);
             playerService.Init(eventService);
         }
-        #endregion ------------------
-
-        #region --------- Public Methods ---------
         #endregion ------------------
     }
 }

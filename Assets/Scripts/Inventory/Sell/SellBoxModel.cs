@@ -3,10 +3,12 @@ namespace InventoryShop.Inventory.SellBox
     public class SellBoxModel
     {
         #region --------- Private Variables ---------
+
         private SellBoxController sellBoxController;
         #endregion ------------------
 
         #region --------- Public Variables ---------
+
         public string itemName;
         public int itemCount;
         public int itemSellCost;
@@ -14,10 +16,9 @@ namespace InventoryShop.Inventory.SellBox
         public float itemWeight;
         #endregion ------------------
 
-        #region --------- Private Methods ---------
-        #endregion ------------------
 
         #region --------- Public Methods ---------
+        
         public SellBoxModel(int itemCount)
         {
             this.itemCount = itemCount;

@@ -11,6 +11,7 @@ namespace InventoryShop.Services
     public class ItemService
     {
         #region --------- Private Variables ---------
+
         private List<ItemScriptableObject> itemsList = new();
         private ItemView itemPrefab;
         private List<ItemController> shopItemSpawned = new();
@@ -26,11 +27,13 @@ namespace InventoryShop.Services
         #endregion ------------------
 
         #region --------- Public Variables ---------
+
         public int ShopSelectedIndex { get; private set; }
         public int InventorySelectedIndex { get; private set; }
         #endregion ------------------
 
         #region --------- Private Methods ---------
+        
         private void SubscribeToEvents() => eventService.OnResouceClick.AddListener(PopulateInventoryItems);
         private void PopulateInventoryItems()
         {

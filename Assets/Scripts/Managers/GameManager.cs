@@ -9,9 +9,6 @@ namespace InventoryShop.Managers
 {
     public class GameManager : GenericMonoSingleton<GameManager>
     {
-        #region --------- Serialized Variables ---------
-        #endregion ------------------
-
         #region --------- Private Variables ---------
         private static GameManager instance = null;
         private PlayerService playerService;
@@ -20,10 +17,8 @@ namespace InventoryShop.Managers
         private InventoryService inventoryService;
         #endregion ------------------
 
-        #region --------- Private Methods ---------
-        #endregion ------------------
-
         #region --------- Public Methods ---------
+        
         public void Init(PlayerService playerService, ItemService itemService, ShopService shopService, InventoryService inventoryService)
         {
             this.playerService = playerService;

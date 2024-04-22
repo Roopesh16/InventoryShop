@@ -8,6 +8,7 @@ using TMPro;
 public class ShopView : MonoBehaviour
 {
     #region --------- Serialized Variables ---------
+
     [SerializeField] private GameObject descriptionBox;
     [SerializeField] private TextMeshProUGUI itemNameText;
     [SerializeField] private Image itemImage;
@@ -17,6 +18,7 @@ public class ShopView : MonoBehaviour
     #endregion ------------------
 
     #region --------- Private Variables ---------
+
     private EventService eventService;
     private ShopService shopService;
     private ShopController shopController;
@@ -27,10 +29,8 @@ public class ShopView : MonoBehaviour
     private float itemWeight;
     #endregion ------------------
 
-    #region --------- Public Variables ---------
-    #endregion ------------------
-
     #region --------- Monobehavior Methods ---------
+
     private void Awake()
     {
         buyButton.onClick.AddListener(OnBuyBoxClick);
@@ -38,17 +38,17 @@ public class ShopView : MonoBehaviour
     #endregion ------------------
 
     #region --------- Private Methods ---------
+
     private void OnBuyBoxClick() => shopService.SetBuyItemData(itemName, itemBuyCost, itemQuantity,itemWeight);
-    // private void SubscribeToEvent;
     #endregion ------------------
 
     #region --------- Public Methods ---------
+
     public void SetupShopView(EventService eventService, ShopService shopService)
     {
         this.eventService = eventService;
         this.shopService = shopService;
 
-        // SubscribeToEvent();
         descriptionBox.SetActive(false);
     }
 

@@ -8,6 +8,7 @@ namespace InventoryShop.Inventory
     public class InventoryController
     {
         #region --------- Private Variables ---------
+
         private EventService eventService;
 
         private InventoryView inventoryView;
@@ -15,14 +16,8 @@ namespace InventoryShop.Inventory
         private List<ItemScriptableObject> inventoryItems = new();
         #endregion ------------------
 
-        #region --------- Public Variables ---------
-        #endregion ------------------
-
-        #region --------- Private Methods ---------
-
-        #endregion ------------------
-
         #region --------- Public Methods ---------
+        
         public InventoryController(EventService eventService, InventoryService inventoryService, InventoryView inventoryView)
         {
             this.eventService = eventService;

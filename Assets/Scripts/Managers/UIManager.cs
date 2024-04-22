@@ -10,6 +10,7 @@ namespace InventoryShop.Managers
     public class UIManager : GenericMonoSingleton<UIManager>
     {
         #region --------- Serialized Variables ---------
+
         [SerializeField] private TextMeshProUGUI moneyText;
         [SerializeField] private TextMeshProUGUI notificationText;
         [SerializeField] private GameObject shopTitle;
@@ -23,6 +24,7 @@ namespace InventoryShop.Managers
         #endregion ------------------
 
         #region --------- Private Variables ---------
+
         private static UIManager instance = null;
         private bool isShopActive = true;
         private bool isInventoryActive = false;
@@ -30,6 +32,7 @@ namespace InventoryShop.Managers
         #endregion ------------------
 
         #region --------- Private Methods ---------
+
         private void ToggleLeftRight()
         {
             isShopActive = !isShopActive;
@@ -54,6 +57,7 @@ namespace InventoryShop.Managers
         #endregion ------------------
 
         #region --------- Public Methods ---------
+        
         public void Init(PlayerService playerService)
         {
             this.playerService = playerService;

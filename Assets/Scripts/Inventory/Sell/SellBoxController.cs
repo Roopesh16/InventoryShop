@@ -6,6 +6,7 @@ namespace InventoryShop.Inventory.SellBox
     public class SellBoxController
     {
         #region --------- Private Variables ---------
+
         private InventoryService inventoryService;
         private ItemService itemService;
 
@@ -15,14 +16,8 @@ namespace InventoryShop.Inventory.SellBox
         private const int itemCount = 0;
         #endregion ------------------
 
-        #region --------- Public Variables ---------
-        #endregion ------------------
-
-        #region --------- Private Methods ---------
-
-        #endregion ------------------
-
         #region --------- Public Methods ---------
+        
         public SellBoxController(SellBoxView sellBoxView, InventoryService inventoryService, ItemService itemService)
         {
             this.inventoryService = inventoryService;

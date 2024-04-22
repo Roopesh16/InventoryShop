@@ -8,6 +8,7 @@ namespace InventoryShop.Shop.BuyBox
     public class BuyBoxView : MonoBehaviour, ICountBtnClick, IItemTransfer
     {
         #region --------- Serialized Variables ---------
+
         [SerializeField] private Button negativeBtn;
         [SerializeField] private Button positiveBtn;
         [SerializeField] private Button yesButton;
@@ -17,15 +18,15 @@ namespace InventoryShop.Shop.BuyBox
         #endregion ------------------
 
         #region --------- Private Variables ---------
+
         private BuyBoxController buyBoxController;
         private int itemCount;
         private int totalCost;
         #endregion ------------------
 
-        #region --------- Public Variables ---------
-        #endregion ------------------
 
         #region --------- Monobehavior Methods ---------
+
         private void Awake()
         {
             negativeBtn.onClick.AddListener(OnNegativeBtnClick);
@@ -35,11 +36,9 @@ namespace InventoryShop.Shop.BuyBox
         }
         #endregion ------------------
 
-        #region --------- Private Methods ---------
-
-        #endregion ------------------
 
         #region --------- Public Methods ---------
+        
         public void SetBuyBoxView(int itemCount)
         {
             gameObject.SetActive(false);

@@ -8,6 +8,7 @@ namespace InventoryShop.Inventory.SellBox
     public class SellBoxView : MonoBehaviour, ICountBtnClick, IItemTransfer
     {
         #region --------- Serialized Variables ---------
+
         [SerializeField] private Button negativeBtn;
         [SerializeField] private Button positiveBtn;
         [SerializeField] private Button yesButton;
@@ -17,15 +18,14 @@ namespace InventoryShop.Inventory.SellBox
         #endregion ------------------
 
         #region --------- Private Variables ---------
+
         private SellBoxController sellBoxController;
         private int itemCount;
         private int totalCost;
         #endregion ------------------
 
-        #region --------- Public Variables ---------
-        #endregion ------------------
-
         #region --------- Monobehavior Methods ---------
+
         private void Awake()
         {
             negativeBtn.onClick.AddListener(OnNegativeBtnClick);
@@ -35,11 +35,8 @@ namespace InventoryShop.Inventory.SellBox
         }
         #endregion ------------------
 
-        #region --------- Private Methods ---------
-
-        #endregion ------------------
-
         #region --------- Public Methods ---------
+        
         public void SetSellBoxView(int itemCount)
         {
             gameObject.SetActive(false);

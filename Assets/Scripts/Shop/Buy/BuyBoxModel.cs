@@ -3,10 +3,12 @@ namespace InventoryShop.Shop.BuyBox
     public class BuyBoxModel
     {
         #region --------- Private Variables ---------
+
         private BuyBoxController buyBoxController;
         #endregion ------------------
 
         #region --------- Public Variables ---------
+
         public string itemName;
         public int itemCount;
         public int itemBuyCost;
@@ -14,10 +16,8 @@ namespace InventoryShop.Shop.BuyBox
         public float itemWeight;
         #endregion ------------------
 
-        #region --------- Private Methods ---------
-        #endregion ------------------
-
         #region --------- Public Methods ---------
+        
         public BuyBoxModel(int itemCount)
         {
             this.itemCount = itemCount;
