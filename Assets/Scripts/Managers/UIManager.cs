@@ -1,12 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using InventoryShop.Utilities;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace InventoryShop.Managers
 {
-    public class UIManager : MonoBehaviour
+    public class UIManager : GenericMonoSingleton<UIManager>
     {
         #region --------- Serialized Variables ---------
         [SerializeField] private TextMeshProUGUI moneyText;
@@ -26,23 +27,6 @@ namespace InventoryShop.Managers
         private bool isShopActive = true;
         private bool isInventoryActive = false;
         private PlayerService playerService;
-        #endregion ------------------
-
-        #region --------- Public Variables ---------
-        public static UIManager Instance { get { return instance; } }
-        #endregion ------------------
-
-        #region --------- Monobehavior Methods ---------
-        private void Awake()
-        {
-            if (instance == null)
-                instance = this;
-            else if (instance != this)
-                Destroy(gameObject);
-
-            leftButton.onClick.AddListener(ToggleLeftRight);
-            rightButton.onClick.AddListener(ToggleLeftRight);
-        }
         #endregion ------------------
 
         #region --------- Private Methods ---------

@@ -2,11 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Security;
 using InventoryShop.Services;
+using InventoryShop.Utilities;
 using UnityEngine;
 
 namespace InventoryShop.Managers
 {
-    public class GameManager : MonoBehaviour
+    public class GameManager : GenericMonoSingleton<GameManager>
     {
         #region --------- Serialized Variables ---------
         #endregion ------------------
@@ -17,21 +18,6 @@ namespace InventoryShop.Managers
         private ItemService itemService;
         private ShopService shopService;
         private InventoryService inventoryService;
-        #endregion ------------------
-
-        #region --------- Public Variables ---------
-        public static GameManager Instance { get { return instance; } }
-        #endregion ------------------
-
-        #region --------- Monobehavior Methods ---------
-        private void Awake()
-        {
-            if (instance == null)
-                instance = this;
-            else if (instance != this)
-                Destroy(gameObject);
-        }
-
         #endregion ------------------
 
         #region --------- Private Methods ---------
