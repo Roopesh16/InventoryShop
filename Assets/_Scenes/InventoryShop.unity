@@ -351,7 +351,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &14978108
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2408,7 +2408,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 711658250}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: be97ce371fad2c34f92772fe6fcaeb4b, type: 3}
+  m_Script: {fileID: 11500000, guid: 56d866a12621a7c478906ae1b928a64f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   negativeBtn: {fileID: 129562872}
@@ -2416,7 +2416,7 @@ MonoBehaviour:
   yesButton: {fileID: 767380223}
   noButton: {fileID: 2068616912}
   countText: {fileID: 292480239}
-  itemSellText: {fileID: 1731755618}
+  itemTransactionText: {fileID: 1731755618}
 --- !u!1 &767380221
 GameObject:
   m_ObjectHideFlags: 0
@@ -3682,7 +3682,7 @@ MonoBehaviour:
   inventoryGridTransform: {fileID: 1086369375}
   currentMoney: 0
   shopView: {fileID: 952161631}
-  buyBoxView: {fileID: 5340997093868736918}
+  buyBoxView: {fileID: 4872748286322696250}
   inventoryView: {fileID: 1632891107}
   sellBoxView: {fileID: 711658252}
   gameManager: {fileID: 1973820734}
@@ -4102,7 +4102,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1198729442
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7789,7 +7789,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4872748286322696249}
-  - component: {fileID: 5340997093868736918}
+  - component: {fileID: 4872748286322696250}
   m_Layer: 5
   m_Name: BuyScreen
   m_TagString: Untagged
@@ -8644,6 +8644,24 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &4872748286322696250
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1731826160050402108}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56d866a12621a7c478906ae1b928a64f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  negativeBtn: {fileID: 4174558296478630757}
+  positiveBtn: {fileID: 2076085703778856790}
+  yesButton: {fileID: 3756195093864780025}
+  noButton: {fileID: 2319703100051463108}
+  countText: {fileID: 7666203512722744819}
+  itemTransactionText: {fileID: 7896866499340107421}
 --- !u!222 &4910783078335938944
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -8736,24 +8754,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &5340997093868736918
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1731826160050402108}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a548256d5baaaac47bbf800070c4bfd6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  negativeBtn: {fileID: 4174558296478630757}
-  positiveBtn: {fileID: 2076085703778856790}
-  yesButton: {fileID: 3756195093864780025}
-  noButton: {fileID: 2319703100051463108}
-  countText: {fileID: 7666203512722744819}
-  itemBuyText: {fileID: 7896866499340107421}
 --- !u!222 &5860863214746986437
 CanvasRenderer:
   m_ObjectHideFlags: 0
