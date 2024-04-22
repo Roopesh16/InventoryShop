@@ -6,17 +6,22 @@ namespace InventoryShop.Transaction
 {
     public class TransactionBoxView : MonoBehaviour
     {
+        #region --------- Serialized Variables ---------
         [SerializeField] protected Button negativeBtn;
         [SerializeField] protected Button positiveBtn;
         [SerializeField] protected Button yesButton;
         [SerializeField] protected Button noButton;
         [SerializeField] protected TextMeshProUGUI countText;
         [SerializeField] protected TextMeshProUGUI itemTransactionText;
+        #endregion ------------------
 
-
+        #region --------- Protected Variables ---------
         protected TransactionBoxController transactionBoxController;
         protected int itemCount;
         protected int totalCost;
+        #endregion ------------------
+
+        #region --------- Monobehavior Methods ---------
 
         private void Awake()
         {
@@ -25,7 +30,9 @@ namespace InventoryShop.Transaction
             yesButton.onClick.AddListener(OnYesClick);
             noButton.onClick.AddListener(OnNoClick);
         }
+        #endregion ------------------
 
+        #region --------- Public Methods ---------
         public void SetTransactionBoxView(int itemCount)
         {
             gameObject.SetActive(false);
@@ -66,5 +73,6 @@ namespace InventoryShop.Transaction
 
         public void EnableTransactionBox() => gameObject.SetActive(true);
 
+        #endregion ------------------
     }
 }

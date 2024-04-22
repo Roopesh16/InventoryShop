@@ -5,10 +5,14 @@ namespace InventoryShop.Transaction
 {
     public class TransactionBoxController
     {
+        #region --------- Protected Variables ---------
         protected ItemService itemService;
         protected TransactionBoxModel transactionBoxModel;
         protected TransactionBoxView transactionBoxView;
         protected const int itemCount = 0;
+        #endregion ------------------
+
+        #region --------- Public Methods ---------
 
         public TransactionBoxController(TransactionBoxView transactionBoxView, ItemService itemService)
         {
@@ -63,6 +67,7 @@ namespace InventoryShop.Transaction
                                                              transactionBoxModel.itemCount * transactionBoxModel.itemWeight))
                 ResetItemCounter(true);
         }
+        #endregion ------------------
     }
 }
 
