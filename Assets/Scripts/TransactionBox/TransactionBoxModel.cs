@@ -1,34 +1,31 @@
-namespace InventoryShop.Shop.BuyBox
+namespace InventoryShop.Transaction
 {
-    public class BuyBoxModel
+    public class TransactionBoxModel
     {
         #region --------- Private Variables ---------
 
-        private BuyBoxController buyBoxController;
+        private TransactionBoxController transactionBoxController;
         #endregion ------------------
 
         #region --------- Public Variables ---------
 
         public string itemName;
         public int itemCount;
-        public int itemBuyCost;
+        public int itemCost;
         public int itemQuantity;
         public float itemWeight;
         #endregion ------------------
 
         #region --------- Public Methods ---------
-        
-        public BuyBoxModel(int itemCount)
-        {
-            this.itemCount = itemCount;
-        }
 
-        public void SetBuyBoxController(BuyBoxController buyBoxController) => this.buyBoxController = buyBoxController;
+        public TransactionBoxModel(int itemCount) => this.itemCount = itemCount;
 
-        public void SetItemData(string itemName,int itemBuyCost, int itemQuantity,float itemWeight)
+        public void SetController(TransactionBoxController transactionBoxController) => this.transactionBoxController = transactionBoxController;
+
+        public void SetItemData(string itemName, int itemCost, int itemQuantity, float itemWeight)
         {
             this.itemName = itemName;
-            this.itemBuyCost = itemBuyCost;
+            this.itemCost = itemCost;
             this.itemQuantity = itemQuantity;
             this.itemWeight = itemWeight;
         }
