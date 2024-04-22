@@ -1,11 +1,10 @@
-using InventoryShop.ScriptableObjects;
-using InventoryShop.Inventory.SellBox;
-using InventoryShop.Services.Events;
-using System.Collections.Generic;
-using InventoryShop.Shop.BuyBox;
 using InventoryShop.Inventory;
-using InventoryShop.Managers;
 using InventoryShop.Items;
+using InventoryShop.Managers;
+using InventoryShop.ScriptableObjects;
+using InventoryShop.Services.Events;
+using InventoryShop.Transaction;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace InventoryShop.Services
@@ -25,11 +24,11 @@ namespace InventoryShop.Services
 
         [Header("Shop Service References")]
         [SerializeField] private ShopView shopView;
-        [SerializeField] private BuyBoxView buyBoxView;
+        [SerializeField] private TransactionBoxView buyBoxView;
 
         [Header("Inventory Service References")]
         [SerializeField] private InventoryView inventoryView;
-        [SerializeField] private SellBoxView sellBoxView;
+        [SerializeField] private TransactionBoxView sellBoxView;
 
         [Header("Managers")]
         [SerializeField] private GameManager gameManager;
